@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(7.5);
     doc.setTextColor(85, 16, 15);
-    doc.text('LIBAS TAILOR &bull; Phone / WhatsApp: +91 90276 72285 &bull; info@libastailors.com &bull; libastailors.com', pageWidth / 2, footerY + 8, { align: 'center' });
+    doc.text('LIBAS TAILOR &bull; Phone / WhatsApp: +91 90276 72285 &bull; info@libastailor.in &bull; libastailor.in', pageWidth / 2, footerY + 8, { align: 'center' });
 
     return doc;
   }

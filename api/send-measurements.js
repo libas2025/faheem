@@ -7,8 +7,8 @@
  * - Express / Node.js Backend
  * 
  * Configured via Environment Variables:
- * - EMAIL_TO (e.g., info@libastailors.com or owner's email)
- * - EMAIL_FROM (e.g., concierge@libastailors.com)
+ * - EMAIL_TO (e.g., info@libastailor.in or owner's email)
+ * - EMAIL_FROM (e.g., concierge@libastailor.in)
  * - RESEND_API_KEY or SENDGRID_API_KEY
  */
 
@@ -25,8 +25,8 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Missing required client information (name, phone, email).' });
     }
 
-    const recipientEmail = process.env.EMAIL_TO || 'info@libastailors.com';
-    const senderEmail = process.env.EMAIL_FROM || 'concierge@libastailors.com';
+    const recipientEmail = process.env.EMAIL_TO || 'info@libastailor.in';
+    const senderEmail = process.env.EMAIL_FROM || 'concierge@libastailor.in';
     const apiKey = process.env.RESEND_API_KEY || process.env.EMAIL_SERVICE_KEY;
 
     // Structured Email Content

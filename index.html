@@ -7,7 +7,7 @@
   <title>Aligarh Sherwani &amp; Bespoke Menswear | LIBAS TAILOR</title>
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://libastailors.com/">
+  <link rel="canonical" href="https://libastailor.in/">
 
   <!-- SEO Meta Tags -->
   <meta name="description"
@@ -17,89 +17,162 @@
   <meta name="author" content="LIBAS TAILOR">
   <meta name="robots" content="index, follow">
 
+  <!-- Geographic / Local Geo Tags -->
+  <meta name="geo.region" content="IN-UP">
+  <meta name="geo.placename" content="Aligarh">
+  <meta name="geo.position" content="27.9150;78.0775">
+  <meta name="ICBM" content="27.9150, 78.0775">
+
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://libastailors.com/">
+  <meta property="og:url" content="https://libastailor.in/">
   <meta property="og:title" content="Aligarh Sherwani &amp; Bespoke Menswear | LIBAS TAILOR">
   <meta property="og:description"
     content="Royal bespoke menswear and ceremonial Sherwanis crafted in Aligarh at Shamshad Market, opposite Sulaiman Hall, AMU.">
-  <meta property="og:image" content="/images/hero_warm.jpg">
+  <meta property="og:image" content="https://libastailor.in/images/hero_warm.webp">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Aligarh Sherwani &amp; Bespoke Menswear | LIBAS TAILOR">
   <meta name="twitter:description" content="Royal bespoke menswear and ceremonial Sherwanis crafted in Aligarh.">
-  <meta name="twitter:image" content="/images/hero_warm.jpg">
+  <meta name="twitter:image" content="https://libastailor.in/images/hero_warm.webp">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/images/logo.png">
 
-  <!-- Google Fonts -->
+  <!-- Critical LCP Hero Image Preload -->
+  <link rel="preload" as="image" href="/images/hero_sherwani.webp" type="image/webp" fetchpriority="high">
+
+  <!-- Google Fonts: Non-blocking High-Performance Loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cinzel+Decorative:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  </noscript>
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/src/styles.css">
 
-  <!-- Verified Google Business LocalBusiness Schema Markup -->
+  <!-- Verified Google Business, LocalBusiness & Tailor Schema Graph -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Tailor",
-    "name": "LIBAS TAILOR",
-    "image": "https://libastailors.com/images/logo.png",
-    "@id": "https://share.google/RkUWpTVmXFjvQVj9q",
-    "url": "https://libastailors.com/",
-    "telephone": "+919027672285",
-    "priceRange": "₹₹₹₹",
-    "currenciesAccepted": "INR",
-    "paymentAccepted": "Cash, Credit Card, UPI",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Shamshad Market, opposite of Sulaiman, AMU, Saheb Bagh",
-      "addressLocality": "Aligarh",
-      "addressRegion": "Uttar Pradesh",
-      "postalCode": "202001",
-      "addressCountry": "IN"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 27.9150,
-      "longitude": 78.0775
-    },
-    "openingHoursSpecification": [
+    "@graph": [
       {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Saturday",
-          "Sunday"
+        "@type": ["Tailor", "LocalBusiness", "Organization"],
+        "@id": "https://libastailor.in/#business",
+        "name": "LIBAS TAILOR",
+        "alternateName": "Libas Tailor Aligarh",
+        "url": "https://libastailor.in/",
+        "logo": "https://libastailor.in/images/logo.png",
+        "image": "https://libastailor.in/images/hero_sherwani.webp",
+        "telephone": "+919027672285",
+        "priceRange": "₹₹ - ₹₹₹₹",
+        "currenciesAccepted": "INR",
+        "paymentAccepted": "Cash, Credit Card, Debit Card, UPI",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Shamshad Market, opposite Sulaiman Hall, AMU, Saheb Bagh",
+          "addressLocality": "Aligarh",
+          "addressRegion": "Uttar Pradesh",
+          "postalCode": "202001",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 27.9150,
+          "longitude": 78.0775
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Aligarh" },
+          { "@type": "AdministrativeArea", "name": "Uttar Pradesh" },
+          { "@type": "Country", "name": "India" }
         ],
-        "opens": "10:30",
-        "closes": "21:30"
-      }
-    ],
-    "areaServed": [
-      {
-        "@type": "City",
-        "name": "Aligarh"
+        "knowsAbout": [
+          "Bespoke Menswear",
+          "Aligarh Sherwani",
+          "AMU Traditional Sherwani",
+          "Wedding Sherwanis",
+          "Bespoke Suits",
+          "Indo-Western Ensembles",
+          "Kurta Pajama",
+          "Custom Tailoring"
+        ],
+        "hasMap": "https://maps.google.com/?q=Shamshad+Market+Sulaiman+Hall+AMU+Aligarh",
+        "sameAs": [
+          "https://www.instagram.com/libastailor_aligarh/",
+          "https://jsdl.in/DT-99VIYPSP4Y5",
+          "https://share.google/RkUWpTVmXFjvQVj9q"
+        ]
       },
       {
-        "@type": "AdministrativeArea",
-        "name": "Uttar Pradesh"
+        "@type": "WebSite",
+        "@id": "https://libastailor.in/#website",
+        "name": "LIBAS TAILOR",
+        "url": "https://libastailor.in/",
+        "publisher": { "@id": "https://libastailor.in/#business" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://libastailor.in/#webpage",
+        "url": "https://libastailor.in/",
+        "name": "Aligarh Sherwani & Bespoke Menswear | LIBAS TAILOR",
+        "description": "Royal bespoke menswear and ceremonial Sherwanis crafted in Aligarh at Shamshad Market, opposite Sulaiman Hall, AMU.",
+        "isPartOf": { "@id": "https://libastailor.in/#website" },
+        "about": { "@id": "https://libastailor.in/#business" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://libastailor.in/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Where is LIBAS TAILOR located in Aligarh?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "LIBAS TAILOR is located at Shamshad Market, opposite Sulaiman Hall, Aligarh Muslim University (AMU), Saheb Bagh, Aligarh, Uttar Pradesh 202001, India."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the stitching rates for an Aligarh Sherwani at LIBAS TAILOR?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AMU Traditional Sherwani stitching starts at ₹2,200 (Half Astar) and ₹2,500 (Full Astar). Bespoke Royal Sherwanis range from ₹3,500 to ₹4,000, and Wedding Sherwanis are ₹4,500 for tailoring craftsmanship."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does a bespoke suit cost at LIBAS TAILOR?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Stitching for a bespoke 2-piece suit (coat and pant) is ₹4,800, and a 3-piece suit (coat, pant, and waistcoat) is ₹5,500."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I submit my tailoring measurements online?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. LIBAS TAILOR provides an interactive anatomical measurement portal on the website where clients can enter 14 anatomical measurements, generate an official atelier PDF, and send their profile directly to the master tailor via WhatsApp."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I book a consultation with Master Tailor Faheem?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can book a consultation directly through the website's booking modal, call or WhatsApp +91 90276 72285, or visit the atelier during market hours opposite Sulaiman Hall, AMU."
+            }
+          }
+        ]
       }
-    ],
-    "hasMap": "https://maps.google.com/?q=Shamshad+Market+Sulaiman+Hall+AMU+Aligarh",
-    "sameAs": [
-      "https://share.google/RkUWpTVmXFjvQVj9q",
-      "https://www.instagram.com/libastailor_aligarh/",
-      "https://jsdl.in/DT-99VIYPSP4Y5"
     ]
   }
   </script>
@@ -113,7 +186,7 @@
 
       <!-- Brand Logo -->
       <a href="/" class="brand-logo" aria-label="LIBAS TAILOR Home">
-        <img src="/images/logo.png" alt="LIBAS TAILOR Official Crest Logo">
+        <img src="/images/logo.webp" alt="LIBAS TAILOR Official Crest Logo" width="160" height="40" decoding="async">
       </a>
 
       <!-- Desktop Navigation -->
@@ -223,8 +296,8 @@
         <div class="lg:col-span-5 relative z-0 opacity-0 animate-fade-in-up delay-200">
           <div class="royal-frame max-w-lg mx-auto lg:max-w-none shadow-2xl">
             <div class="aspect-[3/4] overflow-hidden">
-              <img src="/images/hero_sherwani.jpg" alt="LIBAS TAILOR Royal Bespoke Sherwani Specialist Aligarh"
-                class="w-full h-full object-cover">
+              <img src="/images/hero_sherwani.webp" alt="LIBAS TAILOR Royal Bespoke Sherwani Specialist Aligarh"
+                width="896" height="1195" fetchpriority="high" decoding="async" class="w-full h-full object-cover">
             </div>
           </div>
         </div>
@@ -268,8 +341,8 @@
         <div class="lg:col-span-6">
           <div class="royal-frame max-w-lg mx-auto lg:max-w-none shadow-2xl">
             <div class="aspect-[4/3] overflow-hidden">
-              <img src="/images/fitting_detail.jpg" alt="Master Fitting Consultation at LIBAS TAILOR Aligarh"
-                class="w-full h-full object-cover">
+              <img src="/images/fitting_detail.webp" alt="Master Fitting Consultation at LIBAS TAILOR Aligarh"
+                width="896" height="672" loading="lazy" decoding="async" class="w-full h-full object-cover">
             </div>
           </div>
         </div>
@@ -301,8 +374,8 @@
             class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center p-6 sm:p-10 md:p-12 bg-pure-white border border-antique-gold shadow-xl">
             <div class="lg:col-span-7 royal-frame">
               <div class="aspect-[16/10] overflow-hidden">
-                <img src="/images/sherwani_warm.jpg" alt="Bespoke Royal Sherwanis LIBAS TAILOR"
-                  class="w-full h-full object-cover">
+                <img src="/images/sherwani_warm.webp" alt="Bespoke Royal Sherwanis LIBAS TAILOR"
+                  width="896" height="560" loading="lazy" decoding="async" class="w-full h-full object-cover">
               </div>
             </div>
             <div class="lg:col-span-5 flex flex-col justify-center">
@@ -341,7 +414,7 @@
             </div>
             <div class="lg:col-span-7 royal-frame lg:order-2 order-1">
               <div class="aspect-[16/10] overflow-hidden">
-                <img src="/images/suits.jpg" alt="Bespoke Suits LIBAS TAILOR" class="w-full h-full object-cover">
+                <img src="/images/suits.webp" alt="Bespoke Suits LIBAS TAILOR" width="896" height="560" loading="lazy" decoding="async" class="w-full h-full object-cover">
               </div>
             </div>
           </div>
@@ -352,8 +425,8 @@
             <div class="p-6 sm:p-8 bg-pure-white border border-antique-gold/30 flex flex-col justify-between shadow-md">
               <div class="royal-frame mb-8">
                 <div class="aspect-[4/3] overflow-hidden">
-                  <img src="/images/indowestern_warm.jpg" alt="Indo-Western Menswear LIBAS TAILOR"
-                    class="w-full h-full object-cover">
+                  <img src="/images/indowestern_warm.webp" alt="Indo-Western Menswear LIBAS TAILOR"
+                    width="896" height="672" loading="lazy" decoding="async" class="w-full h-full object-cover">
                 </div>
               </div>
               <div>
@@ -373,7 +446,7 @@
             <div class="p-6 sm:p-8 bg-pure-white border border-antique-gold/30 flex flex-col justify-between shadow-md">
               <div class="royal-frame mb-8">
                 <div class="aspect-[4/3] overflow-hidden">
-                  <img src="/images/kurta.jpg" alt="Kurta Pajama LIBAS TAILOR" class="w-full h-full object-cover">
+                  <img src="/images/kurta.webp" alt="Kurta Pajama LIBAS TAILOR" width="896" height="672" loading="lazy" decoding="async" class="w-full h-full object-cover">
                 </div>
               </div>
               <div>
@@ -414,7 +487,7 @@
 
         <div class="royal-frame max-w-5xl mx-auto shadow-2xl">
           <div class="aspect-[16/9] overflow-hidden relative">
-            <img src="/images/sherwani.jpg" alt="Aligarh Sherwani bespoke tailoring by LIBAS TAILOR" class="w-full h-full object-cover">
+            <img src="/images/sherwani.webp" alt="Aligarh Sherwani bespoke tailoring by LIBAS TAILOR" width="896" height="504" loading="lazy" decoding="async" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent flex items-end p-6 sm:p-12">
               <div class="text-luxury-ivory max-w-xl">
                 <span class="font-brand text-xs text-antique-gold font-semibold block mb-2">CEREMONIAL DISTINCTION</span>
@@ -456,31 +529,31 @@
 
           <div class="step-card active p-5 sm:p-6" data-step="1">
             <span class="font-serif text-3xl sm:text-4xl text-burgundy-royal font-light block mb-3">01</span>
-            <h4 class="font-brand text-xs sm:text-sm text-charcoal mb-1">DISCOVER</h4>
+            <h3 class="font-brand text-xs sm:text-sm text-charcoal mb-1">DISCOVER</h3>
             <p class="font-sans text-xs text-charcoal/60 font-light">Occasion &amp; style.</p>
           </div>
 
           <div class="step-card p-5 sm:p-6" data-step="2">
             <span class="font-serif text-3xl sm:text-4xl text-burgundy-royal font-light block mb-3">02</span>
-            <h4 class="font-brand text-xs sm:text-sm text-charcoal mb-1">MEASURE</h4>
+            <h3 class="font-brand text-xs sm:text-sm text-charcoal mb-1">MEASURE</h3>
             <p class="font-sans text-xs text-charcoal/60 font-light">Anatomical mapping.</p>
           </div>
 
           <div class="step-card p-5 sm:p-6" data-step="3">
             <span class="font-serif text-3xl sm:text-4xl text-burgundy-royal font-light block mb-3">03</span>
-            <h4 class="font-brand text-xs sm:text-sm text-charcoal mb-1">SELECT</h4>
+            <h3 class="font-brand text-xs sm:text-sm text-charcoal mb-1">SELECT</h3>
             <p class="font-sans text-xs text-charcoal/60 font-light">Weaves &amp; accents.</p>
           </div>
 
           <div class="step-card p-5 sm:p-6" data-step="4">
             <span class="font-serif text-3xl sm:text-4xl text-burgundy-royal font-light block mb-3">04</span>
-            <h4 class="font-brand text-xs sm:text-sm text-charcoal mb-1">CRAFT</h4>
+            <h3 class="font-brand text-xs sm:text-sm text-charcoal mb-1">CRAFT</h3>
             <p class="font-sans text-xs text-charcoal/60 font-light">Cut. Baste. Stitch.</p>
           </div>
 
           <div class="step-card p-5 sm:p-6 col-span-2 sm:col-span-1" data-step="5">
             <span class="font-serif text-3xl sm:text-4xl text-burgundy-royal font-light block mb-3">05</span>
-            <h4 class="font-brand text-xs sm:text-sm text-charcoal mb-1">PERFECT</h4>
+            <h3 class="font-brand text-xs sm:text-sm text-charcoal mb-1">PERFECT</h3>
             <p class="font-sans text-xs text-charcoal/60 font-light">Fitting &amp; handoff.</p>
           </div>
 
@@ -509,8 +582,8 @@
           </div>
           <div class="lg:col-span-5 royal-frame">
             <div class="aspect-[4/3] overflow-hidden">
-              <img id="step-img" src="/images/fitting_detail.jpg" alt="Tailor Consultation Experience"
-                class="w-full h-full object-cover">
+              <img id="step-img" src="/images/fitting_detail.webp" alt="Tailor Consultation Experience"
+                width="896" height="672" loading="lazy" decoding="async" class="w-full h-full object-cover">
             </div>
           </div>
         </div>
@@ -534,24 +607,24 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
           <div class="lg:col-span-7 royal-frame shadow-2xl">
             <div class="aspect-[4/3] overflow-hidden">
-              <img src="/images/craftsmanship.jpg" alt="Master Tailor Hand Assembly"
-                class="w-full h-full object-cover">
+              <img src="/images/craftsmanship.webp" alt="Master Tailor Hand Assembly"
+                width="896" height="672" loading="lazy" decoding="async" class="w-full h-full object-cover">
             </div>
           </div>
           <div class="lg:col-span-5 flex flex-col justify-center space-y-6">
             <div class="p-6 sm:p-8 bg-pure-white border border-charcoal/10">
               <span class="font-brand text-[10px] text-antique-gold font-semibold block mb-2">PATTERN DRAFTING</span>
-              <h4 class="font-serif text-2xl text-charcoal mb-3">Individual Paper Patterns</h4>
+              <h3 class="font-serif text-2xl text-charcoal mb-3">Individual Paper Patterns</h3>
               <p class="font-sans text-xs sm:text-sm text-charcoal/70 font-light leading-relaxed">Each garment begins with an individual paper pattern drafted specifically for your posture, shoulder slope, and natural stance.</p>
             </div>
             <div class="p-6 sm:p-8 bg-pure-white border border-charcoal/10">
               <span class="font-brand text-[10px] text-antique-gold font-semibold block mb-2">CANVAS &amp; STRUCTURE</span>
-              <h4 class="font-serif text-2xl text-charcoal mb-3">Tailored Internal Interlining</h4>
+              <h3 class="font-serif text-2xl text-charcoal mb-3">Tailored Internal Interlining</h3>
               <p class="font-sans text-xs sm:text-sm text-charcoal/70 font-light leading-relaxed">Internal chest framing and structural interlinings are engineered to give the coat majestic poise while preserving effortless breathability.</p>
             </div>
             <div class="p-6 sm:p-8 bg-pure-white border border-charcoal/10">
               <span class="font-brand text-[10px] text-antique-gold font-semibold block mb-2">FINISHING TOUCHES</span>
-              <h4 class="font-serif text-2xl text-charcoal mb-3">Hand-Finished Plackets &amp; Collars</h4>
+              <h3 class="font-serif text-2xl text-charcoal mb-3">Hand-Finished Plackets &amp; Collars</h3>
               <p class="font-sans text-xs sm:text-sm text-charcoal/70 font-light leading-relaxed">Collar rolls, placket closures, and button fastenings are hand-assembled to ensure smooth edges and lasting durability.</p>
             </div>
           </div>
@@ -606,14 +679,14 @@
               <div class="journal-embed-container">
                 <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZuu1rAMDjL/" data-instgrm-version="14">
                   <div style="padding:16px;">
-                    <a href="https://www.instagram.com/reel/DZuu1rAMDjL/" target="_blank" rel="noopener noreferrer">View on Instagram</a>
+                    <a href="https://www.instagram.com/reel/DZuu1rAMDjL/" target="_blank" rel="noopener noreferrer" aria-label="Watch TRUE NAWABI STYLE on Instagram">View on Instagram</a>
                   </div>
                 </blockquote>
               </div>
 
               <div class="journal-card-footer">
                 <span class="font-brand text-[10px] tracking-wider uppercase text-charcoal/60">CRAFTSMANSHIP &bull; ALIGARH</span>
-                <a href="https://www.instagram.com/reel/DZuu1rAMDjL/" target="_blank" rel="noopener noreferrer" class="journal-ig-link">
+                <a href="https://www.instagram.com/reel/DZuu1rAMDjL/" target="_blank" rel="noopener noreferrer" class="journal-ig-link" aria-label="Watch TRUE NAWABI STYLE on Instagram">
                   VIEW ON INSTAGRAM &rarr;
                 </a>
               </div>
@@ -626,7 +699,7 @@
             <div class="lg:hidden flex items-center justify-between mb-3 mt-4 px-1">
               <div>
                 <span class="font-brand text-[10px] uppercase tracking-[0.2em] text-burgundy-royal font-semibold block">SUPPORTING ARCHIVES</span>
-                <h4 class="font-serif text-lg text-charcoal">More From The Atelier</h4>
+                <h3 class="font-serif text-lg text-charcoal">More From The Atelier</h3>
               </div>
               <span class="font-brand text-[11px] text-antique-gold flex items-center gap-1 font-semibold">
                 Swipe &rarr;
@@ -643,19 +716,19 @@
                     <span class="font-brand text-[10px] tracking-[0.16em] uppercase text-antique-gold font-semibold">REEL 02</span>
                     <span class="text-[9px] font-brand tracking-widest uppercase text-charcoal/50 font-semibold">ALIGARH</span>
                   </div>
-                  <h4 id="reel-02-title" class="font-serif text-lg text-charcoal font-normal">LIBAS TAILOR IN ALIGARH</h4>
+                  <h3 id="reel-02-title" class="font-serif text-lg text-charcoal font-normal">LIBAS TAILOR IN ALIGARH</h3>
                   <p class="font-sans text-[11px] text-charcoal/70 mt-1">Inside our landmark atelier on Amir Nishan Road.</p>
                 </div>
                 <div class="journal-embed-container">
                   <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZP3QHiM0cn/" data-instgrm-version="14">
                     <div style="padding:16px;">
-                      <a href="https://www.instagram.com/reel/DZP3QHiM0cn/" target="_blank" rel="noopener noreferrer">View on Instagram</a>
+                      <a href="https://www.instagram.com/reel/DZP3QHiM0cn/" target="_blank" rel="noopener noreferrer" aria-label="Watch LIBAS TAILOR IN ALIGARH on Instagram">View on Instagram</a>
                     </div>
                   </blockquote>
                 </div>
                 <div class="journal-card-footer">
                   <span class="font-brand text-[9px] tracking-widest uppercase text-charcoal/50">ATELIER HERITAGE</span>
-                  <a href="https://www.instagram.com/reel/DZP3QHiM0cn/" target="_blank" rel="noopener noreferrer" class="journal-ig-link">
+                  <a href="https://www.instagram.com/reel/DZP3QHiM0cn/" target="_blank" rel="noopener noreferrer" class="journal-ig-link" aria-label="Watch LIBAS TAILOR IN ALIGARH on Instagram">
                     VIEW ON INSTAGRAM &rarr;
                   </a>
                 </div>
@@ -668,19 +741,19 @@
                     <span class="font-brand text-[10px] tracking-[0.16em] uppercase text-antique-gold font-semibold">REEL 03</span>
                     <span class="text-[9px] font-brand tracking-widest uppercase text-charcoal/50 font-semibold">FABRIC HARMONY</span>
                   </div>
-                  <h4 id="reel-03-title" class="font-serif text-lg text-charcoal font-normal">PERFECT MATCHING</h4>
+                  <h3 id="reel-03-title" class="font-serif text-lg text-charcoal font-normal">PERFECT MATCHING</h3>
                   <p class="font-sans text-[11px] text-charcoal/70 mt-1">Fabric harmony, contrast nuances &amp; bespoke styling.</p>
                 </div>
                 <div class="journal-embed-container">
                   <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaSjmhRMLg0/" data-instgrm-version="14">
                     <div style="padding:16px;">
-                      <a href="https://www.instagram.com/reel/DaSjmhRMLg0/" target="_blank" rel="noopener noreferrer">View on Instagram</a>
+                      <a href="https://www.instagram.com/reel/DaSjmhRMLg0/" target="_blank" rel="noopener noreferrer" aria-label="Watch PERFECT MATCHING on Instagram">View on Instagram</a>
                     </div>
                   </blockquote>
                 </div>
                 <div class="journal-card-footer">
                   <span class="font-brand text-[9px] tracking-widest uppercase text-charcoal/50">TEXTILE HARMONY</span>
-                  <a href="https://www.instagram.com/reel/DaSjmhRMLg0/" target="_blank" rel="noopener noreferrer" class="journal-ig-link">
+                  <a href="https://www.instagram.com/reel/DaSjmhRMLg0/" target="_blank" rel="noopener noreferrer" class="journal-ig-link" aria-label="Watch PERFECT MATCHING on Instagram">
                     VIEW ON INSTAGRAM &rarr;
                   </a>
                 </div>
@@ -693,19 +766,19 @@
                     <span class="font-brand text-[10px] tracking-[0.16em] uppercase text-antique-gold font-semibold">REEL 04 &bull; SIGNATURE CUT</span>
                     <span class="text-[9px] font-brand tracking-widest uppercase text-burgundy-royal font-semibold">BESPOKE TAILORING</span>
                   </div>
-                  <h4 id="reel-04-title" class="font-serif text-xl text-charcoal font-normal">NAWABI ANDAAZ</h4>
+                  <h3 id="reel-04-title" class="font-serif text-xl text-charcoal font-normal">NAWABI ANDAAZ</h3>
                   <p class="font-sans text-xs text-charcoal/70 mt-1">Poise, elegance, and authoritative comfort in hand-tailored occasion wear.</p>
                 </div>
                 <div class="journal-embed-container">
                   <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZhywglMvn6/" data-instgrm-version="14">
                     <div style="padding:16px;">
-                      <a href="https://www.instagram.com/reel/DZhywglMvn6/" target="_blank" rel="noopener noreferrer">View on Instagram</a>
+                      <a href="https://www.instagram.com/reel/DZhywglMvn6/" target="_blank" rel="noopener noreferrer" aria-label="Watch NAWABI ANDAAZ on Instagram">View on Instagram</a>
                     </div>
                   </blockquote>
                 </div>
                 <div class="journal-card-footer">
                   <span class="font-brand text-[9px] tracking-widest uppercase text-charcoal/50">CEREMONIAL POISE</span>
-                  <a href="https://www.instagram.com/reel/DZhywglMvn6/" target="_blank" rel="noopener noreferrer" class="journal-ig-link">
+                  <a href="https://www.instagram.com/reel/DZhywglMvn6/" target="_blank" rel="noopener noreferrer" class="journal-ig-link" aria-label="Watch NAWABI ANDAAZ on Instagram">
                     VIEW ON INSTAGRAM &rarr;
                   </a>
                 </div>
@@ -718,19 +791,19 @@
                     <span class="font-brand text-[10px] tracking-[0.16em] uppercase text-antique-gold font-semibold">REEL 05</span>
                     <span class="text-[9px] font-brand tracking-widest uppercase text-charcoal/50 font-semibold">PATRON FIT</span>
                   </div>
-                  <h4 id="reel-05-title" class="font-serif text-lg text-charcoal font-normal">A HAPPY CUSTOMER</h4>
+                  <h3 id="reel-05-title" class="font-serif text-lg text-charcoal font-normal">A HAPPY CUSTOMER</h3>
                   <p class="font-sans text-[11px] text-charcoal/70 mt-1">Real fitting moments with gentlemen wearing LIBAS.</p>
                 </div>
                 <div class="journal-embed-container">
                   <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZcsAxJsDE4/" data-instgrm-version="14">
                     <div style="padding:16px;">
-                      <a href="https://www.instagram.com/reel/DZcsAxJsDE4/" target="_blank" rel="noopener noreferrer">View on Instagram</a>
+                      <a href="https://www.instagram.com/reel/DZcsAxJsDE4/" target="_blank" rel="noopener noreferrer" aria-label="Watch A HAPPY CUSTOMER on Instagram">View on Instagram</a>
                     </div>
                   </blockquote>
                 </div>
                 <div class="journal-card-footer">
                   <span class="font-brand text-[9px] tracking-widest uppercase text-charcoal/50">PATRON ARCHIVE</span>
-                  <a href="https://www.instagram.com/reel/DZcsAxJsDE4/" target="_blank" rel="noopener noreferrer" class="journal-ig-link">
+                  <a href="https://www.instagram.com/reel/DZcsAxJsDE4/" target="_blank" rel="noopener noreferrer" class="journal-ig-link" aria-label="Watch A HAPPY CUSTOMER on Instagram">
                     VIEW ON INSTAGRAM &rarr;
                   </a>
                 </div>
@@ -743,19 +816,19 @@
                     <span class="font-brand text-[10px] tracking-[0.16em] uppercase text-antique-gold font-semibold">REEL 06</span>
                     <span class="text-[9px] font-brand tracking-widest uppercase text-charcoal/50 font-semibold">PRECISION</span>
                   </div>
-                  <h4 id="reel-06-title" class="font-serif text-lg text-charcoal font-normal">STYLE THAT SPEAKS</h4>
+                  <h3 id="reel-06-title" class="font-serif text-lg text-charcoal font-normal">STYLE THAT SPEAKS</h3>
                   <p class="font-sans text-[11px] text-charcoal/70 mt-1">Quiet distinction in shoulder line, lapel, and stitch precision.</p>
                 </div>
                 <div class="journal-embed-container">
                   <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZIAqAkMp8E/" data-instgrm-version="14">
                     <div style="padding:16px;">
-                      <a href="https://www.instagram.com/reel/DZIAqAkMp8E/" target="_blank" rel="noopener noreferrer">View on Instagram</a>
+                      <a href="https://www.instagram.com/reel/DZIAqAkMp8E/" target="_blank" rel="noopener noreferrer" aria-label="Watch STYLE THAT SPEAKS on Instagram">View on Instagram</a>
                     </div>
                   </blockquote>
                 </div>
                 <div class="journal-card-footer">
                   <span class="font-brand text-[9px] tracking-widest uppercase text-charcoal/50">DISTINCTION IN DETAIL</span>
-                  <a href="https://www.instagram.com/reel/DZIAqAkMp8E/" target="_blank" rel="noopener noreferrer" class="journal-ig-link">
+                  <a href="https://www.instagram.com/reel/DZIAqAkMp8E/" target="_blank" rel="noopener noreferrer" class="journal-ig-link" aria-label="Watch STYLE THAT SPEAKS on Instagram">
                     VIEW ON INSTAGRAM &rarr;
                   </a>
                 </div>
@@ -796,8 +869,8 @@
         <div class="lg:col-span-6">
           <div class="royal-frame royal-frame-burgundy max-w-lg mx-auto lg:max-w-none shadow-2xl">
             <div class="aspect-[4/3] overflow-hidden">
-              <img src="/images/wedding_editorial.jpg" alt="Indian Groom Wedding Wear by LIBAS TAILOR"
-                class="w-full h-full object-cover">
+              <img src="/images/wedding_editorial.webp" alt="Indian Groom Wedding Wear by LIBAS TAILOR"
+                width="896" height="672" loading="lazy" decoding="async" class="w-full h-full object-cover">
             </div>
           </div>
         </div>
@@ -909,7 +982,7 @@
             class="p-6 sm:p-8 bg-luxury-ivory border border-antique-gold/40 flex flex-col sm:flex-row items-center justify-between gap-8">
             <div class="text-center sm:text-left">
               <span class="font-brand text-[10px] text-burgundy-royal font-semibold block mb-1">YOUR LIBAS LOOK</span>
-              <h4 id="rec-title" class="font-serif text-3xl text-charcoal">Classic Wedding Sherwani</h4>
+              <h3 id="rec-title" class="font-serif text-3xl text-charcoal">Classic Wedding Sherwani</h3>
               <p id="rec-desc" class="font-sans text-xs sm:text-sm text-charcoal/70 font-light mt-2">
                 Hand-tailored in raw silk with refined tone-on-tone embroidery, structured chest framing, and majestic drape tailored for wedding presence.
               </p>
@@ -984,6 +1057,7 @@
         <div class="lg:col-span-7">
           <div class="aspect-[16/10] sm:aspect-[4/3] bg-charcoal/5 relative overflow-hidden border border-antique-gold/40 shadow-xl">
             <iframe
+              title="LIBAS TAILOR Atelier Location Map - Shamshad Market opposite Sulaiman Hall AMU Aligarh"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3525.8451838618717!2d78.07530667526027!3d27.90676497606771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3974a4fa9449bc91%3A0xe54d92eb628a8d16!2sShamshad%20Market%2C%20Aligarh%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
               width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
               referrerpolicy="no-referrer-when-downgrade">
@@ -1037,7 +1111,7 @@
       <div class="footer-top-bar">
         <div class="footer-brand-lockup">
           <a href="/" class="footer-brand-link" aria-label="LIBAS TAILOR Home">
-            <img src="/images/logo.png" alt="LIBAS TAILOR Crest Logo" class="footer-brand-logo">
+            <img src="/images/logo.webp" alt="LIBAS TAILOR Crest Logo" width="160" height="40" loading="lazy" decoding="async" class="footer-brand-logo">
           </a>
           <div class="footer-brand-divider"></div>
           <div class="footer-brand-meta">

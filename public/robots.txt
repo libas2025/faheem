@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
-Sitemap: https://libastailors.com/sitemap.xml
+Sitemap: https://libastailor.in/sitemap.xml

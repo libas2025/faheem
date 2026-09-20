@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: "Every bespoke garment begins with a personal dialogue at our Shamshad Market atelier opposite Sulaiman Hall. We study your event setting, lighting, posture, and personal aesthetic to establish a commanding silhouette.",
       time: "Initial Consultation",
       focus: "Silhouette & Occasion Analysis",
-      img: "/images/fitting_detail.jpg"
+      img: "/images/fitting_detail.webp"
     },
     '2': {
       tag: "ACT II • METROLOGY",
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: "We capture your comprehensive anatomical profile, evaluating shoulder slope angle, spine curvature, and natural stance to ensure zero-strain drape and effortless movement.",
       time: "Precision Measurement",
       focus: "Posture & Proportion Mapping",
-      img: "/images/craftsmanship.jpg"
+      img: "/images/craftsmanship.webp"
     },
     '3': {
       tag: "ACT III • CURATION",
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: "Browse authentic Banarasi raw silks, rich velvets, fine wool blends, and crisp linens. Together we curate fabric weight, texture, and lining harmony designed for your celebratory climate.",
       time: "Material Curation",
       focus: "Texture, Weave & Luster",
-      img: "/images/fabric_detail.jpg"
+      img: "/images/fabric_detail.webp"
     },
     '4': {
       tag: "ACT IV • ATELIER CRAFT",
@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: "Our master tailors draft an individual pattern from zero and hand-assemble internal canvassing, collar shaping, and structural interlinings that adapt organically to your physique.",
       time: "Master Construction",
       focus: "Drafting, Canvassing & Stitch",
-      img: "/images/craftsmanship.jpg"
+      img: "/images/craftsmanship.webp"
     },
     '5': {
       tag: "ACT V • REFINEMENT",
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: "Experience your finished creation in our atelier fitting room. Sleeve pitch, collar closure, and hem drape are micro-refined before final presentation in bespoke protective garment covers.",
       time: "Final Fitting",
       focus: "Drape Validation & Delivery",
-      img: "/images/hero_warm.jpg"
+      img: "/images/hero_warm.webp"
     }
   };
 
