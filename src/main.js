@@ -1,6 +1,14 @@
 // LIBAS TAILOR — Master Interactive Architecture & State Management
+import { initAIConcierge } from './ai-concierge/concierge.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // 0. Initialize LIBAS AI Concierge (Digital Atelier Representative)
+  try {
+    initAIConcierge();
+  } catch (err) {
+    console.warn('AI Concierge initialization error:', err);
+  }
 
   // 1. Fashion-House Masthead Scroll Transformation & Active Link Highlight
   const header = document.getElementById('site-header');

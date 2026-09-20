@@ -26,6 +26,11 @@ dist-ssr
 # Environment variables
 .env
 .env.production
+.env.local
+.env*.local
 
 # Temporary & scratch
-scratch/edge-profile/
+scratch/
+data/
+
+
