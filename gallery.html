@@ -32,14 +32,17 @@
 
 <body class="bg-luxury-ivory text-charcoal">
 
-  <!-- MASTHEAD -->
-  <header id="site-header" class="fixed top-0 left-0 w-full z-50 py-4 px-4 sm:px-6 md:px-12 lg:px-16">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3 text-decoration-none shrink-0">
-        <img src="/images/logo.png" alt="LIBAS TAILOR Logo" class="h-10 sm:h-12 w-auto object-contain">
+  <!-- LIBAS TAILOR — MASTER HEADER -->
+  <header id="site-header" class="site-header">
+    <div class="header-container">
+
+      <!-- Brand Logo -->
+      <a href="/" class="brand-logo" aria-label="LIBAS TAILOR Home">
+        <img src="/images/logo.png" alt="LIBAS TAILOR Official Crest Logo">
       </a>
 
-      <nav class="hidden lg:flex items-center desktop-nav">
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
         <a href="/about.html" class="nav-link">ABOUT</a>
         <a href="/collections.html" class="nav-link">COLLECTIONS</a>
         <a href="/measurements.html" class="nav-link">MEASUREMENTS</a>
@@ -48,35 +51,39 @@
         <a href="/contact.html" class="nav-link">CONTACT</a>
       </nav>
 
-      <div class="flex items-center gap-4 sm:gap-6 shrink-0">
-        <a href="tel:09027672285"
-          class="hidden xl:inline-flex items-center gap-2 text-xs uppercase tracking-widest text-charcoal hover:text-burgundy-royal font-semibold">
-          +91 90276 72285
-        </a>
-        <button class="book-custom-btn hidden sm:inline-flex btn-primary py-3 px-6 text-xs">
-          BOOK A CONSULTATION
-        </button>
-        <button id="menu-toggle" class="lg:hidden text-charcoal p-2.5 border border-antique-gold/40 bg-luxury-ivory" aria-label="Toggle Navigation">
-          <svg id="menu-icon-open" class="w-6 h-6 text-burgundy-royal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h16M4 16h16"/></svg>
-          <svg id="menu-icon-close" class="w-6 h-6 hidden text-burgundy-royal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
+      <!-- Header CTA Button -->
+      <button class="header-cta book-consultation-btn">
+        BOOK A CONSULTATION
+      </button>
+
+      <!-- Mobile Menu Toggle Button (Visible only on < 1024px) -->
+      <button id="menu-toggle" class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+        <svg id="menu-icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h16M4 16h16" />
+        </svg>
+        <svg id="menu-icon-close" class="hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
     </div>
 
-    <!-- Mobile Drawer (Hidden on Desktop >= 1024px) -->
-    <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-[68px] bg-luxury-ivory z-40 flex-col p-6 sm:p-8 border-t border-antique-gold/30 overflow-y-auto">
-      <nav class="flex flex-col gap-5 my-auto text-center py-6">
-        <a href="/about.html" class="mobile-nav-link font-serif text-2xl tracking-widest text-burgundy-royal">About</a>
-        <a href="/collections.html" class="mobile-nav-link font-serif text-2xl tracking-widest text-burgundy-royal">Collections</a>
-        <a href="/measurements.html" class="mobile-nav-link font-serif text-2xl tracking-widest text-burgundy-royal">Measurements</a>
-        <a href="/gallery.html" class="mobile-nav-link font-serif text-2xl tracking-widest text-burgundy-royal">Gallery</a>
-        <a href="/index.html#journal" class="mobile-nav-link font-serif text-2xl tracking-widest text-burgundy-royal">Journal</a>
-        <a href="/contact.html" class="mobile-nav-link font-serif text-2xl tracking-widest text-burgundy-royal">Contact</a>
-      </nav>
-      <div class="pt-6 border-t border-charcoal/10 text-center space-y-3">
-        <button class="book-custom-btn w-full btn-primary py-4 px-6 text-xs">
-          BOOK A PRIVATE CONSULTATION
+    <!-- Mobile Navigation Drawer (Hidden on Desktop >= 1024px) -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <nav class="mobile-nav">
+        <a href="/about.html" class="mobile-nav-link">ABOUT</a>
+        <a href="/collections.html" class="mobile-nav-link">COLLECTIONS</a>
+        <a href="/measurements.html" class="mobile-nav-link">MEASUREMENTS</a>
+        <a href="/gallery.html" class="mobile-nav-link">GALLERY</a>
+        <a href="/index.html#journal" class="mobile-nav-link">JOURNAL</a>
+        <a href="/contact.html" class="mobile-nav-link">CONTACT</a>
+        <button class="mobile-nav-cta book-consultation-btn">
+          BOOK A CONSULTATION
         </button>
+      </nav>
+      <div class="mobile-menu-footer">
+        <span class="mobile-menu-brand-note">LIBAS TAILOR • AMU ALIGARH</span>
+        <a href="tel:09027672285" class="mobile-menu-phone">+91 90276 72285</a>
       </div>
     </div>
   </header>
@@ -117,102 +124,330 @@
           Click any photograph for high-resolution view &bull; Use &larr; and &rarr; arrow keys or ESC
         </p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="gallery-grid">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="gallery-grid">
 
-          <!-- Item 1: Sherwani (Featured Portrait) -->
-          <div class="gallery-item aspect-[3/4] relative" data-category="sherwani" data-src="/images/sherwani_warm.jpg">
-            <img src="/images/sherwani_warm.jpg" alt="Bespoke Sherwani in Raw Silk" class="w-full h-full object-cover">
-            <span class="absolute bottom-3 left-3 text-[9px] font-brand bg-luxury-ivory/95 text-burgundy-royal px-2.5 py-1 border border-antique-gold/40">
-              SHERWANI &bull; ROYAL
-            </span>
+          <!-- Item 01 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani craft" data-src="/images/gallery/gallery-01.jpg">
+            <img src="/images/gallery/gallery-01.jpg" alt="Bespoke Aligarh Achkan Sherwani Atelier Display" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SHERWANI &bull; ALIGARH ACHKAN</span>
           </div>
 
-          <!-- Item 2: Suits -->
-          <div class="gallery-item aspect-[3/4] relative" data-category="suits" data-src="/images/suits.jpg">
-            <img src="/images/suits.jpg" alt="Double-Breasted Bespoke Suit" class="w-full h-full object-cover">
-            <span class="absolute bottom-3 left-3 text-[9px] font-brand bg-luxury-ivory/95 text-burgundy-royal px-2.5 py-1 border border-antique-gold/40">
-              SUITS &bull; BESPOKE
-            </span>
+          <!-- Item 02 -->
+          <div class="gallery-item aspect-[3/4]" data-category="suits craft" data-src="/images/gallery/gallery-02.jpg">
+            <img src="/images/gallery/gallery-02.jpg" alt="Royal Blue Single-Breasted Tailored Suit Blazer" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SUITS &bull; ROYAL BLUE BESPOKE</span>
           </div>
 
-          <!-- Item 3: Wedding -->
-          <div class="gallery-item aspect-[3/4] relative" data-category="wedding" data-src="/images/wedding_editorial.jpg">
-            <img src="/images/wedding_editorial.jpg" alt="Wedding Groom Couture" class="w-full h-full object-cover">
-            <span class="absolute bottom-3 left-3 text-[9px] font-brand bg-luxury-ivory/95 text-burgundy-royal px-2.5 py-1 border border-antique-gold/40">
-              WEDDING &bull; GROOM
-            </span>
+          <!-- Item 03 -->
+          <div class="gallery-item aspect-[3/4]" data-category="suits craft" data-src="/images/gallery/gallery-03.jpg">
+            <img src="/images/gallery/gallery-03.jpg" alt="Tailored Royal Blue Peak Lapel Suit Jacket" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SUITS &bull; HANDMADE JACKET</span>
           </div>
 
-          <!-- Item 4: Craft -->
-          <div class="gallery-item aspect-[3/4] relative" data-category="craft" data-src="/images/craftsmanship.jpg">
-            <img src="/images/craftsmanship.jpg" alt="Master Canvassing & Hand Stitching" class="w-full h-full object-cover">
-            <span class="absolute bottom-3 left-3 text-[9px] font-brand bg-luxury-ivory/95 text-burgundy-royal px-2.5 py-1 border border-antique-gold/40">
-              CRAFT &bull; ATELIER
-            </span>
+          <!-- Item 04 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani wedding" data-src="/images/gallery/gallery-04.jpg">
+            <img src="/images/gallery/gallery-04.jpg" alt="Ivory Wedding Sherwani with Embroidered Gold Zardozi Collar" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SHERWANI &bull; GROOM IVORY COUTURE</span>
           </div>
 
-          <!-- Item 5: Indo-Western -->
-          <div class="gallery-item aspect-square relative" data-category="indowestern" data-src="/images/indowestern_warm.jpg">
-            <img src="/images/indowestern_warm.jpg" alt="Indo-Western Bandhgala Coat" class="w-full h-full object-cover">
-            <span class="absolute bottom-3 left-3 text-[9px] font-brand bg-luxury-ivory/95 text-burgundy-royal px-2.5 py-1 border border-antique-gold/40">
-              INDO-WESTERN &bull; BANDHGALA
-            </span>
+          <!-- Item 05 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani craft" data-src="/images/gallery/gallery-05.jpg">
+            <img src="/images/gallery/gallery-05.jpg" alt="Classic Slate Blue Aligarh Achkan Sherwani" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SHERWANI &bull; SLATE BLUE ACHKAN</span>
           </div>
 
-          <!-- Item 6: Kurta -->
-          <div class="gallery-item aspect-square relative" data-category="kurta" data-src="/images/kurta.jpg">
-            <img src="/images/kurta.jpg" alt="Hand-Tailored Silk Kurta Pajama" class="w-full h-full object-cover">
-            <span class="absolute bottom-3 left-3 text-[9px] font-brand bg-luxury-ivory/95 text-burgundy-royal px-2.5 py-1 border border-antique-gold/40">
-              KURTA &bull; LINEN
-            </span>
+          <!-- Item 06 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani wedding" data-src="/images/gallery/gallery-06.jpg">
+            <img src="/images/gallery/gallery-06.jpg" alt="Royal White Jacquard Groom Sherwani with Churidar" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">WEDDING &bull; ROYAL JACQUARD</span>
           </div>
 
-          <!-- Item 7: Craft Fitting -->
-          <div class="gallery-item aspect-square relative" data-category="craft" data-src="/images/fitting_detail.jpg">
-            <img src="/images/fitting_detail.jpg" alt="Precision Anatomical Measurement" class="w-full h-full object-cover">
-            <span class="absolute bottom-3 left-3 text-[9px] font-brand bg-luxury-ivory/95 text-burgundy-royal px-2.5 py-1 border border-antique-gold/40">
-              CRAFT &bull; FITTING
-            </span>
+          <!-- Item 07 -->
+          <div class="gallery-item aspect-[3/4]" data-category="wedding sherwani" data-src="/images/gallery/gallery-07.jpg">
+            <img src="/images/gallery/gallery-07.jpg" alt="Full Groom Wedding Ensemble with Embroidered Topi and Jutti" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">WEDDING &bull; MASTER GROOM SET</span>
           </div>
 
-          <!-- Item 8: Fabric Texture -->
-          <div class="gallery-item aspect-square relative" data-category="craft" data-src="/images/fabric_detail.jpg">
-            <img src="/images/fabric_detail.jpg" alt="Luxury Woven Celebratory Fabric" class="w-full h-full object-cover">
-            <span class="absolute bottom-3 left-3 text-[9px] font-brand bg-luxury-ivory/95 text-burgundy-royal px-2.5 py-1 border border-antique-gold/40">
-              CRAFT &bull; WEAVE
-            </span>
+          <!-- Item 08 -->
+          <div class="gallery-item aspect-[3/4]" data-category="indowestern wedding" data-src="/images/gallery/gallery-08.jpg">
+            <img src="/images/gallery/gallery-08.jpg" alt="Gold Jacquard Indo-Western Bandhgala Prince Coat" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">INDO-WESTERN &bull; GOLD JACQUARD</span>
           </div>
 
-          <!-- Item 9: The Sherwani Crown -->
-          <div class="gallery-item aspect-[16/10] sm:col-span-2 relative" data-category="sherwani" data-src="/images/sherwani.jpg">
-            <img src="/images/sherwani.jpg" alt="The Crown Sherwani" class="w-full h-full object-cover">
-            <span class="absolute bottom-3 left-3 text-[9px] font-brand bg-luxury-ivory/95 text-burgundy-royal px-2.5 py-1 border border-antique-gold/40">
-              SHERWANI &bull; CROWN SILHOUETTE
-            </span>
+          <!-- Item 09 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani wedding" data-src="/images/gallery/gallery-09.jpg">
+            <img src="/images/gallery/gallery-09.jpg" alt="Regal Cream Raw Silk Wedding Sherwani" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SHERWANI &bull; REGAL CREAM SILK</span>
           </div>
 
-          <!-- Item 10: Suits Warm -->
-          <div class="gallery-item aspect-[16/10] sm:col-span-2 relative" data-category="suits" data-src="/images/hero_warm.jpg">
-            <img src="/images/hero_warm.jpg" alt="Bespoke Suit & Stance" class="w-full h-full object-cover">
-            <span class="absolute bottom-3 left-3 text-[9px] font-brand bg-luxury-ivory/95 text-burgundy-royal px-2.5 py-1 border border-antique-gold/40">
-              SUITS &bull; CEREMONIAL
-            </span>
+          <!-- Item 10 -->
+          <div class="gallery-item aspect-[3/4]" data-category="suits" data-src="/images/gallery/gallery-10.jpg">
+            <img src="/images/gallery/gallery-10.jpg" alt="Grey Glen Plaid Bespoke Executive Tailored Suit" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SUITS &bull; GLEN PLAID TWO-PIECE</span>
           </div>
 
-          <!-- Item 11: Wedding Groom -->
-          <div class="gallery-item aspect-square relative" data-category="wedding" data-src="/images/wedding.jpg">
-            <img src="/images/wedding.jpg" alt="Indian Groom Attire" class="w-full h-full object-cover">
-            <span class="absolute bottom-3 left-3 text-[9px] font-brand bg-luxury-ivory/95 text-burgundy-royal px-2.5 py-1 border border-antique-gold/40">
-              WEDDING &bull; CELEBRATION
-            </span>
+          <!-- Item 11 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani wedding" data-src="/images/gallery/gallery-11.jpg">
+            <img src="/images/gallery/gallery-11.jpg" alt="Black Sequin Embroidered Ceremonial Sherwani" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SHERWANI &bull; NOCTURNE SEQUIN</span>
           </div>
 
-          <!-- Item 12: Evening Formal -->
-          <div class="gallery-item aspect-square relative" data-category="suits" data-src="/images/formalwear.jpg">
-            <img src="/images/formalwear.jpg" alt="Evening Dinner Jacket" class="w-full h-full object-cover">
-            <span class="absolute bottom-3 left-3 text-[9px] font-brand bg-luxury-ivory/95 text-burgundy-royal px-2.5 py-1 border border-antique-gold/40">
-              FORMAL WEAR &bull; EVENING
-            </span>
+          <!-- Item 12 -->
+          <div class="gallery-item aspect-[3/4]" data-category="wedding sherwani" data-src="/images/gallery/gallery-12.jpg">
+            <img src="/images/gallery/gallery-12.jpg" alt="Groom Patron Fitting in Handcrafted Ivory Zardozi Sherwani" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">WEDDING &bull; PATRON FITTING</span>
+          </div>
+
+          <!-- Item 13 -->
+          <div class="gallery-item aspect-[3/4]" data-category="kurta craft" data-src="/images/gallery/gallery-13.jpg">
+            <img src="/images/gallery/gallery-13.jpg" alt="Hand-Tailored Navy Blue Kurta with Intricate Placket Embroidery" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">KURTA &bull; NAVY EMBROIDERED SILK</span>
+          </div>
+
+          <!-- Item 14 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani craft" data-src="/images/gallery/gallery-14.jpg">
+            <img src="/images/gallery/gallery-14.jpg" alt="Heritage Black AMU Achkan Sherwani with Brass Buttons" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SHERWANI &bull; HERITAGE BLACK ACHKAN</span>
+          </div>
+
+          <!-- Item 15 -->
+          <div class="gallery-item aspect-[3/4]" data-category="kurta indowestern" data-src="/images/gallery/gallery-15.jpg">
+            <img src="/images/gallery/gallery-15.jpg" alt="Bespoke Kurta Pajama with Tailored Nehru Waistcoat" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">KURTA &bull; NEHRU JACKET PAIRING</span>
+          </div>
+
+          <!-- Item 16 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani wedding" data-src="/images/gallery/gallery-16.jpg">
+            <img src="/images/gallery/gallery-16.jpg" alt="Ivory Brocade Royal Groom Sherwani with Pocket Square Accent" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SHERWANI &bull; IVORY WEDDING BROCADE</span>
+          </div>
+
+          <!-- Item 17 -->
+          <div class="gallery-item aspect-[3/4]" data-category="indowestern suits" data-src="/images/gallery/gallery-17.jpg">
+            <img src="/images/gallery/gallery-17.jpg" alt="Matching Father and Son Bespoke Black Jodhpuri Bandhgala Suits" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">INDO-WESTERN &bull; FATHER &amp; SON JODHPURI</span>
+          </div>
+
+          <!-- Item 18 -->
+          <div class="gallery-item aspect-[3/4]" data-category="wedding sherwani" data-src="/images/gallery/gallery-18.jpg">
+            <img src="/images/gallery/gallery-18.jpg" alt="Wedding Celebration Gathering with Navy Blue Achkan and White Kurta" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">WEDDING &bull; EVENING CELEBRATION</span>
+          </div>
+
+          <!-- Item 19 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani wedding" data-src="/images/gallery/gallery-19.jpg">
+            <img src="/images/gallery/gallery-19.jpg" alt="Gold and Black Geometric Brocade Royal Wedding Sherwani" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">WEDDING &bull; GEOMETRIC BROCADE</span>
+          </div>
+
+          <!-- Item 20 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani wedding" data-src="/images/gallery/gallery-20.jpg">
+            <img src="/images/gallery/gallery-20.jpg" alt="Brocade Sherwani Collar Craftsmanship and Button Structure" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SHERWANI &bull; BROCADE WEAVE DETAIL</span>
+          </div>
+
+          <!-- Item 21 -->
+          <div class="gallery-item aspect-[3/4]" data-category="indowestern wedding" data-src="/images/gallery/gallery-21.jpg">
+            <img src="/images/gallery/gallery-21.jpg" alt="Royal Blue Velvet Indo-Western Prince Coat with Gold Embroidery" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">INDO-WESTERN &bull; ROYAL BLUE VELVET</span>
+          </div>
+
+          <!-- Item 22 -->
+          <div class="gallery-item aspect-[3/4]" data-category="craft suits" data-src="/images/gallery/gallery-22.jpg">
+            <img src="/images/gallery/gallery-22.jpg" alt="Police Officer Bespoke Uniform Tailoring with Libas Master Craftsman" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">CRAFT &bull; UNIFORM &amp; TACTICAL</span>
+          </div>
+
+          <!-- Item 23 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani craft" data-src="/images/gallery/gallery-23.jpg">
+            <img src="/images/gallery/gallery-23.jpg" alt="Traditional Aligarh Muslim University Brown Achkan with Cap" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SHERWANI &bull; TRADITIONAL AMU ACHKAN</span>
+          </div>
+
+          <!-- Item 24 -->
+          <div class="gallery-item aspect-[3/4]" data-category="indowestern suits" data-src="/images/gallery/gallery-24.jpg">
+            <img src="/images/gallery/gallery-24.jpg" alt="Purple Velvet Shawl-Lapel Dinner Jacket over Patterned Kurta" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">INDO-WESTERN &bull; VELVET DINNER FUSION</span>
+          </div>
+
+          <!-- Item 25 -->
+          <div class="gallery-item aspect-[3/4]" data-category="kurta sherwani" data-src="/images/gallery/gallery-25.jpg">
+            <img src="/images/gallery/gallery-25.jpg" alt="Light Blue Pinstriped Summer Linen Long Kurta Achkan" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">KURTA &bull; PINSTRIPE SUMMER LINEN</span>
+          </div>
+
+          <!-- Item 26 -->
+          <div class="gallery-item aspect-[3/4]" data-category="indowestern suits" data-src="/images/gallery/gallery-26.jpg">
+            <img src="/images/gallery/gallery-26.jpg" alt="Steel Blue Modern Tailored Jodhpuri Bandhgala Jacket" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">INDO-WESTERN &bull; STEEL BLUE BANDHGALA</span>
+          </div>
+
+          <!-- Item 27 -->
+          <div class="gallery-item aspect-[3/4]" data-category="suits craft" data-src="/images/gallery/gallery-27.jpg">
+            <img src="/images/gallery/gallery-27.jpg" alt="Bespoke Two-Piece Charcoal Business Suit on Atelier Bust" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SUITS &bull; CORPORATE TWO-PIECE</span>
+          </div>
+
+          <!-- Item 28 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani craft" data-src="/images/gallery/gallery-28.jpg">
+            <img src="/images/gallery/gallery-28.jpg" alt="Formal Black Aligarh Achkan Sherwani with Traditional Aligarh Cap" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SHERWANI &bull; ALIGARH FORMAL ACHKAN</span>
+          </div>
+
+          <!-- Item 29 -->
+          <div class="gallery-item aspect-[3/4]" data-category="craft" data-src="/images/gallery/gallery-29.jpg">
+            <img src="/images/gallery/gallery-29.jpg" alt="Community Delegation and Patrons with Libas Master Craftsman" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">CRAFT &bull; CIVIC PATRONAGE</span>
+          </div>
+
+          <!-- Item 30 -->
+          <div class="gallery-item aspect-[3/4]" data-category="craft" data-src="/images/gallery/gallery-30.jpg">
+            <img src="/images/gallery/gallery-30.jpg" alt="Patrons and Community Leaders at Shamshad Market Atelier" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">CRAFT &bull; ATELIER RELATIONS</span>
+          </div>
+
+          <!-- Item 31 -->
+          <div class="gallery-item aspect-[3/4]" data-category="suits craft" data-src="/images/gallery/gallery-31.jpg">
+            <img src="/images/gallery/gallery-31.jpg" alt="Bespoke Judicial Two-Piece Formal Suit Tailored for District Judge" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">SUITS &bull; JUDICIAL BESPOKE SUITING</span>
+          </div>
+
+          <!-- Item 32 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani wedding" data-src="/images/gallery/gallery-32.jpg">
+            <img src="/images/gallery/gallery-32.jpg" alt="Groom Attire Ivory Achkan with Embroidered Gold Stole" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">WEDDING &bull; IVORY ACHKAN &amp; STOLE</span>
+          </div>
+
+          <!-- Item 33 -->
+          <div class="gallery-item aspect-[3/4]" data-category="sherwani indowestern wedding" data-src="/images/gallery/gallery-33.jpg">
+            <img src="/images/gallery/gallery-33.jpg" alt="Twin Black Achkans with Zari Stoles for Wedding Celebration" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">WEDDING &bull; TWIN BLACK ACHKANS</span>
+          </div>
+
+          <!-- Item 34 -->
+          <div class="gallery-item aspect-[3/4]" data-category="kurta craft" data-src="/images/gallery/gallery-34.jpg">
+            <img src="/images/gallery/gallery-34.jpg" alt="White Kurta Pajama with Checkered Winter Tailored Waistcoat" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">KURTA &bull; WINTER WAISTCOAT</span>
+          </div>
+
+          <!-- Item 35 -->
+          <div class="gallery-item aspect-[3/4]" data-category="indowestern sherwani wedding" data-src="/images/gallery/gallery-35.jpg">
+            <img src="/images/gallery/gallery-35.jpg" alt="Patron Wearing Modern Chevron Sequin Embroidered Indo-Western Coat" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">INDO-WESTERN &bull; CHEVRON SEQUIN COAT</span>
+          </div>
+
+          <!-- Item 36 -->
+          <div class="gallery-item aspect-[3/4]" data-category="craft" data-src="/images/gallery/gallery-36.jpg">
+            <img src="/images/gallery/gallery-36.jpg" alt="Bespoke Consultation with Master Tailor at Shamshad Market Aligarh" loading="lazy">
+            <div class="gallery-zoom-badge" aria-hidden="true">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+            </div>
+            <span class="gallery-label-tag">CRAFT &bull; MASTER TAILOR CONSULT</span>
           </div>
 
         </div>
@@ -359,11 +594,39 @@
     </div>
   </div>
 
-  <!-- Floating WhatsApp Concierge -->
-  <a href="https://wa.me/919027672285" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat with LIBAS Tailor on WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 1.83.822 2.796.823h.005c3.179 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.773-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.062-1.121-.077-.282-.093-.647-.215-1.114-.417-1.954-.848-3.23-2.837-3.328-2.969-.097-.133-.794-1.056-.794-2.014 0-.957.502-1.428.68-1.623.178-.195.389-.244.518-.244.13 0 .26.002.373.007.12.005.28-.046.438.334.162.39.553 1.349.601 1.448.049.098.081.213.016.342-.065.13-.098.211-.195.324-.097.114-.206.254-.294.341-.098.098-.2.205-.086.401.114.195.507.836 1.088 1.354.748.667 1.378.874 1.573.972.195.097.309.082.422-.049.114-.13.487-.568.617-.763.13-.195.26-.162.438-.097.179.065 1.135.536 1.33.633.195.097.324.146.373.227.048.082.048.471-.096.876zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.981-1.393A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-    <span>WhatsApp Atelier</span>
-  </a>
+  <!-- Mobile Quick Contact Floating Bar -->
+  <nav class="mobile-contact-bar" aria-label="Quick Mobile Contact">
+    <a href="tel:+919027672285" class="mobile-contact-item" aria-label="Call Us Directly">
+      <div class="mobile-contact-icon-wrap call-icon-wrap">
+        <svg viewBox="0 0 24 24" class="mobile-contact-icon call-icon" fill="currentColor">
+          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+      </div>
+      <span class="mobile-contact-label">Call</span>
+    </a>
+
+    <button type="button" class="mobile-contact-item book-consultation-btn" id="mobile-bar-enquiry" aria-label="Send Tailoring Enquiry">
+      <div class="mobile-contact-icon-wrap enquiry-icon-wrap">
+        <svg viewBox="0 0 24 24" class="mobile-contact-icon enquiry-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="3" width="16" height="18" rx="2"/>
+          <path d="M8 3l4 3 4-3"/>
+          <line x1="8" y1="10" x2="16" y2="10"/>
+          <line x1="8" y1="14" x2="16" y2="14"/>
+          <line x1="8" y1="18" x2="13" y2="18"/>
+        </svg>
+      </div>
+      <span class="mobile-contact-label">Enquiry</span>
+    </button>
+
+    <a href="https://wa.me/919027672285?text=Hello%20LIBAS%20Tailor%2C%20I%20would%20like%20to%20inquire%20about%20your%20bespoke%20services." target="_blank" rel="noopener" class="mobile-contact-item" aria-label="Chat on WhatsApp">
+      <div class="mobile-contact-icon-wrap chat-icon-wrap">
+        <svg viewBox="0 0 24 24" class="mobile-contact-icon chat-icon" fill="currentColor">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.54 1.83.822 2.796.823h.005c3.179 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.062-1.121-.077-.282-.093-.647-.215-1.114-.417-1.954-.848-3.23-2.837-3.328-2.969-.097-.133-.794-1.056-.794-2.014 0-.957.502-1.428.68-1.623.178-.195.389-.244.518-.244.13 0 .26.002.373.007.12.005.28-.046.438.334.162.39.553 1.349.601 1.448.049.098.081.213.016.342-.065.13-.098.211-.195.324-.097.114-.206.254-.294.341-.098.098-.2.205-.086.401.114.195.507.836 1.088 1.354.748.667 1.378.874 1.573.972.195.097.309.082.422-.049.114-.13.487-.568.617-.763.13-.195.26-.162.438-.097.179.065 1.135.536 1.33.633.195.097.324.146.373.227.048.082.048.471-.096.876zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.981-1.393A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+        </svg>
+      </div>
+      <span class="mobile-contact-label">Chat</span>
+    </a>
+  </nav>
 
   <script type="module" src="/src/main.js"></script>
 </body>

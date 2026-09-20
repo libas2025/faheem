@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('final-cta-btn'),
     document.getElementById('rec-book-btn'),
     document.getElementById('sherwani-book-btn'),
+    document.getElementById('mobile-bar-enquiry'),
     ...document.querySelectorAll('.book-consultation-btn'),
     ...document.querySelectorAll('.book-wedding-btn'),
     ...document.querySelectorAll('.book-custom-btn')
@@ -483,8 +484,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const filterCategory = btn.getAttribute('data-filter') || 'all';
 
         galleryItems.forEach(item => {
-          const itemCat = item.getAttribute('data-category') || '';
-          if (filterCategory === 'all' || itemCat === filterCategory) {
+          const itemCat = (item.getAttribute('data-category') || '').toLowerCase().trim();
+          const catList = itemCat.split(/\s+/);
+          if (filterCategory === 'all' || catList.includes(filterCategory.toLowerCase())) {
             item.style.display = 'block';
             item.classList.remove('hidden-item');
           } else {
@@ -496,48 +498,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 9. Editorial Instagram Reels Modal Previewer
-  const reelModal = document.getElementById('reel-modal');
-  const closeReelBtn = document.getElementById('close-reel-modal');
-  const reelPlayBtns = document.querySelectorAll('.play-reel-btn');
-  const reelPosterImg = document.getElementById('reel-preview-img');
-  const reelCategoryEl = document.getElementById('reel-modal-category');
-  const reelTitleEl = document.getElementById('reel-modal-title');
-  const reelExternalLink = document.getElementById('reel-external-link');
-
-  if (reelPlayBtns.length > 0 && reelModal) {
-    reelPlayBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const category = btn.getAttribute('data-category') || 'LIBAS ATELIER';
-        const title = btn.getAttribute('data-title') || 'Craft in Motion';
-        const poster = btn.getAttribute('data-poster') || '/images/hero_warm.jpg';
-        const igUrl = btn.getAttribute('data-ig-url') || 'https://www.instagram.com/libastailor';
-
-        if (reelCategoryEl) reelCategoryEl.textContent = category;
-        if (reelTitleEl) reelTitleEl.textContent = title;
-        if (reelPosterImg) reelPosterImg.src = poster;
-        if (reelExternalLink) reelExternalLink.href = igUrl;
-
-        reelModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
+  // 9. Official Instagram Reels Journal Embed Processing
+  const journalSection = document.getElementById('journal');
+  if (journalSection) {
+    // Lazy-load official Instagram embed.js only once when user approaches the journal section
+    const igObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (window.instgrm && window.instgrm.Embeds) {
+            window.instgrm.Embeds.process();
+          } else if (!document.querySelector('script[src*="instagram.com/embed.js"]')) {
+            const igScript = document.createElement('script');
+            igScript.async = true;
+            igScript.src = '//www.instagram.com/embed.js';
+            igScript.onload = () => {
+              if (window.instgrm && window.instgrm.Embeds) {
+                window.instgrm.Embeds.process();
+              }
+            };
+            document.body.appendChild(igScript);
+          }
+          igObserver.unobserve(journalSection);
+        }
       });
-    });
+    }, { rootMargin: '350px 0px' });
 
-    if (closeReelBtn) {
-      closeReelBtn.addEventListener('click', () => {
-        reelModal.classList.add('hidden');
-        document.body.style.overflow = '';
-      });
-    }
-
-    reelModal.addEventListener('click', (e) => {
-      if (e.target === reelModal) {
-        reelModal.classList.add('hidden');
-        document.body.style.overflow = '';
-      }
-    });
+    igObserver.observe(journalSection);
   }
 
   // 10. Cinematic Scroll Reveal Animations
@@ -550,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-  document.querySelectorAll('section > div, .editorial-frame, .royal-frame, .step-card, .lookbook-item, .gallery-item, .reel-card').forEach(el => {
+  document.querySelectorAll('section > div, .editorial-frame, .royal-frame, .step-card, .lookbook-item, .gallery-item, .journal-card').forEach(el => {
     observer.observe(el);
   });
 
