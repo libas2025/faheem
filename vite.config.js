@@ -15,7 +15,7 @@ export default defineConfig(({ command, mode }) => {
       configureServer(server) {
         server.middlewares.use(async (req, res, next) => {
           const url = req.url ? req.url.split('?')[0] : '';
-          if (url === '/api/ai-concierge' || url === '/api/leads') {
+          if (url === '/api/ai-concierge' || url === '/api/leads' || url === '/api/contact' || url === '/api/send-measurements') {
             let bodyStr = '';
             req.on('data', chunk => { bodyStr += chunk; });
             req.on('end', async () => {
@@ -43,6 +43,16 @@ export default defineConfig(({ command, mode }) => {
                 }
                 if (url === '/api/leads') {
                   const moduleUrl = new URL(`./api/leads.js?t=${Date.now()}`, import.meta.url).href;
+                  const { default: handler } = await import(moduleUrl);
+                  return handler(req, res);
+                }
+                if (url === '/api/contact') {
+                  const moduleUrl = new URL(`./api/contact.js?t=${Date.now()}`, import.meta.url).href;
+                  const { default: handler } = await import(moduleUrl);
+                  return handler(req, res);
+                }
+                if (url === '/api/send-measurements') {
+                  const moduleUrl = new URL(`./api/send-measurements.js?t=${Date.now()}`, import.meta.url).href;
                   const { default: handler } = await import(moduleUrl);
                   return handler(req, res);
                 }

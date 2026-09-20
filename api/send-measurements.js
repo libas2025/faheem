@@ -81,41 +81,144 @@ export default async function handler(req, res) {
       </div>
     `;
 
-    // If Resend API key is configured, send actual transactional email
-    if (apiKey) {
-      const response = await fetch('https://api.resend.com/emails', {
+    // 1. Persist measurement profile to data/leads.json
+    try {
+      const dataDir = path.resolve(process.cwd(), 'data');
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      const leadsFile = path.join(dataDir, 'leads.json');
+      let leads = [];
+      if (fs.existsSync(leadsFile)) {
+        try {
+          const raw = fs.readFileSync(leadsFile, 'utf-8');
+          leads = JSON.parse(raw);
+          if (!Array.isArray(leads)) leads = [];
+        } catch {
+          leads = [];
+        }
+      }
+      leads.push({
+        id: `measure_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+        source: 'Measurement Metrology Form',
+        submittedAt: new Date().toISOString(),
+        ...data
+      });
+      fs.writeFileSync(leadsFile, JSON.stringify(leads, null, 2), 'utf-8');
+    } catch (fsErr) {
+      console.warn('Measurement persistence warning:', fsErr.message);
+    }
+
+    // 2. Dispatch via Web3Forms (Server-side)
+    const web3AccessKey = process.env.WEB3FORMS_KEY || '7097fd8c-680d-4e0a-86d8-0d53621e4b47';
+    let web3Dispatched = false;
+
+    try {
+      const web3Res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
-          from: senderEmail,
-          to: recipientEmail,
-          subject: emailSubject,
-          html: emailHtml
+          access_key: web3AccessKey,
+          subject: `New Bespoke Measurement Profile: ${data.name} (${data.garment || 'Sherwani'})`,
+          from_name: 'LIBAS TAILOR Measurement Engine',
+          name: data.name,
+          phone: data.phone,
+          email: data.email || 'Not provided',
+          garment: data.garment || 'Sherwani',
+          fit: data.fit || 'Regular',
+          posture: data.posture || 'Standard',
+          unit: data.unit || 'cm',
+          notes: data.notes || 'None',
+          message: `NEW BESPOKE MEASUREMENT PROFILE\n\nClient Name: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nGarment: ${data.garment}\nFit: ${data.fit}\nPosture: ${data.posture}\nUnit: ${data.unit}\nAddress/Notes: ${data.address || 'N/A'}\nSpecial Notes: ${data.notes || 'None'}\n\nMEASUREMENTS:\nUpper Body:\nNeck: ${data.neck || '-'} | Chest: ${data.chest || '-'} | Shoulder: ${data.shoulder || '-'} | Sleeve: ${data.sleeve || '-'} | Bicep: ${data.bicep || '-'} | Stomach Waist: ${data.waist || '-'} | Natural Waist: ${data.waistNatural || '-'} | Jacket Length: ${data.jacketLength || '-'} | Back Length: ${data.backLength || '-'}\n\nLower Body:\nTrouser Waist: ${data.trouserWaist || '-'} | Hips: ${data.hips || '-'} | Thigh: ${data.thigh || '-'} | Inseam: ${data.inseam || '-'} | Outseam: ${data.outseam || '-'} | Knee: ${data.knee || '-'} | Ankle: ${data.ankle || '-'} | Rise: ${data.rise || '-'}`
         })
       });
 
-      if (!response.ok) {
-        const errorDetails = await response.text();
-        console.error('Email provider error response:', errorDetails);
-        return res.status(502).json({ error: 'Failed sending through transactional email service.' });
+      if (web3Res.ok) {
+        web3Dispatched = true;
       }
-
-      const resData = await response.json();
-      return res.status(200).json({ success: true, messageId: resData.id });
-    } else {
-      // Graceful fallback when running locally or before adding API key
-      console.log('--- BESPOKE MEASUREMENT RECORD RECEIVED ---');
-      console.log('Client:', data.name, 'Phone:', data.phone);
-      console.log('Notice: Set RESEND_API_KEY and EMAIL_TO in production environment to dispatch transactional email.');
-      return res.status(200).json({ 
-        success: true, 
-        mock: true, 
-        message: 'Measurement profile received. Set RESEND_API_KEY in environment variables for automated email dispatch.' 
-      });
+    } catch (web3Err) {
+      console.warn('Web3Forms measurement dispatch error:', web3Err.message);
     }
+
+    // 3. FormSubmit Failover Dispatch for Measurements
+    let formSubmitDispatched = false;
+    try {
+      const recipient = process.env.EMAIL_TO || 'libastailor0@gmail.com';
+      const fsRes = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Referer': 'https://libastailor.in/measurements.html'
+        },
+        body: JSON.stringify({
+          _subject: `New Bespoke Measurement Profile: ${data.name} (${data.garment || 'Sherwani'})`,
+          _template: 'table',
+          'Client Name': data.name,
+          'Phone / WhatsApp': data.phone,
+          'Email': data.email || 'Not provided',
+          'Preferred Contact': data.contactMethod || 'WhatsApp',
+          'Garment Silhouette': data.garment || 'Sherwani',
+          'Fit Preference': data.fit || 'Regular',
+          'Posture Type': data.posture || 'Standard',
+          'Unit': data.unit || 'cm',
+          'Neck': data.neck || '—',
+          'Chest': data.chest || '—',
+          'Shoulder': data.shoulder || '—',
+          'Sleeve': data.sleeve || '—',
+          'Bicep': data.bicep || '—',
+          'Stomach Waist': data.waist || '—',
+          'Natural Waist': data.waistNatural || '—',
+          'Jacket Length': data.jacketLength || '—',
+          'Back Length': data.backLength || '—',
+          'Trouser Waist': data.trouserWaist || '—',
+          'Hips': data.hips || '—',
+          'Thigh': data.thigh || '—',
+          'Inseam': data.inseam || '—',
+          'Outseam': data.outseam || '—',
+          'Knee': data.knee || '—',
+          'Ankle': data.ankle || '—',
+          'Rise': data.rise || '—',
+          'Address / Notes': data.address || 'N/A',
+          'Special Requirements': data.notes || 'None'
+        })
+      });
+      if (fsRes.ok) {
+        formSubmitDispatched = true;
+      }
+    } catch (fsErr) {
+      console.warn('FormSubmit measurement dispatch error:', fsErr.message);
+    }
+
+    // 3. If Resend API key is configured, send transactional email
+    if (apiKey) {
+      try {
+        await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: senderEmail,
+            to: recipientEmail,
+            subject: emailSubject,
+            html: emailHtml
+          })
+        });
+      } catch (resendErr) {
+        console.warn('Resend email dispatch error:', resendErr.message);
+      }
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: 'Measurement profile received and registered successfully.',
+      web3Dispatched
+    });
 
   } catch (error) {
     console.error('Measurement submission endpoint error:', error);

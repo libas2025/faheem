@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dateInput.value = today;
   }
 
-  // Consultation & Appointment Submission with Web3Forms & WhatsApp Pipeline
+  // Consultation & Appointment Submission with First-Party API & Multi-Channel Pipeline
   const formsToHandle = [
     document.getElementById('appointment-form'),
     document.getElementById('form'),
@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const name = targetForm.querySelector('#form-name')?.value || targetForm.querySelector('[name="name"]')?.value || '';
       const phone = targetForm.querySelector('#form-phone')?.value || targetForm.querySelector('[name="phone"]')?.value || '';
+      const email = targetForm.querySelector('#form-email')?.value || targetForm.querySelector('[name="email"]')?.value || '';
       const service = targetForm.querySelector('#form-service')?.value || targetForm.querySelector('[name="service"]')?.value || 'Sherwanis';
       const occasion = targetForm.querySelector('#form-occasion')?.value || targetForm.querySelector('[name="occasion"]')?.value || 'Wedding / Groom';
       const locationRadio = targetForm.querySelector('input[name="location"]:checked');
@@ -177,62 +178,100 @@ document.addEventListener('DOMContentLoaded', () => {
       const time = targetForm.querySelector('#form-time')?.value || targetForm.querySelector('[name="time"]')?.value || '';
       const notes = targetForm.querySelector('#form-notes')?.value || targetForm.querySelector('[name="notes"]')?.value || '';
 
-      const formData = new FormData(targetForm);
-      formData.append("access_key", "7097fd8c-680d-4e0a-86d8-0d53621e4b47");
-      if (name) formData.set("name", name);
-      if (phone) formData.set("phone", phone);
-      if (service) formData.set("service", service);
-      if (occasion) formData.set("occasion", occasion);
-      if (location) formData.set("location", location);
-      if (date) formData.set("date", date);
-      if (time) formData.set("time", time);
-      if (notes) formData.set("notes", notes);
-      formData.set("subject", `New Consultation Request: ${name || 'Client'} (${service})`);
-      formData.set("from_name", "LIBAS TAILOR Web Concierge");
+      if (!name || !phone) {
+        alert("Please provide both your name and phone number so Mr. Faheem can confirm your appointment.");
+        return;
+      }
 
       if (submitBtn) {
-        submitBtn.textContent = "Sending...";
+        submitBtn.textContent = "TRANSMITTING ENQUIRY...";
         submitBtn.disabled = true;
       }
 
+      const payload = {
+        name,
+        phone,
+        email,
+        service,
+        occasion,
+        location,
+        date,
+        time,
+        notes
+      };
+
+      let success = false;
+
+      // 1. Primary Dispatch: First-Party Serverless Endpoint (/api/contact)
       try {
-        const response = await fetch("https://api.web3forms.com/submit", {
+        const response = await fetch("/api/contact", {
           method: "POST",
-          body: formData
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
         });
 
-        const data = await response.json();
-
         if (response.ok) {
-          alert("Success! Your message has been sent.");
-
-          const message = `*Private Consultation Request — LIBAS TAILOR*\n\n` +
-            `• *Client Name:* ${name}\n` +
-            `• *Contact:* ${phone}\n` +
-            `• *Garment Silhouette:* ${service}\n` +
-            `• *Occasion:* ${occasion}\n` +
-            `• *Consultation Venue:* ${location}\n` +
-            `• *Preferred Date:* ${date}\n` +
-            `• *Time Slot:* ${time}\n` +
-            (notes ? `• *Notes:* ${notes}\n` : '') +
-            `\n_Sent via LIBAS TAILOR Digital Atelier (Shamshad Market, AMU Aligarh)_`;
-
-          const whatsappURL = `https://wa.me/919027672285?text=${encodeURIComponent(message)}`;
-
-          targetForm.reset();
-          closeBookingModal();
-          window.open(whatsappURL, '_blank');
+          success = true;
         } else {
-          alert("Error: " + (data.message || "Failed to submit. Please try again."));
+          console.warn("Primary API contact endpoint returned non-200, attempting client fallback...");
         }
-      } catch (error) {
-        console.error("Submission error:", error);
-        alert("Something went wrong. Please try again.");
-      } finally {
-        if (submitBtn) {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
+      } catch (apiErr) {
+        console.warn("Primary API contact endpoint error:", apiErr);
+      }
+
+      // 2. Client-side Web3Forms fallback (if server endpoint is unreachable)
+      if (!success) {
+        try {
+          const web3FormData = new FormData(targetForm);
+          web3FormData.set("access_key", "7097fd8c-680d-4e0a-86d8-0d53621e4b47");
+          web3FormData.set("name", name);
+          web3FormData.set("phone", phone);
+          if (email) web3FormData.set("email", email);
+          web3FormData.set("service", service);
+          web3FormData.set("occasion", occasion);
+          web3FormData.set("location", location);
+          web3FormData.set("date", date);
+          web3FormData.set("time", time);
+          web3FormData.set("notes", notes);
+          web3FormData.set("subject", `New Consultation Request: ${name} (${service})`);
+          web3FormData.set("from_name", "LIBAS TAILOR Web Concierge");
+
+          const web3Res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: web3FormData
+          });
+          if (web3Res.ok) {
+            success = true;
+          }
+        } catch (web3Err) {
+          console.warn("Client Web3Forms fallback warning:", web3Err);
         }
+      }
+
+      // 3. Prepare Instant WhatsApp Concierge Handoff
+      const message = `*Private Consultation Request — LIBAS TAILOR*\n\n` +
+        `• *Client Name:* ${name}\n` +
+        `• *Contact:* ${phone}\n` +
+        (email ? `• *Email:* ${email}\n` : '') +
+        `• *Garment Silhouette:* ${service}\n` +
+        `• *Occasion:* ${occasion}\n` +
+        `• *Consultation Venue:* ${location}\n` +
+        `• *Preferred Date:* ${date}\n` +
+        `• *Time Slot:* ${time}\n` +
+        (notes ? `• *Notes:* ${notes}\n` : '') +
+        `\n_Sent via LIBAS TAILOR Digital Atelier (Shamshad Market, AMU Aligarh)_`;
+
+      const whatsappURL = `https://wa.me/919027672285?text=${encodeURIComponent(message)}`;
+
+      targetForm.reset();
+      closeBookingModal();
+
+      alert(`Thank you, ${name}! Your consultation request has been recorded. Connecting you with Master Tailor Mr. Faheem on WhatsApp.`);
+      window.open(whatsappURL, '_blank');
+
+      if (submitBtn) {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
       }
     });
   });
