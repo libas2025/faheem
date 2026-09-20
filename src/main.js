@@ -142,38 +142,92 @@ document.addEventListener('DOMContentLoaded', () => {
     dateInput.value = today;
   }
 
-  // WhatsApp Appointment Submission addressed to +91 90276 72285
-  if (bookingForm) {
-    bookingForm.addEventListener('submit', (e) => {
+  // Consultation & Appointment Submission with Web3Forms & WhatsApp Pipeline
+  const formsToHandle = [
+    document.getElementById('appointment-form'),
+    document.getElementById('form'),
+    ...document.querySelectorAll('form[data-web3forms="true"]')
+  ].filter(Boolean);
+
+  // Remove duplicates if any
+  const uniqueForms = Array.from(new Set(formsToHandle));
+
+  uniqueForms.forEach(targetForm => {
+    targetForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
-      const name = document.getElementById('form-name')?.value || '';
-      const phone = document.getElementById('form-phone')?.value || '';
-      const service = document.getElementById('form-service')?.value || 'Sherwanis';
-      const occasion = document.getElementById('form-occasion')?.value || 'Wedding / Groom';
-      const locationRadio = document.querySelector('input[name="location"]:checked');
+
+      const submitBtn = targetForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.textContent : 'CONFIRM & SEND';
+
+      const name = targetForm.querySelector('#form-name')?.value || targetForm.querySelector('[name="name"]')?.value || '';
+      const phone = targetForm.querySelector('#form-phone')?.value || targetForm.querySelector('[name="phone"]')?.value || '';
+      const service = targetForm.querySelector('#form-service')?.value || targetForm.querySelector('[name="service"]')?.value || 'Sherwanis';
+      const occasion = targetForm.querySelector('#form-occasion')?.value || targetForm.querySelector('[name="occasion"]')?.value || 'Wedding / Groom';
+      const locationRadio = targetForm.querySelector('input[name="location"]:checked');
       const location = locationRadio ? locationRadio.value : 'Shamshad Market Atelier';
-      const date = document.getElementById('form-date')?.value || '';
-      const time = document.getElementById('form-time')?.value || '';
-      const notes = document.getElementById('form-notes')?.value || '';
+      const date = targetForm.querySelector('#form-date')?.value || targetForm.querySelector('[name="date"]')?.value || '';
+      const time = targetForm.querySelector('#form-time')?.value || targetForm.querySelector('[name="time"]')?.value || '';
+      const notes = targetForm.querySelector('#form-notes')?.value || targetForm.querySelector('[name="notes"]')?.value || '';
 
-      const message = `*Private Consultation Request — LIBAS TAILOR*\n\n` +
-        `• *Client Name:* ${name}\n` +
-        `• *Contact:* ${phone}\n` +
-        `• *Garment Silhouette:* ${service}\n` +
-        `• *Occasion:* ${occasion}\n` +
-        `• *Consultation Venue:* ${location}\n` +
-        `• *Preferred Date:* ${date}\n` +
-        `• *Time Slot:* ${time}\n` +
-        (notes ? `• *Notes:* ${notes}\n` : '') +
-        `\n_Sent via LIBAS TAILOR Digital Atelier (Shamshad Market, AMU Aligarh)_`;
+      const formData = new FormData(targetForm);
+      formData.append("access_key", "7097fd8c-680d-4e0a-86d8-0d53621e4b47");
+      if (name) formData.set("name", name);
+      if (phone) formData.set("phone", phone);
+      if (service) formData.set("service", service);
+      if (occasion) formData.set("occasion", occasion);
+      if (location) formData.set("location", location);
+      if (date) formData.set("date", date);
+      if (time) formData.set("time", time);
+      if (notes) formData.set("notes", notes);
+      formData.set("subject", `New Consultation Request: ${name || 'Client'} (${service})`);
+      formData.set("from_name", "LIBAS TAILOR Web Concierge");
 
-      const whatsappURL = `https://wa.me/919027672285?text=${encodeURIComponent(message)}`;
+      if (submitBtn) {
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
+      }
 
-      closeBookingModal();
-      window.open(whatsappURL, '_blank');
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert("Success! Your message has been sent.");
+
+          const message = `*Private Consultation Request — LIBAS TAILOR*\n\n` +
+            `• *Client Name:* ${name}\n` +
+            `• *Contact:* ${phone}\n` +
+            `• *Garment Silhouette:* ${service}\n` +
+            `• *Occasion:* ${occasion}\n` +
+            `• *Consultation Venue:* ${location}\n` +
+            `• *Preferred Date:* ${date}\n` +
+            `• *Time Slot:* ${time}\n` +
+            (notes ? `• *Notes:* ${notes}\n` : '') +
+            `\n_Sent via LIBAS TAILOR Digital Atelier (Shamshad Market, AMU Aligarh)_`;
+
+          const whatsappURL = `https://wa.me/919027672285?text=${encodeURIComponent(message)}`;
+
+          targetForm.reset();
+          closeBookingModal();
+          window.open(whatsappURL, '_blank');
+        } else {
+          alert("Error: " + (data.message || "Failed to submit. Please try again."));
+        }
+      } catch (error) {
+        console.error("Submission error:", error);
+        alert("Something went wrong. Please try again.");
+      } finally {
+        if (submitBtn) {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }
+      }
     });
-  }
+  });
 
   // 4. The Five Acts of Tailoring (Authentic Atelier Progress)
   const stepCards = document.querySelectorAll('.step-card');

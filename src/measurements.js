@@ -399,7 +399,36 @@ document.addEventListener('DOMContentLoaded', () => {
       const pdfFilename = `LIBAS_Bespoke_Measurement_${safeName}.pdf`;
       generatedPdfDoc.save(pdfFilename);
 
-      // 2. Dispatch to Backend/Serverless Email Endpoint (/api/send-measurements)
+      // 2. Dispatch via Web3Forms (Key: 7097fd8c-680d-4e0a-86d8-0d53621e4b47) & Local API Endpoint
+      try {
+        const web3FormData = new FormData();
+        web3FormData.append("access_key", "7097fd8c-680d-4e0a-86d8-0d53621e4b47");
+        web3FormData.append("subject", `New Bespoke Measurement Profile: ${formData.name || 'Client'} (${formData.garment})`);
+        web3FormData.append("from_name", "LIBAS TAILOR Measurement Engine");
+        web3FormData.append("name", formData.name);
+        web3FormData.append("email", formData.email);
+        web3FormData.append("phone", formData.phone);
+        web3FormData.append("contactMethod", formData.contactMethod);
+        web3FormData.append("address", formData.address);
+        web3FormData.append("garment", formData.garment);
+        web3FormData.append("fit", formData.fit);
+        web3FormData.append("posture", formData.posture);
+        web3FormData.append("unit", formData.unit);
+        if (formData.notes) web3FormData.append("notes", formData.notes);
+        
+        web3FormData.append("measurements_detail", 
+          `Upper Body: Neck: ${formData.neck}, Chest: ${formData.chest}, Shoulder: ${formData.shoulder}, Sleeve: ${formData.sleeve}, Bicep: ${formData.bicep}, Waist: ${formData.waist}, Natural Waist: ${formData.waistNatural}, Jacket Length: ${formData.jacketLength}, Back Length: ${formData.backLength} | ` +
+          `Lower Body: Trouser Waist: ${formData.trouserWaist}, Hips: ${formData.hips}, Thigh: ${formData.thigh}, Inseam: ${formData.inseam}, Outseam: ${formData.outseam}, Knee: ${formData.knee}, Ankle: ${formData.ankle}, Rise: ${formData.rise}`
+        );
+
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: web3FormData
+        }).catch(err => console.warn("Web3Forms measurement notification:", err));
+      } catch (err) {
+        console.warn("Web3Forms notice:", err);
+      }
+
       try {
         await fetch('/api/send-measurements', {
           method: 'POST',
