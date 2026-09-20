@@ -87,6 +87,62 @@ const cleanupTimer = setInterval(() => {
 }, 5 * 60 * 1000);
 if (cleanupTimer.unref) cleanupTimer.unref();
 
+/**
+ * Intelligent Knowledge-backed Fallback
+ * Provides accurate, instant answers from authoritative atelier data even when
+ * OpenAI credentials are not yet set in production hosting or during API interruptions.
+ */
+function getIntelligentFallback(queryText) {
+  const q = (queryText || '').toLowerCase();
+  
+  if (q.includes('sherwani') || q.includes('rate') || q.includes('price') || q.includes('kitne') || q.includes('cost') || q.includes('daam') || q.includes('charges') || q.includes('stitching')) {
+    return {
+      message: "At LIBAS TAILOR, our master bespoke stitching rates established by proprietor Mr. Faheem are:\n\n• **AMU Traditional Sherwani**: ₹2,200 (Half Astar) | ₹2,500 (Full Astar)\n• **Bespoke Royal Sherwani**: ₹3,500 (Half Astar) | ₹4,000 (Full Astar)\n• **Ceremonial / Wedding Sherwani**: ₹4,500\n• **Kurta Pajama**: ₹800 (Kurta alone: ₹600)\n• **Pathani Suit / Kurta Pant Cut**: ₹1,000\n\n*Note: Rates cover bespoke craftsmanship; fabrics are provided by you or selected during private consultation. A 70% advance confirms the commission.* Would you like to schedule an atelier fitting?",
+      suggestedActions: ["Sherwani Prices", "Wedding Sherwani", "Book Consultation", "WhatsApp Concierge"]
+    };
+  }
+
+  if (q.includes('suit') || q.includes('coat') || q.includes('blazer') || q.includes('pant') || q.includes('tuxedo') || q.includes('shirt')) {
+    return {
+      message: "For bespoke Western suits and formalwear, our tailoring craftsmanship rates are:\n\n• **Single Coat / Blazer**: ₹3,800\n• **2-Piece Suit (Coat & Pant)**: ₹4,800\n• **3-Piece Suit (Coat, Pant & Waistcoat)**: ₹5,500\n• **Sadri / Waistcoat**: ₹2,000\n• **Pant & Shirt**: ₹1,200\n• **Formal Trousers**: ₹750 | **Custom Shirt**: ₹600\n\nEach garment features hand-basted canvases and anatomical drape. Would you like to arrange a consultation?",
+      suggestedActions: ["2-Piece vs 3-Piece", "Book Fitting", "WhatsApp Concierge"]
+    };
+  }
+
+  if (q.includes('where') || q.includes('address') || q.includes('location') || q.includes('kahan') || q.includes('reach') || q.includes('map') || q.includes('timing') || q.includes('open') || q.includes('landmark')) {
+    return {
+      message: "Our physical atelier is situated at:\n\n📍 **LIBAS TAILOR**\nShamshad Market, opposite Sulaiman Hall, Aligarh Muslim University (AMU), Saheb Bagh, Aligarh, Uttar Pradesh 202001.\n\n🕒 **Hours**: Consultations & trials are scheduled daily between 10:30 AM and 9:30 PM. Walk-ins are warmly welcomed.",
+      suggestedActions: ["Google Maps Directions", "Book Consultation", "WhatsApp Concierge"]
+    };
+  }
+
+  if (q.includes('advance') || q.includes('policy') || q.includes('payment') || q.includes('pay') || q.includes('refund') || q.includes('cancel') || q.includes('terms')) {
+    return {
+      message: "Here are our bespoke order and payment terms:\n\n• **Advance**: A 70% advance payment is required upon order confirmation and fabric measurement.\n• **Fittings**: Multiple baste trials are conducted to ensure an anatomical, royal fit.\n• **Balance**: The remaining 30% is settled upon final collection and your complete satisfaction.\n• **Accepted Modes**: UPI, Debit/Credit Cards, and Cash.",
+      suggestedActions: ["Order Policy", "Book Consultation", "WhatsApp Concierge"]
+    };
+  }
+
+  if (q.includes('measure') || q.includes('size') || q.includes('naap') || q.includes('online') || q.includes('pdf')) {
+    return {
+      message: "You can record and submit your measurements through our interactive **Measurement Metrology** portal on this website! It captures 14 precision anatomical dimensions, generates an official branded atelier PDF, and allows you to submit directly to Mr. Faheem via WhatsApp.",
+      suggestedActions: ["Open Measurements Form", "Book Consultation", "WhatsApp Concierge"]
+    };
+  }
+
+  if (q.includes('contact') || q.includes('phone') || q.includes('number') || q.includes('call') || q.includes('whatsapp') || q.includes('faheem')) {
+    return {
+      message: "You can reach proprietor and Master Tailor Mr. Faheem directly:\n\n📞 **Phone / WhatsApp**: [+91 90276 72285](https://wa.me/919027672285)\n📍 **Atelier**: Shamshad Market, opposite Sulaiman Hall, AMU Aligarh.\n\nWe are pleased to answer your bespoke inquiries anytime.",
+      suggestedActions: ["WhatsApp Concierge", "Book Consultation", "Atelier Address"]
+    };
+  }
+
+  return {
+    message: "Welcome to LIBAS TAILOR — Aligarh's royal bespoke menswear atelier at Shamshad Market, opposite Sulaiman Hall, AMU. As your sartorial concierge, I can assist you with:\n\n• **Sherwani & Bespoke Suit stitching rates**\n• **AMU Academic & Wedding Sherwanis**\n• **Online measurement profiles & consultations**\n• **Atelier visiting hours & directions**\n\nHow may I assist your wardrobe today? You can also connect directly with Mr. Faheem on WhatsApp at +91 90276 72285.",
+    suggestedActions: ["Sherwani Prices", "Bespoke Suits", "Atelier Address", "WhatsApp Concierge"]
+  };
+}
+
 export default async function handler(req, res) {
   // CORS Headers for secure API access
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -134,15 +190,11 @@ export default async function handler(req, res) {
     // Check OpenAI API key and model configuration
     const { apiKey, model: modelName } = getOpenAIConfig();
     if (!apiKey) {
-      console.warn('LIBAS AI: OPENAI_API_KEY is not set in environment or .env.local.');
+      console.warn('LIBAS AI: OPENAI_API_KEY is not set in environment or .env.local. Serving knowledge-backed fallback.');
+      const fallbackData = getIntelligentFallback(lastMessage.content);
       return res.status(200).json({
-        message: "Welcome to LIBAS TAILOR. I am LIBAS AI, currently in private preview. For immediate consultations, pricing quotes, or custom sherwani fittings, please connect directly with Mr. Faheem on WhatsApp at +91 90276 72285.",
-        suggestedActions: [
-          "Explore Sherwanis",
-          "Explore Bespoke Suits",
-          "Book a Consultation",
-          "WhatsApp Concierge"
-        ],
+        message: fallbackData.message,
+        suggestedActions: fallbackData.suggestedActions,
         fallback: true
       });
     }
@@ -172,19 +224,29 @@ export default async function handler(req, res) {
     } catch (modelErr) {
       console.warn(`Primary model "${modelName}" error:`, modelErr?.message || modelErr);
       
-      // If primary model fails, attempt fallback
-      if (modelName !== 'gpt-4o') {
-        console.log('Falling back to gpt-4o...');
-        completion = await openai.chat.completions.create({
-          model: 'gpt-4o',
-          messages: [
-            { role: 'system', content: systemPrompt },
-            ...sanitizedHistory
-          ],
-          max_completion_tokens: 700
+      // If primary model fails, attempt fallback to gpt-4o
+      try {
+        if (modelName !== 'gpt-4o') {
+          console.log('Falling back to gpt-4o...');
+          completion = await openai.chat.completions.create({
+            model: 'gpt-4o',
+            messages: [
+              { role: 'system', content: systemPrompt },
+              ...sanitizedHistory
+            ],
+            max_completion_tokens: 700
+          });
+        } else {
+          throw modelErr;
+        }
+      } catch (fallbackModelErr) {
+        console.warn('Fallback model error, serving authoritative knowledge fallback:', fallbackModelErr?.message || fallbackModelErr);
+        const fallbackData = getIntelligentFallback(lastMessage.content);
+        return res.status(200).json({
+          message: fallbackData.message,
+          suggestedActions: fallbackData.suggestedActions,
+          fallback: true
         });
-      } else {
-        throw modelErr;
       }
     }
 
@@ -215,10 +277,12 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('LIBAS AI Concierge Server Error:', error);
-    return res.status(500).json({
-      error: 'Internal Server Error',
-      message: "I apologize, I am experiencing a brief moment of pause. You can reach Mr. Faheem and our concierge team directly on WhatsApp at +91 90276 72285.",
-      suggestedActions: ["WhatsApp Concierge", "Direct Call: +91 90276 72285"]
+    const lastMsg = req?.body?.messages?.[req?.body?.messages?.length - 1]?.content || '';
+    const fallbackData = getIntelligentFallback(lastMsg);
+    return res.status(200).json({
+      message: fallbackData.message,
+      suggestedActions: fallbackData.suggestedActions,
+      fallback: true
     });
   }
 }
