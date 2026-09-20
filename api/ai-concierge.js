@@ -88,57 +88,121 @@ const cleanupTimer = setInterval(() => {
 if (cleanupTimer.unref) cleanupTimer.unref();
 
 /**
- * Intelligent Knowledge-backed Fallback
- * Provides accurate, instant answers from authoritative atelier data even when
- * OpenAI credentials are not yet set in production hosting or during API interruptions.
+ * Comprehensive Knowledge-backed Fallback Engine
+ * Accurately answers across all categories of LIBAS_KNOWLEDGE (heritage,
+ * fabrics, 5 acts, turnaround times, full 17-item rates, policies, and measurements)
+ * even if OpenAI credentials are not yet configured on production hosting.
  */
 function getIntelligentFallback(queryText) {
-  const q = (queryText || '').toLowerCase();
-  
-  if (q.includes('sherwani') || q.includes('rate') || q.includes('price') || q.includes('kitne') || q.includes('cost') || q.includes('daam') || q.includes('charges') || q.includes('stitching')) {
+  const q = (queryText || '').toLowerCase().trim();
+
+  // 1. GREETINGS & CASUAL OPENINGS
+  if (/^(hi|hello|hey|salam|salaam|adaab|assalamu|namaste|good\s*(morning|afternoon|evening)|halo)\b/i.test(q)) {
     return {
-      message: "At LIBAS TAILOR, our master bespoke stitching rates established by proprietor Mr. Faheem are:\n\n• **AMU Traditional Sherwani**: ₹2,200 (Half Astar) | ₹2,500 (Full Astar)\n• **Bespoke Royal Sherwani**: ₹3,500 (Half Astar) | ₹4,000 (Full Astar)\n• **Ceremonial / Wedding Sherwani**: ₹4,500\n• **Kurta Pajama**: ₹800 (Kurta alone: ₹600)\n• **Pathani Suit / Kurta Pant Cut**: ₹1,000\n\n*Note: Rates cover bespoke craftsmanship; fabrics are provided by you or selected during private consultation. A 70% advance confirms the commission.* Would you like to schedule an atelier fitting?",
-      suggestedActions: ["Sherwani Prices", "Wedding Sherwani", "Book Consultation", "WhatsApp Concierge"]
+      message: "Adaab & Welcome to **LIBAS TAILOR** — Aligarh's royal bespoke menswear atelier at Shamshad Market, opposite Sulaiman Hall, AMU.\n\nI am LIBAS AI, your personal sartorial concierge. I can provide verified details on:\n\n• **Ceremonial & AMU Sherwani stitching rates**\n• **Bespoke 2-Piece & 3-Piece Western suits**\n• **Daily bespoke: Kurtas, Pathanis & Nehru Jackets**\n• **The 5 Acts of Tailoring & Hand-Crafted Patterns**\n• **Digital 18-point measurements & Atelier appointments**\n\nHow may Master Tailor Mr. Faheem and our house assist you today?",
+      suggestedActions: ["Sherwani Prices", "Bespoke Suits", "Atelier Address", "Book Consultation"]
     };
   }
 
-  if (q.includes('suit') || q.includes('coat') || q.includes('blazer') || q.includes('pant') || q.includes('tuxedo') || q.includes('shirt')) {
+  // 2. THE 5 ACTS OF TAILORING / PROCESS / STEPS / HOW IT'S MADE
+  if (q.includes('process') || q.includes('how it works') || q.includes('5 acts') || q.includes('five acts') || q.includes('craftsmanship') || q.includes('basting') || q.includes('trial') || q.includes('how do you') || q.includes('handmade')) {
     return {
-      message: "For bespoke Western suits and formalwear, our tailoring craftsmanship rates are:\n\n• **Single Coat / Blazer**: ₹3,800\n• **2-Piece Suit (Coat & Pant)**: ₹4,800\n• **3-Piece Suit (Coat, Pant & Waistcoat)**: ₹5,500\n• **Sadri / Waistcoat**: ₹2,000\n• **Pant & Shirt**: ₹1,200\n• **Formal Trousers**: ₹750 | **Custom Shirt**: ₹600\n\nEach garment features hand-basted canvases and anatomical drape. Would you like to arrange a consultation?",
-      suggestedActions: ["2-Piece vs 3-Piece", "Book Fitting", "WhatsApp Concierge"]
+      message: `Every bespoke commission at LIBAS TAILOR unfolds across **The Five Acts of Tailoring**:\n\n1. **Act I — The First Dialogue**: In-depth consultation on occasion, silhouette, posture, and fabric drape.\n2. **Act II — The Master Measure**: 18-point anatomical metrology capturing posture, chest drop, and sleeve pitch.\n3. **Act III — The Canvas & Basting**: Hand-drafting an individual craft paper pattern and basting with natural horsehair canvas.\n4. **Act IV — The Fitting Trial**: Private baste trial to sculpt collar stance, balance, and sleeve roll on your body.\n5. **Act V — The Final Presentation**: Hand-stitched buttonholes, gentle steam shaping, and delivery in a breathable atelier carrier.`,
+      suggestedActions: ["Book a Trial", "Sherwani Prices", "18-Point Measurements", "WhatsApp Concierge"]
     };
   }
 
-  if (q.includes('where') || q.includes('address') || q.includes('location') || q.includes('kahan') || q.includes('reach') || q.includes('map') || q.includes('timing') || q.includes('open') || q.includes('landmark')) {
+  // 3. OWNER / HERITAGE / MASTER TAILOR FAHEEM / WHO RUNS IT
+  if (q.includes('owner') || q.includes('faheem') || q.includes('who is') || q.includes('tailor') || q.includes('founder') || q.includes('history') || q.includes('legacy') || q.includes('about libas')) {
     return {
-      message: "Our physical atelier is situated at:\n\n📍 **LIBAS TAILOR**\nShamshad Market, opposite Sulaiman Hall, Aligarh Muslim University (AMU), Saheb Bagh, Aligarh, Uttar Pradesh 202001.\n\n🕒 **Hours**: Consultations & trials are scheduled daily between 10:30 AM and 9:30 PM. Walk-ins are warmly welcomed.",
-      suggestedActions: ["Google Maps Directions", "Book Consultation", "WhatsApp Concierge"]
+      message: `**LIBAS TAILOR** is helmed by proprietor and master cutter **Mr. Faheem**.\n\nRooted at **Shamshad Market, opposite Sulaiman Hall, AMU Aligarh**, our atelier preserves authentic Aligarh sartorial traditions. Unlike commercial shops using mass-produced pre-graded blocks, Mr. Faheem drafts every bespoke paper pattern by hand to honor the client's anatomical posture, shoulder slope, and natural stance.\n\nFor over two decades, our house has tailored ceremonial Sherwanis for AMU scholars, faculty convocations, and wedding grooms across India.\n\nWould you like to speak directly with Mr. Faheem or explore our tailoring philosophy?`,
+      suggestedActions: ["WhatsApp Mr. Faheem", "The 5 Acts of Tailoring", "Sherwani Prices", "Atelier Address"]
     };
   }
 
-  if (q.includes('advance') || q.includes('policy') || q.includes('payment') || q.includes('pay') || q.includes('refund') || q.includes('cancel') || q.includes('terms')) {
+  // 4. FABRICS / MATERIALS / CANVAS / HORSEHAIR / ASTAR
+  if (q.includes('fabric') || q.includes('kapda') || q.includes('cloth') || q.includes('material') || q.includes('wool') || q.includes('silk') || q.includes('velvet') || q.includes('canvas') || q.includes('horsehair') || q.includes('lining') || q.includes('astar')) {
     return {
-      message: "Here are our bespoke order and payment terms:\n\n• **Advance**: A 70% advance payment is required upon order confirmation and fabric measurement.\n• **Fittings**: Multiple baste trials are conducted to ensure an anatomical, royal fit.\n• **Balance**: The remaining 30% is settled upon final collection and your complete satisfaction.\n• **Accepted Modes**: UPI, Debit/Credit Cards, and Cash.",
-      suggestedActions: ["Order Policy", "Book Consultation", "WhatsApp Concierge"]
+      message: `At **LIBAS TAILOR**, we craft bespoke garments with imperial structural integrity:\n\n• **Canvas Interlinings**: We use natural floating horsehair and pure cotton chest canvases (never cheap glued fusing that bubbles over time).\n• **Astar (Linings)**: We offer both **Half Astar** (for lightweight breathability during summer/spring) and **Full Luxury Astar** (for formal weight and drape).\n• **Fabric Supply**: Our listed rates cover **tailoring and stitching labor**. Clients are welcome to bring their own fabrics, or select curated fine wools, silks, velvets, and suiting blends directly during an in-atelier consultation with Mr. Faheem.`,
+      suggestedActions: ["Sherwani Prices", "Bespoke Suits", "Book Consultation", "WhatsApp Concierge"]
     };
   }
 
-  if (q.includes('measure') || q.includes('size') || q.includes('naap') || q.includes('online') || q.includes('pdf')) {
+  // 5. TURNAROUND TIME / DELIVERY / URGENT / KAB MILEGA
+  if (q.includes('time') || q.includes('days') || q.includes('delivery') || q.includes('turnaround') || q.includes('urgent') || q.includes('emergency') || q.includes('kab') || q.includes('kitna time') || q.includes('duration') || q.includes('how long')) {
     return {
-      message: "You can record and submit your measurements through our interactive **Measurement Metrology** portal on this website! It captures 14 precision anatomical dimensions, generates an official branded atelier PDF, and allows you to submit directly to Mr. Faheem via WhatsApp.",
-      suggestedActions: ["Open Measurements Form", "Book Consultation", "WhatsApp Concierge"]
+      message: `**Bespoke Turnaround Timelines at LIBAS TAILOR**:\n\n• **Suits & Blazers**: Typically 7 to 10 working days, including 1 intermediate baste trial.\n• **Ceremonial & Wedding Sherwanis**: Recommended 12 to 18 days to allow for 1–2 meticulous structural fittings and fine hand-finishing.\n• **Kurtas & Everyday Bespoke**: 4 to 7 working days.\n• **Urgent / Emergency Orders**: Depending on current atelier cutting capacity, express priority crafting can be arranged by consulting Mr. Faheem directly on WhatsApp at **+91 90276 72285**.`,
+      suggestedActions: ["WhatsApp Concierge", "Book Urgent Consultation", "Sherwani Prices"]
     };
   }
 
-  if (q.includes('contact') || q.includes('phone') || q.includes('number') || q.includes('call') || q.includes('whatsapp') || q.includes('faheem')) {
+  // 6. PATHANI SUIT, KURTAS, SADRI, EVERYDAY BESPOKE
+  if (q.includes('pathani') || q.includes('kurta') || q.includes('sadri') || q.includes('nehru') || q.includes('waistcoat') || q.includes('pajama') || q.includes('shirt') || q.includes('trouser') || q.includes('pant')) {
     return {
-      message: "You can reach proprietor and Master Tailor Mr. Faheem directly:\n\n📞 **Phone / WhatsApp**: [+91 90276 72285](https://wa.me/919027672285)\n📍 **Atelier**: Shamshad Market, opposite Sulaiman Hall, AMU Aligarh.\n\nWe are pleased to answer your bespoke inquiries anytime.",
-      suggestedActions: ["WhatsApp Concierge", "Book Consultation", "Atelier Address"]
+      message: `**Everyday & Traditional Bespoke Stitching Rates** (Craftsmanship Labor):\n\n• **Kurta (Top only)**: ₹600\n• **Kurta Pajama (Coordinated set)**: ₹800\n• **Kurta Pant Cut**: ₹1,000\n• **Pathani Suit (Frontier cut with chest pockets & salwar)**: ₹1,000\n• **Kurta Pant (Contemporary Set)**: ₹1,200\n• **Sadri / Nehru / Modi Jacket**: ₹2,000\n• **Bespoke Shirt**: ₹600\n• **Bespoke Formal Trousers / Pant**: ₹750\n• **Pant & Shirt Set**: ₹1,200\n\n*All items are hand-cut to your exact measurements.*`,
+      suggestedActions: ["Sherwani Prices", "Bespoke Suits", "Book Consultation", "WhatsApp Concierge"]
     };
   }
 
+  // 7. SUITS, BLAZERS, TUXEDOS, COAT PANT
+  if (q.includes('suit') || q.includes('coat') || q.includes('blazer') || q.includes('tuxedo') || q.includes('2-piece') || q.includes('3-piece') || q.includes('formalwear')) {
+    return {
+      message: `**Bespoke Suits & Formalwear Stitching Rates**:\n\n• **Single Coat / Blazer**: ₹3,800\n  *Hand-basted lapels with structured chest canvas.*\n• **2-Piece Bespoke Suit (Coat & Trousers)**: ₹4,800\n  *Tailored to British or Italian silhouette preferences.*\n• **3-Piece Royal Suit (Coat, Trousers & Waistcoat)**: ₹5,500\n  *Complete formal ensemble for grooms and executive galas.*\n\n*Advance policy: 70% advance reserves cutting slot; 30% upon final trial.* Would you like to schedule a fitting?`,
+      suggestedActions: ["Book Fitting", "Sherwani Prices", "Atelier Address", "WhatsApp Concierge"]
+    };
+  }
+
+  // 8. SHERWANI (ALL TIERS) & WEDDINGS
+  if (q.includes('sherwani') || q.includes('wedding') || q.includes('groom') || q.includes('dulha') || q.includes('amu') || q.includes('shadi') || q.includes('ceremonial')) {
+    return {
+      message: `**The Royal Sherwani Atelier Rates** (Hand-Crafted Stitching Labor):\n\n• **AMU Traditional Sherwani (Half Astar)**: ₹2,200\n  *Classic Aligarh Muslim University cut with high-stand collar & half lining.*\n• **AMU Traditional Sherwani (Full Astar)**: ₹2,500\n  *Authentic AMU academic silhouette with full interior drape.*\n• **Bespoke Royal Sherwani (Half Astar)**: ₹3,500\n  *Structured royal cut for receptions, festivals, and celebratory occasions.*\n• **Bespoke Royal Sherwani (Full Astar)**: ₹4,000\n  *Complete luxury interlining with imperial shoulder framing.*\n• **Imperial Wedding / Groom Sherwani**: ₹4,500\n  *Our pinnacle ceremonial masterpiece tailored specifically for grooms.*\n\n*Fabrics are provided by client or curated during consultation. 70% advance required upon booking.*`,
+      suggestedActions: ["Book Wedding Consultation", "Atelier Address", "18-Point Measurements", "WhatsApp Concierge"]
+    };
+  }
+
+  // 9. HOME VISIT & PRIVATE CONSULTATIONS IN ALIGARH
+  if (q.includes('home') || q.includes('visit') || q.includes('ghar') || q.includes('hotel') || q.includes('private consultation')) {
+    return {
+      message: `**Private Consultations & Home Visits in Aligarh**:\n\n• **Atelier Consultations**: Walk in or reserve a private slot at our atelier opposite Sulaiman Hall, AMU (10:30 AM – 9:30 PM).\n• **Home Visits**: For weddings, grooms, and family celebratory ensembles within Aligarh municipality, Mr. Faheem offers in-person home measurement and trial visits.\n\nTo arrange a home visit or priority atelier slot, connect directly with our concierge team on WhatsApp at **+91 90276 72285**.`,
+      suggestedActions: ["Schedule Home Visit", "Atelier Address", "Sherwani Prices", "WhatsApp Concierge"]
+    };
+  }
+
+  // 10. MEASUREMENTS & ONLINE SIZING
+  if (q.includes('measure') || q.includes('size') || q.includes('naap') || q.includes('online') || q.includes('pdf') || q.includes('form') || q.includes('points')) {
+    return {
+      message: `**Measurement Metrology at LIBAS TAILOR**:\n\n• **Online 18-Point Form**: Visit our digital [Measurements Portal](/measurements.html) to input your anatomical measurements (Neck, Chest, Shoulder, Sleeve, Posture Stance, etc.). It generates a downloadable official atelier PDF and sends it directly to Mr. Faheem via WhatsApp.\n• **In-Person Metrology**: Visit our atelier opposite Sulaiman Hall, AMU Aligarh for a complimentary 18-point anatomical measurement session by master tailor Mr. Faheem.`,
+      suggestedActions: ["Open Measurement Form", "Atelier Address", "WhatsApp Concierge"]
+    };
+  }
+
+  // 11. ADDRESS, MAP & OPENING HOURS
+  if (q.includes('where') || q.includes('address') || q.includes('location') || q.includes('kahan') || q.includes('reach') || q.includes('map') || q.includes('timing') || q.includes('open') || q.includes('landmark') || q.includes('shamshad') || q.includes('sulaiman')) {
+    return {
+      message: `**Atelier Location & Hours**:\n\n📍 **LIBAS TAILOR**\nShamshad Market, opposite Sulaiman Hall, Aligarh Muslim University (AMU), Saheb Bagh, Aligarh, Uttar Pradesh 202001, India.\n\n🏛️ **Landmark**: Directly opposite Sulaiman Hall gate, AMU Campus.\n🕒 **Operating Hours**: Monday through Sunday, 10:30 AM to 9:30 PM.\n\n[Open in Google Maps](https://maps.google.com/?q=Shamshad+Market+Sulaiman+Hall+AMU+Aligarh)`,
+      suggestedActions: ["Google Maps", "WhatsApp Mr. Faheem", "Book Consultation"]
+    };
+  }
+
+  // 12. ADVANCE PAYMENT, REFUND & POLICIES
+  if (q.includes('advance') || q.includes('policy') || q.includes('payment') || q.includes('pay') || q.includes('refund') || q.includes('cancel') || q.includes('terms') || q.includes('card') || q.includes('upi')) {
+    return {
+      message: `**Order & Payment Policies**:\n\n• **70% Advance**: Required at order confirmation to reserve master cutting and begin pattern drafting.\n• **30% Balance**: Settled upon final fitting trial and your complete satisfaction.\n• **Payment Methods**: UPI (Google Pay, PhonePe, Paytm), Credit/Debit Cards, and Cash.\n• **Fitting Guarantee**: We include intermediate baste trial fittings to ensure zero fitting flaws prior to final handover.`,
+      suggestedActions: ["Sherwani Prices", "Book Consultation", "WhatsApp Concierge"]
+    };
+  }
+
+  // 13. PRICING GENERAL
+  if (q.includes('price') || q.includes('rate') || q.includes('kitne') || q.includes('cost') || q.includes('charges') || q.includes('daam')) {
+    return {
+      message: `**Official Stitching Labor Rates (Mr. Faheem)**:\n\n• **AMU Sherwani**: ₹2,200 (Half Astar) | ₹2,500 (Full Astar)\n• **Royal Sherwani**: ₹3,500 (Half Astar) | ₹4,000 (Full Astar)\n• **Wedding Sherwani**: ₹4,500\n• **Bespoke 2-Piece Suit**: ₹4,800\n• **Bespoke 3-Piece Suit**: ₹5,500\n• **Single Coat / Blazer**: ₹3,800\n• **Sadri / Waistcoat**: ₹2,000\n• **Pathani Suit**: ₹1,000\n• **Kurta Pajama**: ₹800\n• **Pant & Shirt**: ₹1,200\n\n*70% advance payment required upon booking.*`,
+      suggestedActions: ["Sherwani Prices", "Bespoke Suits", "Book Consultation", "WhatsApp Concierge"]
+    };
+  }
+
+  // 14. DEFAULT CONTEXTUAL ASSISTANT
   return {
-    message: "Welcome to LIBAS TAILOR — Aligarh's royal bespoke menswear atelier at Shamshad Market, opposite Sulaiman Hall, AMU. As your sartorial concierge, I can assist you with:\n\n• **Sherwani & Bespoke Suit stitching rates**\n• **AMU Academic & Wedding Sherwanis**\n• **Online measurement profiles & consultations**\n• **Atelier visiting hours & directions**\n\nHow may I assist your wardrobe today? You can also connect directly with Mr. Faheem on WhatsApp at +91 90276 72285.",
+    message: `Thank you for contacting **LIBAS TAILOR** (Shamshad Market, opposite Sulaiman Hall, AMU Aligarh). Master tailor **Mr. Faheem** specializes in bespoke ceremonial sherwanis, wedding attire, suits, and kurtas.\n\nTo assist you promptly, are you inquiring about:\n\n1. **Sherwani or Bespoke Suit rates**\n2. **Custom tailoring for an upcoming wedding or event**\n3. **Booking an in-person measurement or fitting trial**\n4. **Speaking directly with Mr. Faheem on WhatsApp (+91 90276 72285)**`,
     suggestedActions: ["Sherwani Prices", "Bespoke Suits", "Atelier Address", "WhatsApp Concierge"]
   };
 }
