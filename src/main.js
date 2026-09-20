@@ -248,6 +248,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      // 2b. Direct FormSubmit failover to atelier inbox
+      if (!success) {
+        try {
+          const fsRes = await fetch("https://formsubmit.co/ajax/libastailor0@gmail.com", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({
+              _subject: `New Consultation Request: ${name} (${service})`,
+              _template: "table",
+              "Client Name": name,
+              "Phone / WhatsApp": phone,
+              "Email": email || "Not provided",
+              "Garment Silhouette": service,
+              "Occasion": occasion,
+              "Consultation Venue": location,
+              "Preferred Date": date,
+              "Time Slot": time,
+              "Additional Notes": notes || "None"
+            })
+          });
+          if (fsRes.ok) {
+            success = true;
+          }
+        } catch (fsErr) {
+          console.warn("Client FormSubmit fallback notice:", fsErr);
+        }
+      }
+
       // 3. Prepare Instant WhatsApp Concierge Handoff
       const message = `*Private Consultation Request — LIBAS TAILOR*\n\n` +
         `• *Client Name:* ${name}\n` +

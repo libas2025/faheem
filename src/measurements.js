@@ -429,6 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn("Web3Forms notice:", err);
       }
 
+      // 3. Dispatch to first-party serverless endpoint
       try {
         await fetch('/api/send-measurements', {
           method: 'POST',
@@ -437,6 +438,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       } catch (apiErr) {
         console.warn('API notification logged. Operational email endpoint fallback available.', apiErr);
+      }
+
+      // 4. Client-side FormSubmit failover directly to atelier inbox
+      try {
+        fetch('https://formsubmit.co/ajax/libastailor0@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `New Bespoke Measurement Profile: ${formData.name} (${formData.garment})`,
+            _template: 'table',
+            'Client Name': formData.name,
+            'Phone / WhatsApp': formData.phone,
+            'Email': formData.email || 'Not provided',
+            'Garment Silhouette': formData.garment,
+            'Fit Preference': formData.fit,
+            'Posture': formData.posture,
+            'Unit': formData.unit,
+            'Upper Body': `Neck: ${formData.neck}, Chest: ${formData.chest}, Shoulder: ${formData.shoulder}, Sleeve: ${formData.sleeve}, Bicep: ${formData.bicep}, Waist: ${formData.waist}, Natural Waist: ${formData.waistNatural}, Jacket Length: ${formData.jacketLength}, Back Length: ${formData.backLength}`,
+            'Lower Body': `Trouser Waist: ${formData.trouserWaist}, Hips: ${formData.hips}, Thigh: ${formData.thigh}, Inseam: ${formData.inseam}, Outseam: ${formData.outseam}, Knee: ${formData.knee}, Ankle: ${formData.ankle}, Rise: ${formData.rise}`,
+            'Fitting Venue / Address': formData.address || 'In-store fitting at Shamshad Market atelier',
+            'Atelier Notes': formData.notes || 'None'
+          })
+        }).catch(fsErr => console.warn('FormSubmit measurement notice:', fsErr));
+      } catch (fsErr) {
+        console.warn('FormSubmit measurement error:', fsErr);
       }
 
       // 3. Show Success Modal & State

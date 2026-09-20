@@ -99,6 +99,37 @@ export default async function handler(req, res) {
       console.warn('Lead notification dispatch warning:', dispatchErr.message);
     }
 
+    // 3. FormSubmit Failover Email to Atelier Inbox
+    try {
+      const recipient = process.env.EMAIL_TO || 'libastailor0@gmail.com';
+      await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Origin': 'https://libastailor.in',
+          'Referer': 'https://libastailor.in/',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
+        },
+        body: JSON.stringify({
+          _subject: `New Lead from AI Concierge: ${leadRecord.name} (${leadRecord.service})`,
+          _template: 'table',
+          'Lead Name': leadRecord.name,
+          'Phone / WhatsApp': leadRecord.phone,
+          'Email': leadRecord.email || 'Not provided',
+          'Garment Silhouette': leadRecord.service,
+          'Occasion': leadRecord.occasion || 'General Inquiry',
+          'Consultation Venue': leadRecord.consultationType,
+          'Preferred Date': leadRecord.preferredDate || 'Not specified',
+          'Preferred Time': leadRecord.preferredTime || 'Not specified',
+          'Atelier Notes': leadRecord.notes || 'None',
+          'Source': 'LIBAS AI Concierge'
+        })
+      });
+    } catch (fsErr) {
+      console.warn('FormSubmit lead notice:', fsErr.message);
+    }
+
     return res.status(200).json({
       success: true,
       message: 'Consultation request submitted successfully.',

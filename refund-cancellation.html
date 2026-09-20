@@ -281,16 +281,20 @@
         <input type="hidden" name="access_key" value="7097fd8c-680d-4e0a-86d8-0d53621e4b47">
         <div>
           <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Full Name</label>
-          <input type="text" id="form-name" placeholder="e.g. Mr. Samar Khan" required class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+          <input type="text" id="form-name" name="name" placeholder="e.g. Mr. Samar Khan" required class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
         </div>
         <div>
           <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Phone / WhatsApp Number</label>
-          <input type="tel" id="form-phone" placeholder="+91 90276 72285" required class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+          <input type="tel" id="form-phone" name="phone" placeholder="+91 90276 72285" required class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+        </div>
+        <div>
+          <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Email Address (Optional)</label>
+          <input type="email" id="form-email" name="email" placeholder="e.g. samar@example.com" class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Garment Silhouette</label>
-            <select id="form-service" class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+            <select id="form-service" name="service" class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
               <option value="Sherwanis">Sherwanis</option>
               <option value="Bespoke Suits">Bespoke Suits</option>
               <option value="Indo-Western">Indo-Western</option>
@@ -300,13 +304,42 @@
           </div>
           <div>
             <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Occasion</label>
-            <select id="form-occasion" class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+            <select id="form-occasion" name="occasion" class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
               <option>Wedding / Groom</option>
               <option>Engagement / Reception</option>
               <option>Executive / Corporate</option>
               <option>Festive / Celebration</option>
             </select>
           </div>
+        </div>
+        <div>
+          <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Consultation Venue</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <label class="flex items-center gap-2 p-3 bg-pure-white border border-charcoal/20 text-xs text-charcoal cursor-pointer">
+              <input type="radio" name="location" value="Shamshad Market Atelier" checked class="accent-burgundy-royal"> Shamshad Market Atelier
+            </label>
+            <label class="flex items-center gap-2 p-3 bg-pure-white border border-charcoal/20 text-xs text-charcoal cursor-pointer">
+              <input type="radio" name="location" value="Home Consultation" class="accent-burgundy-royal"> Home Consultation
+            </label>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Preferred Date</label>
+            <input type="date" id="form-date" name="date" required class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+          </div>
+          <div>
+            <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Time Slot</label>
+            <select id="form-time" name="time" class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+              <option>11:00 AM - 01:00 PM</option>
+              <option>02:00 PM - 04:00 PM</option>
+              <option>05:00 PM - 07:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Additional Notes (Optional)</label>
+          <textarea id="form-notes" name="notes" rows="3" placeholder="Fabric preferences, specific dates, or design inspirations..." class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none"></textarea>
         </div>
         <button type="submit" class="w-full btn-primary py-4 text-xs">
           CONFIRM &amp; SEND VIA WHATSAPP (+91 90276 72285)

@@ -152,7 +152,9 @@ export default async function handler(req, res) {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Referer': 'https://libastailor.in/measurements.html'
+          'Origin': 'https://libastailor.in',
+          'Referer': 'https://libastailor.in/measurements.html',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
         },
         body: JSON.stringify({
           _subject: `New Bespoke Measurement Profile: ${data.name} (${data.garment || 'Sherwani'})`,
@@ -193,7 +195,7 @@ export default async function handler(req, res) {
       console.warn('FormSubmit measurement dispatch error:', fsErr.message);
     }
 
-    // 3. If Resend API key is configured, send transactional email
+    // 4. If Resend API key is configured, send transactional email
     if (apiKey) {
       try {
         await fetch('https://api.resend.com/emails', {
@@ -217,7 +219,8 @@ export default async function handler(req, res) {
     return res.status(200).json({
       success: true,
       message: 'Measurement profile received and registered successfully.',
-      web3Dispatched
+      web3Dispatched,
+      formSubmitDispatched
     });
 
   } catch (error) {
