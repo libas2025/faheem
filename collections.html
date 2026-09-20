@@ -527,79 +527,120 @@
   </div>
 
   <!-- Consultation Modal -->
-  <div id="booking-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-charcoal/80 backdrop-blur-md p-4 sm:p-6">
-    <div class="bg-luxury-ivory border border-antique-gold/60 w-full max-w-xl p-6 sm:p-10 relative max-h-[90vh] overflow-y-auto shadow-2xl">
-      <button id="close-modal" class="absolute top-5 right-5 text-charcoal/60 hover:text-charcoal text-2xl">&times;</button>
-      <span class="font-brand text-[10px] text-burgundy-royal font-semibold block mb-2">RESERVATION</span>
-      <h3 class="font-serif text-2xl sm:text-3xl text-charcoal mb-2">Book a Consultation</h3>
-      <p class="font-sans text-xs text-charcoal/70 font-light mb-8">Schedule a session at our Shamshad Market atelier opposite Sulaiman Hall or request a home visit in Aligarh.</p>
-      <form id="appointment-form" class="space-y-4">
+  <!-- PRIVATE CONSULTATION BOOKING MODAL -->
+  <div id="booking-modal"
+    class="booking-modal-overlay hidden">
+    <div
+      class="booking-modal-card">
+
+      <div class="booking-modal-header">
+        <div class="w-8 h-1 bg-charcoal/20 rounded-full mx-auto mb-1.5 sm:hidden"></div>
+        <button id="close-modal"
+          class="absolute top-2 right-3 text-charcoal/60 hover:text-charcoal text-2xl leading-none w-8 h-8 flex items-center justify-center" aria-label="Close Reservation Modal">&times;</button>
+        <span class="font-brand text-[9px] text-burgundy-royal font-semibold tracking-wider block">RESERVATION</span>
+        <h3 class="font-serif text-base sm:text-2xl text-charcoal font-medium">Book a Consultation</h3>
+        <p class="font-sans text-[10px] sm:text-xs text-charcoal/70 font-light mt-0.5">Atelier opposite Sulaiman Hall or Aligarh home visit.</p>
+      </div>
+
+      <form id="appointment-form" class="flex flex-col flex-1 overflow-hidden m-0">
         <input type="hidden" name="access_key" value="7097fd8c-680d-4e0a-86d8-0d53621e4b47">
-        <div>
-          <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Full Name</label>
-          <input type="text" id="form-name" name="name" placeholder="e.g. Mr. Samar Khan" required class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
-        </div>
-        <div>
-          <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Phone / WhatsApp Number</label>
-          <input type="tel" id="form-phone" name="phone" placeholder="+91 90276 72285" required class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
-        </div>
-        <div>
-          <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Email Address (Optional)</label>
-          <input type="email" id="form-email" name="email" placeholder="e.g. samar@example.com" class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <div class="booking-modal-body space-y-2 sm:space-y-3">
+          <!-- Name & Phone: 2-Col Grid on all screens -->
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block font-brand text-[10px] sm:text-[11px] text-charcoal font-semibold mb-0.5">Full Name *</label>
+              <input type="text" id="form-name" name="name" placeholder="Mr. Samar Khan" required
+                class="w-full bg-pure-white border border-charcoal/20 px-2.5 py-1.5 sm:py-2 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+            </div>
+            <div>
+              <label class="block font-brand text-[10px] sm:text-[11px] text-charcoal font-semibold mb-0.5">Phone / WhatsApp *</label>
+              <input type="tel" id="form-phone" name="phone" placeholder="+91 90276 72285" required
+                class="w-full bg-pure-white border border-charcoal/20 px-2.5 py-1.5 sm:py-2 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+            </div>
+          </div>
+
+          <!-- Garment & Occasion: 2-Col Grid -->
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block font-brand text-[10px] sm:text-[11px] text-charcoal font-semibold mb-0.5">Garment</label>
+              <select id="form-service" name="service"
+                class="w-full bg-pure-white border border-charcoal/20 px-2 py-1.5 sm:py-2 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+                <option value="Sherwanis">Sherwanis</option>
+                <option value="Bespoke Suits">Bespoke Suits</option>
+                <option value="Indo-Western">Indo-Western</option>
+                <option value="Kurta &amp; Pajama">Kurta &amp; Pajama</option>
+                <option value="Formal Wear">Formal Wear</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-brand text-[10px] sm:text-[11px] text-charcoal font-semibold mb-0.5">Occasion</label>
+              <select id="form-occasion" name="occasion"
+                class="w-full bg-pure-white border border-charcoal/20 px-2 py-1.5 sm:py-2 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+                <option>Wedding / Groom</option>
+                <option>Engagement / Reception</option>
+                <option>Executive / Corporate</option>
+                <option>Festive / Celebration</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Venue Selection: Compact Inline Radio -->
           <div>
-            <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Garment Silhouette</label>
-            <select id="form-service" name="service" class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
-              <option value="Sherwanis">Sherwanis</option>
-              <option value="Bespoke Suits">Bespoke Suits</option>
-              <option value="Indo-Western">Indo-Western</option>
-              <option value="Kurta &amp; Pajama">Kurta &amp; Pajama</option>
-              <option value="Formal Wear">Formal Wear</option>
-            </select>
+            <label class="block font-brand text-[10px] sm:text-[11px] text-charcoal font-semibold mb-0.5">Consultation Venue</label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="flex items-center justify-center gap-1.5 p-1.5 sm:p-2 bg-pure-white border border-charcoal/20 text-[10px] sm:text-[11px] text-charcoal cursor-pointer text-center">
+                <input type="radio" name="location" value="Shamshad Market Atelier" checked class="accent-burgundy-royal">
+                <span>Atelier (Shamshad)</span>
+              </label>
+              <label class="flex items-center justify-center gap-1.5 p-1.5 sm:p-2 bg-pure-white border border-charcoal/20 text-[10px] sm:text-[11px] text-charcoal cursor-pointer text-center">
+                <input type="radio" name="location" value="Home Consultation" class="accent-burgundy-royal">
+                <span>Home Visit (Aligarh)</span>
+              </label>
+            </div>
           </div>
-          <div>
-            <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Occasion</label>
-            <select id="form-occasion" name="occasion" class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
-              <option>Wedding / Groom</option>
-              <option>Engagement / Reception</option>
-              <option>Executive / Corporate</option>
-              <option>Festive / Celebration</option>
-            </select>
+
+          <!-- Date & Time: 2-Col Grid -->
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block font-brand text-[10px] sm:text-[11px] text-charcoal font-semibold mb-0.5">Preferred Date *</label>
+              <input type="date" id="form-date" name="date" required
+                class="w-full bg-pure-white border border-charcoal/20 px-2 py-1.5 sm:py-2 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+            </div>
+            <div>
+              <label class="block font-brand text-[10px] sm:text-[11px] text-charcoal font-semibold mb-0.5">Time Slot</label>
+              <select id="form-time" name="time"
+                class="w-full bg-pure-white border border-charcoal/20 px-2 py-1.5 sm:py-2 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+                <option>11:00 AM - 01:00 PM</option>
+                <option>02:00 PM - 04:00 PM</option>
+                <option>05:00 PM - 07:00 PM</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Email & Notes: 2-Col Grid -->
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block font-brand text-[10px] sm:text-[11px] text-charcoal font-semibold mb-0.5">Email (Optional)</label>
+              <input type="email" id="form-email" name="email" placeholder="samar@example.com"
+                class="w-full bg-pure-white border border-charcoal/20 px-2.5 py-1.5 sm:py-2 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+            </div>
+            <div>
+              <label class="block font-brand text-[10px] sm:text-[11px] text-charcoal font-semibold mb-0.5">Notes (Optional)</label>
+              <input type="text" id="form-notes" name="notes" placeholder="Fabric, styling preferences..."
+                class="w-full bg-pure-white border border-charcoal/20 px-2.5 py-1.5 sm:py-2 text-xs text-charcoal focus:border-burgundy-royal outline-none">
+            </div>
           </div>
         </div>
-        <div>
-          <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Consultation Venue</label>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <label class="flex items-center gap-2 p-3 bg-pure-white border border-charcoal/20 text-xs text-charcoal cursor-pointer">
-              <input type="radio" name="location" value="Shamshad Market Atelier" checked class="accent-burgundy-royal"> Shamshad Market Atelier
-            </label>
-            <label class="flex items-center gap-2 p-3 bg-pure-white border border-charcoal/20 text-xs text-charcoal cursor-pointer">
-              <input type="radio" name="location" value="Home Consultation" class="accent-burgundy-royal"> Home Consultation
-            </label>
-          </div>
+
+        <!-- STICKY SUBMIT FOOTER (Always Visible On Screen) -->
+        <div class="booking-modal-footer">
+          <button type="submit" class="w-full btn-primary py-2.5 sm:py-3.5 text-xs font-bold tracking-wider uppercase shadow-md flex items-center justify-center gap-2">
+            <span>CONFIRM &amp; SEND VIA WHATSAPP</span>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.983.54 1.879.799 2.796.799 3.179 0 5.766-2.587 5.767-5.766.001-3.181-2.585-5.785-5.767-5.785zm3.376 8.204c-.149.419-.747.781-1.033.824-.265.04-.614.072-1.956-.474-1.716-.699-2.825-2.45-2.91-2.564-.085-.114-.693-.923-.693-1.761s.437-1.252.593-1.423c.156-.171.341-.214.455-.214.114 0 .228.001.328.006.104.005.244-.04.382.291.143.344.49 1.196.533 1.283.043.087.072.189.014.305-.058.117-.087.189-.174.29-.087.102-.183.228-.261.306-.089.088-.182.184-.078.363.104.179.463.765.993 1.237.684.609 1.261.798 1.44.887.179.089.284.074.39-.047.106-.121.454-.528.575-.709.121-.181.243-.151.408-.09s1.047.494 1.226.583c.179.089.298.134.341.209.043.075.043.435-.106.854z"/></svg>
+          </button>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Preferred Date</label>
-            <input type="date" id="form-date" name="date" required class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
-          </div>
-          <div>
-            <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Time Slot</label>
-            <select id="form-time" name="time" class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none">
-              <option>11:00 AM - 01:00 PM</option>
-              <option>02:00 PM - 04:00 PM</option>
-              <option>05:00 PM - 07:00 PM</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <label class="block font-brand text-xs text-charcoal font-semibold mb-2">Additional Notes (Optional)</label>
-          <textarea id="form-notes" name="notes" rows="3" placeholder="Fabric preferences, specific dates, or design inspirations..." class="w-full bg-pure-white border border-charcoal/20 p-3 text-xs text-charcoal focus:border-burgundy-royal outline-none"></textarea>
-        </div>
-        <button type="submit" class="w-full btn-primary py-4 text-xs">
-          CONFIRM &amp; SEND VIA WHATSAPP (+91 90276 72285)
-        </button>
+
       </form>
     </div>
   </div>

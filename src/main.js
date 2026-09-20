@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formServiceSelect.value = defaultService;
       }
       bookingModal.classList.remove('hidden');
+      document.body.classList.add('booking-modal-open');
       document.body.style.overflow = 'hidden';
     }
   }
@@ -121,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeBookingModal() {
     if (bookingModal) {
       bookingModal.classList.add('hidden');
+      document.body.classList.remove('booking-modal-open');
       document.body.style.overflow = '';
     }
   }
