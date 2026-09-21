@@ -141,30 +141,29 @@ async function buildGuide() {
 
     <!-- METROLOGY MARKERS: FRONT VIEW -->
 
-
-    <!-- 1. NECK -->
+    <!-- 07. NECK -->
     <ellipse cx="430" cy="385" rx="44" ry="14" fill="none" class="measure-line"/>
     <line x1="474" y1="385" x2="160" y2="340" class="measure-lead"/>
     <g transform="translate(60, 318)" filter="url(#shadow)">
-      <rect width="180" height="36" class="tag-bg"/>
+      <rect width="190" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">1</text>
+      <text x="18" y="18" class="badge-num">07</text>
       <text x="38" y="23" class="tag-text">Neck Collar Base</text>
     </g>
 
-    <!-- 2. CHEST (Fullest Point) -->
+    <!-- 02. CHEST (Fullest Point) -->
     <line x1="330" y1="510" x2="530" y2="510" class="measure-line"/>
     <circle cx="330" cy="510" r="4" fill="#C6A15B"/>
     <circle cx="530" cy="510" r="4" fill="#C6A15B"/>
     <line x1="330" y1="510" x2="160" y2="470" class="measure-lead"/>
     <g transform="translate(60, 448)" filter="url(#shadow)">
-      <rect width="190" height="36" class="tag-bg"/>
+      <rect width="195" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">2</text>
-      <text x="38" y="23" class="tag-text">Chest (Fullest Point)</text>
+      <text x="18" y="18" class="badge-num">02</text>
+      <text x="38" y="23" class="tag-text">Chest / Low Chest</text>
     </g>
 
-    <!-- 4. SLEEVE LENGTH -->
+    <!-- 05. SLEEVES -->
     <path d="M315,405 C305,530 295,660 310,775" fill="none" class="measure-line" stroke-width="2.5"/>
     <circle cx="315" cy="405" r="4" fill="#C6A15B"/>
     <circle cx="310" cy="775" r="4" fill="#C6A15B"/>
@@ -172,21 +171,21 @@ async function buildGuide() {
     <g transform="translate(60, 568)" filter="url(#shadow)">
       <rect width="190" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">4</text>
-      <text x="38" y="23" class="tag-text">Sleeve (Tip to Wrist)</text>
+      <text x="18" y="18" class="badge-num">05</text>
+      <text x="38" y="23" class="tag-text">Sleeves (Tip to Wrist)</text>
     </g>
 
-    <!-- 5. BICEP -->
+    <!-- 10. BICEP -->
     <ellipse cx="308" cy="520" rx="22" ry="8" fill="none" class="measure-line"/>
     <line x1="286" y1="520" x2="160" y2="690" class="measure-lead"/>
     <g transform="translate(60, 672)" filter="url(#shadow)">
-      <rect width="180" height="36" class="tag-bg"/>
+      <rect width="185" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">5</text>
+      <text x="18" y="18" class="badge-num">10</text>
       <text x="38" y="23" class="tag-text">Bicep Circumference</text>
     </g>
 
-    <!-- 6. WAIST (Stomach Level) -->
+    <!-- 03. WAIST (Stomach Level) -->
     <line x1="345" y1="680" x2="515" y2="680" class="measure-line"/>
     <circle cx="345" cy="680" r="4" fill="#C6A15B"/>
     <circle cx="515" cy="680" r="4" fill="#C6A15B"/>
@@ -194,11 +193,11 @@ async function buildGuide() {
     <g transform="translate(60, 772)" filter="url(#shadow)">
       <rect width="195" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">6</text>
+      <text x="18" y="18" class="badge-num">03</text>
       <text x="38" y="23" class="tag-text">Waist (Stomach Level)</text>
     </g>
 
-    <!-- 8. FRONT JACKET / SHERWANI LENGTH -->
+    <!-- 01. SHERWANI LENGTH -->
     <line x1="430" y1="375" x2="430" y2="990" class="measure-line" stroke-width="2.5" stroke="#55100F"/>
     <circle cx="430" cy="375" r="5" fill="#55100F"/>
     <circle cx="430" cy="990" r="5" fill="#55100F"/>
@@ -206,11 +205,11 @@ async function buildGuide() {
     <g transform="translate(60, 902)" filter="url(#shadow)">
       <rect width="205" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">8</text>
-      <text x="38" y="23" class="tag-text">Front Sherwani Length</text>
+      <text x="18" y="18" class="badge-num">01</text>
+      <text x="38" y="23" class="tag-text">Sherwani Length</text>
     </g>
 
-    <!-- 14. OUTSEAM (Trouser Waist to Heel) -->
+    <!-- TROUSER 01. OUTSEAM (Trouser Waist to Heel) -->
     <line x1="535" y1="730" x2="535" y2="1280" class="measure-line" stroke-width="2.5"/>
     <circle cx="535" cy="730" r="4" fill="#C6A15B"/>
     <circle cx="535" cy="1280" r="4" fill="#C6A15B"/>
@@ -218,31 +217,31 @@ async function buildGuide() {
     <g transform="translate(60, 1032)" filter="url(#shadow)">
       <rect width="205" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">14</text>
-      <text x="38" y="23" class="tag-text">Outseam (Waist to Heel)</text>
+      <text x="18" y="18" class="badge-num">T1</text>
+      <text x="38" y="23" class="tag-text">Trouser 01. Length</text>
     </g>
 
-    <!-- 15. KNEE & 16. ANKLE -->
+    <!-- TROUSER 05. KNEE & 06. BOTTOM -->
     <line x1="390" y1="1100" x2="160" y2="1160" class="measure-lead"/>
     <g transform="translate(60, 1142)" filter="url(#shadow)">
-      <rect width="180" height="36" class="tag-bg"/>
+      <rect width="185" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">15</text>
-      <text x="38" y="23" class="tag-text">Knee Circumference</text>
+      <text x="18" y="18" class="badge-num">T5</text>
+      <text x="38" y="23" class="tag-text">Trouser 05. Knee</text>
     </g>
 
     <line x1="410" y1="1260" x2="160" y2="1260" class="measure-lead"/>
     <g transform="translate(60, 1242)" filter="url(#shadow)">
-      <rect width="180" height="36" class="tag-bg"/>
+      <rect width="185" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">16</text>
-      <text x="38" y="23" class="tag-text">Ankle Opening / Hem</text>
+      <text x="18" y="18" class="badge-num">T6</text>
+      <text x="38" y="23" class="tag-text">Trouser 06. Bottom</text>
     </g>
 
 
     <!-- METROLOGY MARKERS: BACK VIEW -->
 
-    <!-- 3. SHOULDER WIDTH (Tip to Tip Across Back) -->
+    <!-- 06. SHOULDER WIDTH -->
     <line x1="1040" y1="400" x2="1280" y2="400" class="measure-line" stroke-width="2.5"/>
     <circle cx="1040" cy="400" r="4" fill="#C6A15B"/>
     <circle cx="1280" cy="400" r="4" fill="#C6A15B"/>
@@ -250,76 +249,64 @@ async function buildGuide() {
     <g transform="translate(1330, 328)" filter="url(#shadow)">
       <rect width="210" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">3</text>
-      <text x="38" y="23" class="tag-text">Shoulder Width (Tip-Tip)</text>
+      <text x="18" y="18" class="badge-num">06</text>
+      <text x="38" y="23" class="tag-text">Shoulder (Tip to Tip)</text>
     </g>
 
-    <!-- 7. NATURAL WAIST -->
-    <line x1="1075" y1="675" x2="1245" y2="675" class="measure-line"/>
-    <circle cx="1075" cy="675" r="4" fill="#C6A15B"/>
-    <circle cx="1245" cy="675" r="4" fill="#C6A15B"/>
-    <line x1="1245" y1="675" x2="1420" y2="520" class="measure-lead"/>
-    <g transform="translate(1330, 498)" filter="url(#shadow)">
+    <!-- 08. CROSS BACK -->
+    <line x1="1075" y1="520" x2="1245" y2="520" class="measure-line"/>
+    <circle cx="1075" cy="520" r="4" fill="#C6A15B"/>
+    <circle cx="1245" cy="520" r="4" fill="#C6A15B"/>
+    <line x1="1245" y1="520" x2="1420" y2="490" class="measure-lead"/>
+    <g transform="translate(1330, 468)" filter="url(#shadow)">
       <rect width="190" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">7</text>
-      <text x="38" y="23" class="tag-text">Waist (Natural Narrow)</text>
+      <text x="18" y="18" class="badge-num">08</text>
+      <text x="38" y="23" class="tag-text">Cross Back (Blades)</text>
     </g>
 
-    <!-- 9. BACK LENGTH -->
-    <line x1="1160" y1="365" x2="1160" y2="990" class="measure-line" stroke-width="2.5" stroke="#55100F"/>
-    <circle cx="1160" cy="365" r="5" fill="#55100F"/>
-    <circle cx="1160" cy="990" r="5" fill="#55100F"/>
-    <line x1="1160" y1="600" x2="1420" y2="640" class="measure-lead"/>
-    <g transform="translate(1330, 620)" filter="url(#shadow)">
-      <rect width="190" height="36" class="tag-bg"/>
+    <!-- 04. HIP (Seat) -->
+    <line x1="1070" y1="810" x2="1250" y2="810" class="measure-line"/>
+    <circle cx="1070" cy="810" r="4" fill="#C6A15B"/>
+    <circle cx="1250" cy="810" r="4" fill="#C6A15B"/>
+    <line x1="1250" y1="810" x2="1420" y2="620" class="measure-lead"/>
+    <g transform="translate(1330, 600)" filter="url(#shadow)">
+      <rect width="180" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">9</text>
-      <text x="38" y="23" class="tag-text">Back Length (Nape-Hem)</text>
+      <text x="18" y="18" class="badge-num">04</text>
+      <text x="38" y="23" class="tag-text">Hip (Fullest Seat)</text>
     </g>
 
-    <!-- 10. TROUSER WAIST -->
+    <!-- TROUSER 02. WAISTBAND -->
     <line x1="1085" y1="730" x2="1235" y2="730" class="measure-line"/>
     <line x1="1235" y1="730" x2="1420" y2="750" class="measure-lead"/>
     <g transform="translate(1330, 730)" filter="url(#shadow)">
       <rect width="190" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">10</text>
-      <text x="38" y="23" class="tag-text">Trouser Waistband</text>
+      <text x="18" y="18" class="badge-num">T2</text>
+      <text x="38" y="23" class="tag-text">Trouser 02. Waist</text>
     </g>
 
-    <!-- 11. HIPS / SEAT -->
-    <line x1="1070" y1="810" x2="1250" y2="810" class="measure-line"/>
-    <circle cx="1070" cy="810" r="4" fill="#C6A15B"/>
-    <circle cx="1250" cy="810" r="4" fill="#C6A15B"/>
-    <line x1="1250" y1="810" x2="1420" y2="860" class="measure-lead"/>
-    <g transform="translate(1330, 840)" filter="url(#shadow)">
-      <rect width="180" height="36" class="tag-bg"/>
-      <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">11</text>
-      <text x="38" y="23" class="tag-text">Hips (Fullest Seat)</text>
-    </g>
-
-    <!-- 12. THIGH -->
+    <!-- TROUSER 04. THIGH -->
     <ellipse cx="1120" cy="980" rx="26" ry="10" fill="none" class="measure-line"/>
-    <line x1="1146" y1="980" x2="1420" y2="970" class="measure-lead"/>
-    <g transform="translate(1330, 950)" filter="url(#shadow)">
+    <line x1="1146" y1="980" x2="1420" y2="890" class="measure-lead"/>
+    <g transform="translate(1330, 870)" filter="url(#shadow)">
       <rect width="180" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">12</text>
-      <text x="38" y="23" class="tag-text">Thigh Circumference</text>
+      <text x="18" y="18" class="badge-num">T4</text>
+      <text x="38" y="23" class="tag-text">Trouser 04. Thigh</text>
     </g>
 
-    <!-- 13. INSEAM (Inner Leg) -->
+    <!-- TROUSER 07. CROTCH / RISE -->
     <line x1="1150" y1="890" x2="1140" y2="1280" class="measure-line" stroke-width="2"/>
     <circle cx="1150" cy="890" r="4" fill="#C6A15B"/>
     <circle cx="1140" cy="1280" r="4" fill="#C6A15B"/>
-    <line x1="1145" y1="1080" x2="1420" y2="1080" class="measure-lead"/>
-    <g transform="translate(1330, 1060)" filter="url(#shadow)">
+    <line x1="1145" y1="1080" x2="1420" y2="1040" class="measure-lead"/>
+    <g transform="translate(1330, 1020)" filter="url(#shadow)">
       <rect width="190" height="36" class="tag-bg"/>
       <circle cx="18" cy="18" r="12" class="badge-circle"/>
-      <text x="18" y="18" class="badge-num">13</text>
-      <text x="38" y="23" class="tag-text">Inseam (Crotch to Hem)</text>
+      <text x="18" y="18" class="badge-num">T7</text>
+      <text x="38" y="23" class="tag-text">Trouser 07. Crotch</text>
     </g>
 
 
@@ -327,86 +314,86 @@ async function buildGuide() {
     <rect x="1605" y="156" width="905" height="1220" fill="#FBF8F2" stroke="#C6A15B" stroke-width="1.2" rx="4" filter="url(#shadow)"/>
     <rect x="1612" y="163" width="891" height="1206" fill="none" stroke="#C6A15B" stroke-width="0.6" opacity="0.6"/>
 
-    <text x="1635" y="196" class="panel-head">HOW TO MEASURE LIKE AN ATELIER</text>
-    <text x="1635" y="216" class="panel-sub">PHOTOGRAPHIC DEMONSTRATIONS WITH MASTER TAPE PLACEMENT</text>
+    <text x="1635" y="196" class="panel-head">HOW TO MEASURE FOR SHERWANI</text>
+    <text x="1635" y="216" class="panel-sub">PHOTOGRAPHIC DEMONSTRATIONS • CLIENT REFERENCE SPECIFICATION</text>
     <line x1="1635" y1="228" x2="2480" y2="228" stroke="#C6A15B" stroke-width="1" opacity="0.5"/>
 
-    <!-- Demo Card 1: NECK (Y: 242) -->
+    <!-- Demo Card 1: 07. NECK (Y: 242) -->
     <rect x="1630" y="242" width="855" height="175" rx="3" fill="#FFFFFF" stroke="#E5DED0" filter="url(#shadow)"/>
     <rect x="1630" y="242" width="324" height="175" fill="none" stroke="#C6A15B" stroke-width="0.8"/>
     <g transform="translate(1975, 275)">
       <circle cx="14" cy="14" r="14" class="badge-circle"/>
-      <text x="14" y="14" class="badge-num">1</text>
-      <text x="38" y="12" class="card-title">NECK COLLAR BASE</text>
-      <text x="38" y="32" class="card-step">Tape around base of neck where collar buttons.</text>
+      <text x="14" y="14" class="badge-num">07</text>
+      <text x="38" y="12" class="card-title">07. NECK COLLAR BASE</text>
+      <text x="38" y="32" class="card-step">Tape around base of neck where the Sherwani collar bands.</text>
       <text x="38" y="58" class="card-desc">&#8226; Rest tape comfortably at Adam's apple level.</text>
       <text x="38" y="80" class="card-desc">&#8226; Keep one finger under tape for ease of breathing &amp; royal drape.</text>
-      <text x="38" y="102" class="card-desc">&#8226; Do not pull tightly; ensures clean band collar comfort.</text>
+      <text x="38" y="102" class="card-desc">&#8226; Critical for impeccable stand collar comfort without choke.</text>
     </g>
 
-    <!-- Demo Card 2: CHEST (Y: 428) -->
+    <!-- Demo Card 2: 02. CHEST (Y: 428) -->
     <rect x="1630" y="428" width="855" height="175" rx="3" fill="#FFFFFF" stroke="#E5DED0" filter="url(#shadow)"/>
     <rect x="1630" y="428" width="324" height="175" fill="none" stroke="#C6A15B" stroke-width="0.8"/>
     <g transform="translate(1975, 460)">
       <circle cx="14" cy="14" r="14" class="badge-circle"/>
-      <text x="14" y="14" class="badge-num">2</text>
-      <text x="38" y="12" class="card-title">CHEST (FULLEST POINT)</text>
-      <text x="38" y="32" class="card-step">Wrap tape around the fullest part of your chest.</text>
+      <text x="14" y="14" class="badge-num">02</text>
+      <text x="38" y="12" class="card-title">02. CHEST / LOW CHEST</text>
+      <text x="38" y="32" class="card-step">Wrap tape horizontally around fullest point of chest.</text>
       <text x="38" y="58" class="card-desc">&#8226; Keep tape horizontal under armpits and across shoulder blades.</text>
       <text x="38" y="80" class="card-desc">&#8226; Stand naturally with arms relaxed at sides; breathe normally.</text>
-      <text x="38" y="102" class="card-desc">&#8226; Crucial for seamless Sherwani chest balance and zero pulling.</text>
+      <text x="38" y="102" class="card-desc">&#8226; Establishes master chest ease and zero pulling across chest.</text>
     </g>
 
-    <!-- Demo Card 3: SHOULDER (Y: 614) -->
+    <!-- Demo Card 3: 06. SHOULDER (Y: 614) -->
     <rect x="1630" y="614" width="855" height="175" rx="3" fill="#FFFFFF" stroke="#E5DED0" filter="url(#shadow)"/>
     <rect x="1630" y="614" width="324" height="175" fill="none" stroke="#C6A15B" stroke-width="0.8"/>
     <g transform="translate(1975, 646)">
       <circle cx="14" cy="14" r="14" class="badge-circle"/>
-      <text x="14" y="14" class="badge-num">3</text>
-      <text x="38" y="12" class="card-title">SHOULDER WIDTH (TIP TO TIP)</text>
+      <text x="14" y="14" class="badge-num">06</text>
+      <text x="38" y="12" class="card-title">06. SHOULDER (TIP TO TIP)</text>
       <text x="38" y="32" class="card-step">Measure from outer left shoulder bone to right shoulder bone.</text>
-      <text x="38" y="58" class="card-desc">&#8226; Follow the natural contour of upper back/neck curvature.</text>
-      <text x="38" y="80" class="card-desc">&#8226; Wear a well-fitted shirt during measure for accuracy.</text>
+      <text x="38" y="58" class="card-desc">&#8226; Follow the natural contour across the upper back curve.</text>
+      <text x="38" y="80" class="card-desc">&#8226; Wear a fitted shirt during measure for highest accuracy.</text>
       <text x="38" y="102" class="card-desc">&#8226; Defines royal Aligarh pad placement and armhole pitch.</text>
     </g>
 
-    <!-- Demo Card 4: SLEEVE LENGTH (Y: 800) -->
+    <!-- Demo Card 4: 05. SLEEVES (Y: 800) -->
     <rect x="1630" y="800" width="855" height="175" rx="3" fill="#FFFFFF" stroke="#E5DED0" filter="url(#shadow)"/>
     <rect x="1630" y="800" width="324" height="175" fill="none" stroke="#C6A15B" stroke-width="0.8"/>
     <g transform="translate(1975, 832)">
       <circle cx="14" cy="14" r="14" class="badge-circle"/>
-      <text x="14" y="14" class="badge-num">4</text>
-      <text x="38" y="12" class="card-title">SLEEVE LENGTH (SHOULDER TO WRIST)</text>
+      <text x="14" y="14" class="badge-num">05</text>
+      <text x="38" y="12" class="card-title">05. SLEEVES (SHOULDER TO WRIST)</text>
       <text x="38" y="32" class="card-step">From the shoulder tip bone down arm to wrist bone.</text>
       <text x="38" y="58" class="card-desc">&#8226; Keep arm naturally hanging with slight relaxed bend.</text>
-      <text x="38" y="80" class="card-desc">&#8226; Sherwani sleeves rest just at wrist bone, displaying 0.5" cuff.</text>
-      <text x="38" y="102" class="card-desc">&#8226; Ensures embroidered sherwani cuffs fall elegantly over hands.</text>
+      <text x="38" y="80" class="card-desc">&#8226; Sherwani sleeves rest just at wrist bone, displaying 0.5" kurta cuff.</text>
+      <text x="38" y="102" class="card-desc">&#8226; Ensures embroidered cuffs fall gracefully over hands.</text>
     </g>
 
-    <!-- Demo Card 5: BICEP (Y: 985) -->
+    <!-- Demo Card 5: 10. BICEP (Y: 985) -->
     <rect x="1630" y="985" width="855" height="175" rx="3" fill="#FFFFFF" stroke="#E5DED0" filter="url(#shadow)"/>
     <rect x="1630" y="985" width="324" height="175" fill="none" stroke="#C6A15B" stroke-width="0.8"/>
     <g transform="translate(1975, 1017)">
       <circle cx="14" cy="14" r="14" class="badge-circle"/>
-      <text x="14" y="14" class="badge-num">5</text>
-      <text x="38" y="12" class="card-title">BICEP CIRCUMFERENCE</text>
+      <text x="14" y="14" class="badge-num">10</text>
+      <text x="38" y="12" class="card-title">10. BICEP CIRCUMFERENCE</text>
       <text x="38" y="32" class="card-step">Measure around the fullest part of upper arm.</text>
       <text x="38" y="58" class="card-desc">&#8226; Keep arm relaxed at side; do not flex or squeeze tape tight.</text>
       <text x="38" y="80" class="card-desc">&#8226; Guarantees ease of arm movement and tailored upper silhouette.</text>
       <text x="38" y="102" class="card-desc">&#8226; Prevents sleeve tightness during ceremonial greetings.</text>
     </g>
 
-    <!-- Demo Card 6: WAIST & OUTSEAM (Y: 1170) -->
+    <!-- Demo Card 6: 01. LENGTH & 03. WAIST (Y: 1170) -->
     <rect x="1630" y="1170" width="855" height="185" rx="3" fill="#FFFFFF" stroke="#E5DED0" filter="url(#shadow)"/>
     <rect x="1630" y="1170" width="324" height="185" fill="none" stroke="#C6A15B" stroke-width="0.8"/>
     <g transform="translate(1975, 1200)">
       <circle cx="14" cy="14" r="14" class="badge-circle"/>
-      <text x="14" y="14" class="badge-num">6</text>
-      <text x="38" y="12" class="card-title">WAIST &amp; TROUSER OUTSEAM</text>
-      <text x="38" y="32" class="card-step">Measure waist at navel &amp; length from waist to floor.</text>
-      <text x="38" y="58" class="card-desc">&#8226; <strong>Waist:</strong> Measure around stomach where sherwani buttons.</text>
-      <text x="38" y="80" class="card-desc">&#8226; <strong>Outseam:</strong> From trouser waistband down to the bottom heel floor.</text>
-      <text x="38" y="102" class="card-desc">&#8226; For churidar pajamas, extra gather length is cut into the pattern.</text>
+      <text x="14" y="14" class="badge-num">01</text>
+      <text x="38" y="12" class="card-title">01. SHERWANI LENGTH &amp; 03. WAIST</text>
+      <text x="38" y="32" class="card-step">Front nape to hem length &amp; stomach circumference.</text>
+      <text x="38" y="58" class="card-desc">&#8226; <strong>Length:</strong> Standard below-knee cut for Aligarh royal silhouette.</text>
+      <text x="38" y="80" class="card-desc">&#8226; <strong>Waist:</strong> Measured at navel level where front buttons close.</text>
+      <text x="38" y="102" class="card-desc">&#8226; Outseam length for churidar pajamas includes traditional gather ease.</text>
     </g>
 
 
@@ -415,14 +402,14 @@ async function buildGuide() {
 
     <!-- Key Measurement Legend Badges -->
     <g transform="translate(55, 1435)">
-      <text x="0" y="14" class="footer-txt"><tspan class="footer-gold">LIBAS TAILOR &#8226; BESPOKE MENSWEAR ATELIER</tspan> &#8226; Shamshad Market, Opposite Sulaiman Hall, AMU Aligarh, UP 202001</text>
-      <text x="0" y="36" class="footer-txt">Direct Tailor WhatsApp: <tspan class="footer-gold">+91 90276 72285</tspan> &#8226; Website: <tspan class="footer-gold">libastailor.in</tspan> &#8226; Units Accepted: <tspan class="footer-gold">Centimeters (CM) or Inches (IN)</tspan></text>
+      <text x="0" y="14" class="footer-txt"><tspan class="footer-gold">LIBAS TAILOR &#8226; ALIGARH</tspan> &#8226; Bespoke Menswear Atelier &#8226; Shamshad Market, Opposite Sulaiman Hall, AMU Aligarh</text>
+      <text x="0" y="36" class="footer-txt">Direct Tailor WhatsApp: <tspan class="footer-gold">+91 90276 72285</tspan> &#8226; Website: <tspan class="footer-gold">libastailor.in</tspan> &#8226; Standard Metrology: <tspan class="footer-gold">ALL MEASUREMENTS IN INCHES</tspan></text>
     </g>
 
-    <g transform="translate(2050, 1435)">
-      <rect x="0" y="-4" width="450" height="48" rx="3" fill="#FAF7F0" stroke="#C6A15B" stroke-width="1"/>
-      <text x="18" y="18" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#55100F">OFFICIAL ATELIER METROLOGY SPECIFICATION</text>
-      <text x="18" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#6B6259">Enter all 16 values in the online measurement form below.</text>
+    <g transform="translate(2020, 1435)">
+      <rect x="0" y="-4" width="480" height="48" rx="3" fill="#FAF7F0" stroke="#C6A15B" stroke-width="1"/>
+      <text x="18" y="18" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#55100F">OFFICIAL CLIENT MEASUREMENT SPECIFICATION</text>
+      <text x="18" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#6B6259">Sherwani 01-11 • Trouser 01-07 • Shirt measurements in inches.</text>
     </g>
 
   </svg>

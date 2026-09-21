@@ -191,13 +191,12 @@
           An official bespoke measurement PDF will be generated immediately upon submission. Looking for silhouettes? <a href="/collections.html#sherwanis" class="text-burgundy-royal font-medium underline hover:text-antique-gold transition-colors">Explore our Sherwani Collection</a>.
         </p>
 
-        <!-- Unit Switcher Control -->
-        <div class="inline-flex flex-col items-center">
-          <span class="font-brand text-[10px] text-antique-gold font-bold mb-2">CHOOSE MEASUREMENT UNIT</span>
-          <div class="unit-switcher-container shadow-sm">
-            <button type="button" id="unit-cm" class="unit-switch-btn active">CENTIMETERS (CM)</button>
-            <button type="button" id="unit-inch" class="unit-switch-btn">INCHES (IN)</button>
-          </div>
+        <!-- Tailoring Standard Unit Notice -->
+        <div class="inline-flex items-center gap-2 px-5 py-2.5 bg-pure-white border border-antique-gold/40 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-burgundy-royal"></span>
+          <span class="font-brand text-[11px] text-burgundy-royal font-bold tracking-widest uppercase">
+            MASTER ATELIER METROLOGY &bull; ALL MEASUREMENTS IN INCHES
+          </span>
         </div>
       </div>
     </section>
@@ -249,14 +248,15 @@
 
         <form id="measurements-form" novalidate>
           <input type="hidden" name="access_key" value="7097fd8c-680d-4e0a-86d8-0d53621e4b47">
+          <input type="hidden" name="measurement_unit" id="measurement-unit-val" value="inches">
 
-          <!-- SECTION A: CLIENT DETAILS -->
-          <div class="form-section-box">
+          <!-- SECTION 01: ORDER / CUSTOMER INFORMATION -->
+          <div class="form-section-box" id="sec-customer-info">
             <div class="form-section-title-lockup">
               <span class="form-step-badge">01</span>
               <div>
-                <h3 class="font-serif text-2xl text-charcoal">Client Information</h3>
-                <p class="font-sans text-xs text-charcoal/60">Your direct contact details for atelier reference.</p>
+                <h3 class="font-serif text-2xl text-charcoal">Customer &amp; Order Information</h3>
+                <p class="font-sans text-xs text-charcoal/60">Primary atelier identification and garment selection.</p>
               </div>
             </div>
 
@@ -280,6 +280,23 @@
               </div>
 
               <div class="measurement-field-group">
+                <label class="measurement-label" for="client-order-ref">Order / Reference Number</label>
+                <input type="text" id="client-order-ref" name="order_reference" placeholder="e.g. LIB-2026-042 (Optional)" class="measurement-input">
+              </div>
+
+              <div class="measurement-field-group">
+                <label class="measurement-label" for="garment-type">Garment Type *</label>
+                <select id="garment-type" name="garment_type" class="measurement-input font-medium">
+                  <option value="Sherwani" selected>Sherwani (Sherwani &amp; Trouser)</option>
+                  <option value="Suit">Bespoke Suit (Coat &amp; Trouser)</option>
+                  <option value="Sherwani Only">Sherwani Only</option>
+                  <option value="Trouser Only">Trouser Only</option>
+                  <option value="Shirt Only">Shirt Only</option>
+                  <option value="Complete Ensemble">Complete Bespoke Ensemble (All Garments)</option>
+                </select>
+              </div>
+
+              <div class="measurement-field-group">
                 <label class="measurement-label" for="client-contact-method">Preferred Contact Method</label>
                 <select id="client-contact-method" name="contact_method" class="measurement-input">
                   <option value="WhatsApp">WhatsApp</option>
@@ -288,254 +305,787 @@
                 </select>
               </div>
 
-              <div class="measurement-field-group sm:col-span-2">
-                <label class="measurement-label" for="client-address">Address / Fitting Location (Optional)</label>
-                <input type="text" id="client-address" name="client_address" placeholder="e.g. Saheb Bagh, Aligarh or in-store fitting" class="measurement-input">
+              <div class="measurement-field-group sm:col-span-2 lg:col-span-3">
+                <label class="measurement-label" for="client-address">Fitting Venue / Delivery Address (Optional)</label>
+                <input type="text" id="client-address" name="client_address" placeholder="e.g. Saheb Bagh, Aligarh or in-store consultation at Shamshad Market" class="measurement-input">
               </div>
             </div>
           </div>
 
-          <!-- SECTION B: UPPER BODY -->
-          <div class="form-section-box">
+          <!-- SECTION 02: BODY POSTURE (CLIENT PHYSICAL SHEET SPECIFICATION) -->
+          <div class="form-section-box" id="sec-body-posture">
             <div class="form-section-title-lockup">
               <span class="form-step-badge">02</span>
               <div>
-                <h3 class="font-serif text-2xl text-charcoal">Upper Body Measurements</h3>
-                <p class="font-sans text-xs text-charcoal/60">Enter values in <span class="unit-affix font-bold text-burgundy-royal">CM</span>. Precision guarantees zero-strain drape.</p>
+                <h3 class="font-serif text-2xl text-charcoal">Body Posture</h3>
+                <p class="font-sans text-xs text-charcoal/60">Anatomical alignment ensures effortless drape without pulling or sagging.</p>
               </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-neck">Neck</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-neck" placeholder="38.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
+            <div class="atelier-section-banner">
+              <p class="font-sans text-xs text-charcoal/80">
+                Select your natural posture traits. Our master tailors adjust the back balance, chest ease, and shoulder pad placement accordingly.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <!-- BACK SHAPE -->
+              <div>
+                <h4 class="posture-group-title">BACK SHAPE</h4>
+                <div class="space-y-2">
+                  <label class="option-card-label">
+                    <input type="radio" name="posture_back_shape" value="Normal" checked>
+                    <span><strong>Normal</strong> (Balanced natural spine)</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="posture_back_shape" value="Stooped">
+                    <span><strong>Stooped</strong> (Curved upper back)</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="posture_back_shape" value="Erect">
+                    <span><strong>Erect</strong> (Straight military stance)</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="posture_back_shape" value="Forward Stomach">
+                    <span><strong>Forward Stomach</strong> (Pelvic tilt)</span>
+                  </label>
                 </div>
-                <span class="field-error-text" id="measure-neck-error"></span>
               </div>
 
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-chest">Chest (Fullest Point)</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-chest" placeholder="102.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
+              <!-- STOMACH -->
+              <div>
+                <h4 class="posture-group-title">STOMACH</h4>
+                <div class="space-y-2">
+                  <label class="option-card-label">
+                    <input type="radio" name="posture_stomach" value="Normal" checked>
+                    <span><strong>Normal / Flat</strong> (Standard profile)</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="posture_stomach" value="Stout">
+                    <span><strong>Stout</strong> (Prominent abdomen)</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="posture_stomach" value="Large">
+                    <span><strong>Large</strong> (Generous front curve)</span>
+                  </label>
                 </div>
-                <span class="field-error-text" id="measure-chest-error"></span>
               </div>
 
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-shoulder">Shoulder Width (Tip to Tip)</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-shoulder" placeholder="46.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
+              <!-- SHOULDER TYPE -->
+              <div>
+                <h4 class="posture-group-title">SHOULDER TYPE</h4>
+                <div class="space-y-2">
+                  <label class="option-card-label">
+                    <input type="radio" name="posture_shoulder_type" value="Square">
+                    <span><strong>Square</strong> (High horizontal shoulder line)</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="posture_shoulder_type" value="Regular" checked>
+                    <span><strong>Regular</strong> (Standard anatomical slope)</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="posture_shoulder_type" value="Sloping">
+                    <span><strong>Sloping</strong> (Pronounced downward angle)</span>
+                  </label>
                 </div>
-                <span class="field-error-text" id="measure-shoulder-error"></span>
-              </div>
-
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-sleeve">Sleeve Length</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-sleeve" placeholder="63.5" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
-                </div>
-                <span class="field-error-text" id="measure-sleeve-error"></span>
-              </div>
-
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-bicep">Bicep</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-bicep" placeholder="36.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
-                </div>
-                <span class="field-error-text" id="measure-bicep-error"></span>
-              </div>
-
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-waist">Waist (Stomach Level)</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-waist" placeholder="88.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
-                </div>
-                <span class="field-error-text" id="measure-waist-error"></span>
-              </div>
-
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-waist-natural">Waist (Natural)</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-waist-natural" placeholder="84.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
-                </div>
-                <span class="field-error-text" id="measure-waist-natural-error"></span>
-              </div>
-
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-jacket-length">Front Jacket Length</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-jacket-length" placeholder="76.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
-                </div>
-                <span class="field-error-text" id="measure-jacket-length-error"></span>
-              </div>
-
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-back-length">Back Length</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-back-length" placeholder="78.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
-                </div>
-                <span class="field-error-text" id="measure-back-length-error"></span>
               </div>
             </div>
           </div>
 
-          <!-- SECTION C: LOWER BODY -->
-          <div class="form-section-box">
+          <!-- SECTION 03: SHERWANI MEASUREMENTS (EXACT CLIENT NUMBERING 01 TO 11) -->
+          <div class="form-section-box" id="sec-sherwani-measurements">
             <div class="form-section-title-lockup">
               <span class="form-step-badge">03</span>
               <div>
-                <h3 class="font-serif text-2xl text-charcoal">Lower Body Measurements</h3>
-                <p class="font-sans text-xs text-charcoal/60">Trouser &amp; pajama drafting parameters in <span class="unit-affix font-bold text-burgundy-royal">CM</span>.</p>
+                <h3 class="font-serif text-2xl text-charcoal">Sherwani Measurements</h3>
+                <p class="font-sans text-xs text-charcoal/60">Following the master tailor's numbered sequence. All dimensions in <strong class="text-burgundy-royal">INCHES</strong>.</p>
               </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-trouser-waist">Trouser Waist</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-trouser-waist" placeholder="86.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <!-- 01 Length -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">01</span>
+                  <label class="measure-title" for="sherwani-length">Length</label>
                 </div>
-                <span class="field-error-text" id="measure-trouser-waist-error"></span>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="sherwani-length" name="sherwani_length" placeholder="e.g. 42.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">From collar base/nape down front to desired hemline.</p>
+                <span class="field-error-text" id="sherwani-length-error"></span>
               </div>
 
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-hips">Hips (Fullest)</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-hips" placeholder="100.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
+              <!-- 02 Chest / Low Chest -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">02</span>
+                  <label class="measure-title" for="sherwani-chest">Chest / Low Chest</label>
                 </div>
-                <span class="field-error-text" id="measure-hips-error"></span>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="sherwani-chest" name="sherwani_chest" placeholder="e.g. 40.0" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Around fullest chest circumference under armpits.</p>
+                <span class="field-error-text" id="sherwani-chest-error"></span>
               </div>
 
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-thigh">Thigh</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-thigh" placeholder="58.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
+              <!-- 03 Waist -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">03</span>
+                  <label class="measure-title" for="sherwani-waist">Waist</label>
                 </div>
-                <span class="field-error-text" id="measure-thigh-error"></span>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="sherwani-waist" name="sherwani_waist" placeholder="e.g. 36.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Around stomach where the Sherwani button sits.</p>
+                <span class="field-error-text" id="sherwani-waist-error"></span>
               </div>
 
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-inseam">Inseam</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-inseam" placeholder="78.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
+              <!-- 04 Hip -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">04</span>
+                  <label class="measure-title" for="sherwani-hip">Hip</label>
                 </div>
-                <span class="field-error-text" id="measure-inseam-error"></span>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="sherwani-hip" name="sherwani_hip" placeholder="e.g. 41.0" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Widest circumference around hips and seat.</p>
+                <span class="field-error-text" id="sherwani-hip-error"></span>
               </div>
 
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-outseam">Outseam (Total Trouser Length)</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-outseam" placeholder="104.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
+              <!-- 05 Sleeves -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">05</span>
+                  <label class="measure-title" for="sherwani-sleeves">Sleeves</label>
                 </div>
-                <span class="field-error-text" id="measure-outseam-error"></span>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="sherwani-sleeves" name="sherwani_sleeves" placeholder="e.g. 25.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">From shoulder tip bone along bent arm down to wrist.</p>
+                <span class="field-error-text" id="sherwani-sleeves-error"></span>
               </div>
 
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-knee">Knee</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-knee" placeholder="44.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
+              <!-- 06 Shoulder -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">06</span>
+                  <label class="measure-title" for="sherwani-shoulder">Shoulder</label>
                 </div>
-                <span class="field-error-text" id="measure-knee-error"></span>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="sherwani-shoulder" name="sherwani_shoulder" placeholder="e.g. 18.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">From left shoulder tip bone to right shoulder bone.</p>
+                <span class="field-error-text" id="sherwani-shoulder-error"></span>
               </div>
 
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-ankle">Ankle Opening / Hem</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-ankle" placeholder="38.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
+              <!-- 07 Neck -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">07</span>
+                  <label class="measure-title" for="sherwani-neck">Neck</label>
                 </div>
-                <span class="field-error-text" id="measure-ankle-error"></span>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="sherwani-neck" name="sherwani_neck" placeholder="e.g. 16.0" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Base of neck with one finger ease for stand collar.</p>
+                <span class="field-error-text" id="sherwani-neck-error"></span>
               </div>
 
-              <div class="measurement-field-group">
-                <label class="measurement-label" for="measure-rise">Crotch Rise</label>
-                <div class="measurement-input-wrapper">
-                  <input type="number" step="0.1" id="measure-rise" placeholder="26.0" class="measurement-input num-measure">
-                  <span class="unit-affix">CM</span>
+              <!-- 08 Cross Back -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">08</span>
+                  <label class="measure-title" for="sherwani-cross-back">Cross Back</label>
                 </div>
-                <span class="field-error-text" id="measure-rise-error"></span>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="sherwani-cross-back" name="sherwani_cross_back" placeholder="e.g. 17.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Across shoulder blades from armhole fold to fold.</p>
+                <span class="field-error-text" id="sherwani-cross-back-error"></span>
+              </div>
+
+              <!-- 09 Cross Front -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">09</span>
+                  <label class="measure-title" for="sherwani-cross-front">Cross Front</label>
+                </div>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="sherwani-cross-front" name="sherwani_cross_front" placeholder="e.g. 16.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Across front chest between upper armhole creases.</p>
+                <span class="field-error-text" id="sherwani-cross-front-error"></span>
+              </div>
+
+              <!-- 10 Bicep -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">10</span>
+                  <label class="measure-title" for="sherwani-bicep">Bicep</label>
+                </div>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="sherwani-bicep" name="sherwani_bicep" placeholder="e.g. 14.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Circumference of upper arm muscle at fullest point.</p>
+                <span class="field-error-text" id="sherwani-bicep-error"></span>
+              </div>
+
+              <!-- 11 Arm Hole Round -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">11</span>
+                  <label class="measure-title" for="sherwani-arm-hole">Arm Hole Round</label>
+                </div>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="sherwani-arm-hole" name="sherwani_arm_hole" placeholder="e.g. 19.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Circumference around armhole scye over the shoulder.</p>
+                <span class="field-error-text" id="sherwani-arm-hole-error"></span>
               </div>
             </div>
           </div>
 
-          <!-- SECTION D: FIT PREFERENCES & SPECIAL NOTES -->
-          <div class="form-section-box">
+          <!-- SECTION 04: SHERWANI STYLE DETAILS -->
+          <div class="form-section-box" id="sec-sherwani-style">
             <div class="form-section-title-lockup">
               <span class="form-step-badge">04</span>
               <div>
-                <h3 class="font-serif text-2xl text-charcoal">Fit Preferences &amp; Design Instructions</h3>
-                <p class="font-sans text-xs text-charcoal/60">Define your stance, silhouette type, and bespoke nuances.</p>
+                <h3 class="font-serif text-2xl text-charcoal">Sherwani Style Details</h3>
+                <p class="font-sans text-xs text-charcoal/60">Bespoke tailoring specifications from the atelier reference sheet.</p>
               </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+              <!-- STYLE -->
               <div>
-                <label class="measurement-label mb-3">Preferred Fit Stance</label>
-                <div class="space-y-2">
-                  <label class="flex items-center gap-3 p-3 bg-pure-white border border-charcoal/15 cursor-pointer text-xs">
-                    <input type="radio" name="fit_preference" value="Slim Fit" class="accent-burgundy-royal">
-                    <span><strong>Slim Fit</strong> (Trim tailored contour)</span>
+                <h4 class="posture-group-title">STYLE</h4>
+                <div class="option-cards-grid">
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_style" value="SB" checked>
+                    <span>SB (Single Breasted)</span>
                   </label>
-                  <label class="flex items-center gap-3 p-3 bg-pure-white border border-charcoal/15 cursor-pointer text-xs">
-                    <input type="radio" name="fit_preference" value="Regular" checked class="accent-burgundy-royal">
-                    <span><strong>Regular Fit</strong> (Classic balanced drape)</span>
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_style" value="DB">
+                    <span>DB (Double Breasted)</span>
                   </label>
-                  <label class="flex items-center gap-3 p-3 bg-pure-white border border-charcoal/15 cursor-pointer text-xs">
-                    <input type="radio" name="fit_preference" value="Relaxed" class="accent-burgundy-royal">
-                    <span><strong>Relaxed Fit</strong> (Comfort ease)</span>
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_style" value="Tuxedo">
+                    <span>Tuxedo</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_style" value="Jodhpuri">
+                    <span>Jodhpuri</span>
                   </label>
                 </div>
               </div>
 
+              <!-- LAPEL / COLLAR -->
               <div>
-                <label class="measurement-label" for="garment-type">Primary Garment Silhouette</label>
-                <select id="garment-type" name="garment_type" class="measurement-input mb-4">
-                  <option value="Sherwani">Bespoke Sherwani</option>
-                  <option value="Suit">Bespoke Suit (2pc / 3pc)</option>
-                  <option value="Indo-Western">Indo-Western Coat</option>
-                  <option value="Kurta">Kurta &amp; Pajama Set</option>
-                  <option value="Trousers">Bespoke Trousers Only</option>
-                  <option value="Formalwear">Evening Tuxedo / Dinner Jacket</option>
-                </select>
-
-                <label class="measurement-label" for="posture-type">Natural Posture Note</label>
-                <select id="posture-type" name="posture_type" class="measurement-input">
-                  <option value="Standard Balance">Standard Neutral Posture</option>
-                  <option value="Erect Stance">Erect / Broad Shoulders</option>
-                  <option value="Slight Forward Pitch">Slight Forward Head / Shoulders</option>
-                  <option value="Athletic / Muscular">Athletic / High Drop</option>
-                </select>
+                <h4 class="posture-group-title">LAPEL / COLLAR</h4>
+                <div class="option-cards-grid">
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_lapel" value="Mandarin Collar" checked>
+                    <span>Mandarin (Stand)</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_lapel" value="Peak">
+                    <span>Peak</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_lapel" value="Notch">
+                    <span>Notch</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_lapel" value="Shawl">
+                    <span>Shawl</span>
+                  </label>
+                </div>
               </div>
 
+              <!-- VENT -->
               <div>
-                <label class="measurement-label" for="special-notes">Special Requirements &amp; Notes</label>
-                <textarea id="special-notes" rows="6" placeholder="Fabric preferences, specific occasion date, pockets, vents, or collar details..." class="measurement-input text-xs"></textarea>
+                <h4 class="posture-group-title">VENT</h4>
+                <div class="option-cards-grid">
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_vent" value="No Vent">
+                    <span>No Vent</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_vent" value="Side Vent" checked>
+                    <span>Side Vent</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_vent" value="Centre Vent">
+                    <span>Centre Vent</span>
+                  </label>
+                </div>
               </div>
+
+              <!-- POCKET -->
+              <div>
+                <h4 class="posture-group-title">POCKET</h4>
+                <div class="option-cards-grid">
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_pocket" value="Straight">
+                    <span>Straight</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_pocket" value="Slant" checked>
+                    <span>Slant</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_pocket" value="Patch">
+                    <span>Patch</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_pocket" value="Ticket">
+                    <span>Ticket</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- FIT -->
+              <div>
+                <h4 class="posture-group-title">FIT</h4>
+                <div class="option-cards-grid">
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_fit" value="Regular Fit" checked>
+                    <span>Regular Fit</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_fit" value="Slim Fit">
+                    <span>Slim Fit</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- SLEEVE PLACKET -->
+              <div>
+                <h4 class="posture-group-title">SLEEVE PLACKET</h4>
+                <div class="option-cards-grid">
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_sleeve_placket" value="Vent" checked>
+                    <span>Vent</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="sherwani_sleeve_placket" value="Functional">
+                    <span>Functional</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-antique-gold/20">
+              <div class="measurement-field-group">
+                <label class="measurement-label" for="sherwani-code">OTHERS / CODE</label>
+                <input type="text" id="sherwani-code" name="sherwani_code" placeholder="Fabric article code or custom embroidery reference" class="measurement-input">
+              </div>
+
+              <div class="measurement-field-group">
+                <label class="measurement-label" for="sherwani-remarks">SHERWANI REMARKS</label>
+                <textarea id="sherwani-remarks" name="sherwani_remarks" rows="2" placeholder="Specific button styles, piping accents, inner lining preferences..." class="measurement-input text-xs"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 05: TROUSER MEASUREMENTS (EXACT CLIENT NUMBERING 01 TO 07) -->
+          <div class="form-section-box" id="sec-trouser-measurements">
+            <div class="form-section-title-lockup">
+              <span class="form-step-badge">05</span>
+              <div>
+                <h3 class="font-serif text-2xl text-charcoal">Trouser Measurements</h3>
+                <p class="font-sans text-xs text-charcoal/60">Following the master sheet numbering sequence. All values in <strong class="text-burgundy-royal">INCHES</strong>.</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <!-- 01 Length -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">01</span>
+                  <label class="measure-title" for="trouser-length">Length</label>
+                </div>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="trouser-length" name="trouser_length" placeholder="e.g. 40.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Outseam length from trouser waistband to bottom hem.</p>
+                <span class="field-error-text" id="trouser-length-error"></span>
+              </div>
+
+              <!-- 02 Waist -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">02</span>
+                  <label class="measure-title" for="trouser-waist">Waist</label>
+                </div>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="trouser-waist" name="trouser_waist" placeholder="e.g. 34.0" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Around waistband level where trousers are normally worn.</p>
+                <span class="field-error-text" id="trouser-waist-error"></span>
+              </div>
+
+              <!-- 03 Hip -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">03</span>
+                  <label class="measure-title" for="trouser-hip">Hip</label>
+                </div>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="trouser-hip" name="trouser_hip" placeholder="e.g. 40.0" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Around the fullest circumference of the seat.</p>
+                <span class="field-error-text" id="trouser-hip-error"></span>
+              </div>
+
+              <!-- 04 Thigh -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">04</span>
+                  <label class="measure-title" for="trouser-thigh">Thigh</label>
+                </div>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="trouser-thigh" name="trouser_thigh" placeholder="e.g. 24.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Around widest part of upper thigh 1" below crotch.</p>
+                <span class="field-error-text" id="trouser-thigh-error"></span>
+              </div>
+
+              <!-- 05 Knee -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">05</span>
+                  <label class="measure-title" for="trouser-knee">Knee</label>
+                </div>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="trouser-knee" name="trouser_knee" placeholder="e.g. 18.0" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Circumference around midpoint of knee.</p>
+                <span class="field-error-text" id="trouser-knee-error"></span>
+              </div>
+
+              <!-- 06 Bottom -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">06</span>
+                  <label class="measure-title" for="trouser-bottom">Bottom</label>
+                </div>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="trouser-bottom" name="trouser_bottom" placeholder="e.g. 14.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Circumference of trouser bottom leg opening / hem.</p>
+                <span class="field-error-text" id="trouser-bottom-error"></span>
+              </div>
+
+              <!-- 07 Crotch -->
+              <div class="measure-item-card">
+                <div class="measure-item-header">
+                  <span class="measure-index-tag">07</span>
+                  <label class="measure-title" for="trouser-crotch">Crotch</label>
+                </div>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="trouser-crotch" name="trouser_crotch" placeholder="e.g. 26.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+                <p class="measure-hint">Total crotch rise from front waistband through to back waistband.</p>
+                <span class="field-error-text" id="trouser-crotch-error"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 06: TROUSER STYLE DETAILS -->
+          <div class="form-section-box" id="sec-trouser-style">
+            <div class="form-section-title-lockup">
+              <span class="form-step-badge">06</span>
+              <div>
+                <h3 class="font-serif text-2xl text-charcoal">Trouser Style Details</h3>
+                <p class="font-sans text-xs text-charcoal/60">Digitized options from the client tailoring sheet.</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+              <!-- BELT / WAIST STYLE -->
+              <div>
+                <h4 class="posture-group-title">BELT / WAIST STYLE</h4>
+                <div class="space-y-2">
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_belt" value="Standard Belt" checked>
+                    <span>Standard Belt</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_belt" value="Extended Tab">
+                    <span>Extended Tab</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_belt" value="Side Adjusters">
+                    <span>Side Adjusters</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- PLEAT -->
+              <div>
+                <h4 class="posture-group-title">PLEAT</h4>
+                <div class="space-y-2">
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_pleat" value="Flat Front" checked>
+                    <span>Flat Front (No Pleat)</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_pleat" value="Single Pleat">
+                    <span>Single Pleat</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_pleat" value="Double Pleat">
+                    <span>Double Pleat</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- POCKET -->
+              <div>
+                <h4 class="posture-group-title">POCKET</h4>
+                <div class="space-y-2">
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_pocket" value="Cross Pocket" checked>
+                    <span>Cross Pocket</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_pocket" value="Straight Pocket">
+                    <span>Straight Pocket</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_pocket" value="Slant Pocket">
+                    <span>Slant Pocket</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- BACK POCKET -->
+              <div>
+                <h4 class="posture-group-title">BACK POCKET</h4>
+                <div class="space-y-2">
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_back_pocket" value="Single Pocket" checked>
+                    <span>Single Pocket</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_back_pocket" value="Double Pocket">
+                    <span>Double Pocket</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_back_pocket" value="None">
+                    <span>None</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- BOTTOM -->
+              <div>
+                <h4 class="posture-group-title">BOTTOM</h4>
+                <div class="space-y-2">
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_bottom_style" value="Plain Bottom" checked>
+                    <span>Plain Bottom</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_bottom_style" value="Turn-Up Cuff">
+                    <span>Turn-Up / Cuff</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- LOOPS / BELT LOOPS -->
+              <div>
+                <h4 class="posture-group-title">LOOPS / BELT LOOPS</h4>
+                <div class="space-y-2">
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_loops" value="With Loops" checked>
+                    <span>With Loops</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_loops" value="Without Loops">
+                    <span>Without Loops</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- FIT -->
+              <div>
+                <h4 class="posture-group-title">FIT</h4>
+                <div class="space-y-2">
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_fit" value="Regular Fit" checked>
+                    <span>Regular Fit</span>
+                  </label>
+                  <label class="option-card-label">
+                    <input type="radio" name="trouser_fit" value="Slim Fit">
+                    <span>Slim Fit</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- SIZE -->
+              <div>
+                <h4 class="posture-group-title">SIZE</h4>
+                <div class="measurement-field-group">
+                  <input type="text" id="trouser-size" name="trouser_size" placeholder="e.g. 32, 34, 36" class="measurement-input">
+                  <p class="measure-hint">Preset waist or pattern size reference.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-antique-gold/20">
+              <div class="measurement-field-group">
+                <label class="measurement-label" for="trouser-remarks">TROUSER REMARKS</label>
+                <textarea id="trouser-remarks" name="trouser_remarks" rows="2" placeholder="Churidar gather length, cuff height, or waistband closure preference..." class="measurement-input text-xs"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 07: SHIRT MEASUREMENTS (UNNUMBERED AS ON PHYSICAL SHEET) -->
+          <div class="form-section-box" id="sec-shirt-measurements">
+            <div class="form-section-title-lockup">
+              <span class="form-step-badge">07</span>
+              <div>
+                <h3 class="font-serif text-2xl text-charcoal">Shirt Measurements</h3>
+                <p class="font-sans text-xs text-charcoal/60">Preserving exact sheet ordering without artificial numbering. All values in <strong class="text-burgundy-royal">INCHES</strong>.</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div class="measure-item-card">
+                <label class="measure-title block mb-2" for="shirt-length">Length</label>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="shirt-length" name="shirt_length" placeholder="e.g. 30.0" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+              </div>
+
+              <div class="measure-item-card">
+                <label class="measure-title block mb-2" for="shirt-chest">Chest</label>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="shirt-chest" name="shirt_chest" placeholder="e.g. 40.0" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+              </div>
+
+              <div class="measure-item-card">
+                <label class="measure-title block mb-2" for="shirt-low-chest">Low Chest</label>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="shirt-low-chest" name="shirt_low_chest" placeholder="e.g. 38.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+              </div>
+
+              <div class="measure-item-card">
+                <label class="measure-title block mb-2" for="shirt-waist">Waist</label>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="shirt-waist" name="shirt_waist" placeholder="e.g. 36.0" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+              </div>
+
+              <div class="measure-item-card">
+                <label class="measure-title block mb-2" for="shirt-hip">Hip</label>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="shirt-hip" name="shirt_hip" placeholder="e.g. 40.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+              </div>
+
+              <div class="measure-item-card">
+                <label class="measure-title block mb-2" for="shirt-sleeves">Sleeves</label>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="shirt-sleeves" name="shirt_sleeves" placeholder="e.g. 25.0" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+              </div>
+
+              <div class="measure-item-card">
+                <label class="measure-title block mb-2" for="shirt-shoulder">Shoulder</label>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="shirt-shoulder" name="shirt_shoulder" placeholder="e.g. 18.0" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+              </div>
+
+              <div class="measure-item-card">
+                <label class="measure-title block mb-2" for="shirt-arm-round">Arm Round</label>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="shirt-arm-round" name="shirt_arm_round" placeholder="e.g. 19.0" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+              </div>
+
+              <div class="measure-item-card">
+                <label class="measure-title block mb-2" for="shirt-neck">Neck</label>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="shirt-neck" name="shirt_neck" placeholder="e.g. 15.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+              </div>
+
+              <div class="measure-item-card">
+                <label class="measure-title block mb-2" for="shirt-cuff">Cuff</label>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="shirt-cuff" name="shirt_cuff" placeholder="e.g. 9.5" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+              </div>
+
+              <div class="measure-item-card">
+                <label class="measure-title block mb-2" for="shirt-biceps">Biceps</label>
+                <div class="measurement-input-wrapper">
+                  <input type="number" step="0.1" id="shirt-biceps" name="shirt_biceps" placeholder="e.g. 14.0" class="measurement-input num-measure">
+                  <span class="unit-affix">inches</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 08: REMARKS & SUBMISSION -->
+          <div class="form-section-box">
+            <div class="form-section-title-lockup">
+              <span class="form-step-badge">08</span>
+              <div>
+                <h3 class="font-serif text-2xl text-charcoal">Remarks &amp; Master Atelier Review</h3>
+                <p class="font-sans text-xs text-charcoal/60">Final consultation preferences and instant PDF generation.</p>
+              </div>
+            </div>
+
+            <div class="measurement-field-group mb-8">
+              <label class="measurement-label" for="client-special-notes">Comments / Special Instructions</label>
+              <textarea id="client-special-notes" name="special_notes" rows="4" placeholder="Occasion date, ceremonial styling nuances, fabric weight preference, or in-store appointment date..." class="measurement-input text-xs"></textarea>
             </div>
 
             <!-- Notice & Submit Button -->
             <div class="border-t border-antique-gold/30 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
               <p class="font-sans text-xs text-charcoal/70 max-w-lg">
-                * Note: Measurements submitted here will be compiled into your personal PDF record and forwarded securely to the LIBAS atelier for consultation review.
+                * Note: Your measurements will be formatted according to LIBAS TAILOR atelier metrology. Your personalized PDF profile will be generated immediately and registered with our Shamshad Market master tailors.
               </p>
               <button type="submit" id="btn-submit-measurements" class="btn-primary py-5 px-10 text-xs w-full sm:w-auto shrink-0 shadow-xl">
-                SUBMIT MEASUREMENTS &amp; RECEIVE PDF
+                SUBMIT BESPOKE MEASUREMENTS &amp; RECEIVE PDF
               </button>
             </div>
           </div>
