@@ -118,7 +118,12 @@ insert into public.admin_users (user_id, role)
 select id, 'admin'
 from auth.users
 where lower(email) = 'libastailor0@gmail.com'
-on conflict (user_id) do nothing;
+on conflict (user_id) do update set role = 'admin';
+
+-- Direct assignment with verified UID
+insert into public.admin_users (user_id, role)
+values ('76cf9a6b-5501-40ba-b935-92046099b9e4', 'admin')
+on conflict (user_id) do update set role = 'admin';
 
 -- 7. SUPABASE STORAGE BUCKET CONFIGURATION (STRICT < 2MB & JPG/PNG ONLY)
 -- 2097151 bytes = 2MB - 1 byte (strictly less than 2MB)
