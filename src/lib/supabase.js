@@ -74,6 +74,13 @@ export async function signInAdmin(email, password) {
     return { success: false, error: 'Invalid email or password.' };
   }
 
+  // Try RPC to ensure admin status is linked for the authorized owner email
+  try {
+    await supabase.rpc('ensure_admin_for_owner');
+  } catch {
+    // RPC may not be present yet, continue with normal check
+  }
+
   // Verify admin authorization in database
   const isAdmin = await checkIsAdmin(data.user.id);
   if (!isAdmin) {
