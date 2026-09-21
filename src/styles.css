@@ -2201,6 +2201,38 @@ footer img,
   }
 }
 
+/* Very Last Footer Line: Designer & Developer Credit with WhatsApp Leads Link */
+.footer-developer-credit {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(198, 161, 91, 0.22);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.footer-developer-credit p {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(36, 33, 30, 0.75);
+}
+
+.footer-developer-credit a {
+  color: var(--burgundy-royal);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+  display: inline-inline;
+}
+
+.footer-developer-credit a:hover {
+  color: var(--gold-deep);
+  text-decoration: underline;
+}
+
 /* ==========================================================================
    CONSULTATION BOOKING MODAL — COMPACT MOBILE BOTTOM SHEET & STICKY SUBMIT
    Optimized so the form never overflows mobile viewports and the submit button
