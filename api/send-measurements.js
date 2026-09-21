@@ -109,41 +109,7 @@ export default async function handler(req, res) {
       console.warn('Measurement persistence warning:', fsErr.message);
     }
 
-    // 2. Dispatch via Web3Forms (Server-side)
-    const web3AccessKey = process.env.WEB3FORMS_KEY || '7097fd8c-680d-4e0a-86d8-0d53621e4b47';
-    let web3Dispatched = false;
-
-    try {
-      const web3Res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          access_key: web3AccessKey,
-          subject: `New Bespoke Measurement Profile: ${data.name} (${data.garment || 'Sherwani'})`,
-          from_name: 'LIBAS TAILOR Measurement Engine',
-          name: data.name,
-          phone: data.phone,
-          email: data.email || 'Not provided',
-          garment: data.garment || 'Sherwani',
-          fit: data.fit || 'Regular',
-          posture: data.posture || 'Standard',
-          unit: data.unit || 'cm',
-          notes: data.notes || 'None',
-          message: `NEW BESPOKE MEASUREMENT PROFILE\n\nClient Name: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nGarment: ${data.garment}\nFit: ${data.fit}\nPosture: ${data.posture}\nUnit: ${data.unit}\nAddress/Notes: ${data.address || 'N/A'}\nSpecial Notes: ${data.notes || 'None'}\n\nMEASUREMENTS:\nUpper Body:\nNeck: ${data.neck || '-'} | Chest: ${data.chest || '-'} | Shoulder: ${data.shoulder || '-'} | Sleeve: ${data.sleeve || '-'} | Bicep: ${data.bicep || '-'} | Stomach Waist: ${data.waist || '-'} | Natural Waist: ${data.waistNatural || '-'} | Jacket Length: ${data.jacketLength || '-'} | Back Length: ${data.backLength || '-'}\n\nLower Body:\nTrouser Waist: ${data.trouserWaist || '-'} | Hips: ${data.hips || '-'} | Thigh: ${data.thigh || '-'} | Inseam: ${data.inseam || '-'} | Outseam: ${data.outseam || '-'} | Knee: ${data.knee || '-'} | Ankle: ${data.ankle || '-'} | Rise: ${data.rise || '-'}`
-        })
-      });
-
-      if (web3Res.ok) {
-        web3Dispatched = true;
-      }
-    } catch (web3Err) {
-      console.warn('Web3Forms measurement dispatch error:', web3Err.message);
-    }
-
-    // 3. FormSubmit Failover Dispatch for Measurements
+    // 2. FormSubmit Dispatch for Measurements (Direct delivery to atelier inbox: libastailor0@gmail.com)
     let formSubmitDispatched = false;
     try {
       const recipient = process.env.EMAIL_TO || 'libastailor0@gmail.com';
@@ -219,7 +185,6 @@ export default async function handler(req, res) {
     return res.status(200).json({
       success: true,
       message: 'Measurement profile received and registered successfully.',
-      web3Dispatched,
       formSubmitDispatched
     });
 

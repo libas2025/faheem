@@ -3,7 +3,7 @@
  * Handles appointment bookings, consultation requests, and general enquiries.
  * 
  * Multi-layer dispatch pipeline:
- * 1. Web3Forms (Access Key: 7097fd8c-680d-4e0a-86d8-0d53621e4b47)
+ * 1. FormSubmit (https://formsubmit.co/libastailor0@gmail.com)
  * 2. Resend Transactional Email (if RESEND_API_KEY is configured)
  * 3. File-system persistence in data/leads.json
  */
@@ -82,45 +82,7 @@ export default async function handler(req, res) {
       console.warn('Lead persistence notice:', fsErr.message);
     }
 
-    // 2. Dispatch via Web3Forms from the server
-    const web3AccessKey = process.env.WEB3FORMS_KEY || '7097fd8c-680d-4e0a-86d8-0d53621e4b47';
-    let web3Dispatched = false;
-
-    try {
-      const web3Response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          access_key: web3AccessKey,
-          subject: `New Consultation Request: ${name} (${service})`,
-          from_name: 'LIBAS TAILOR Web Concierge',
-          name: name,
-          phone: phone,
-          email: email || 'Not provided',
-          service: service,
-          occasion: occasion,
-          consultation_venue: location,
-          preferred_date: date,
-          preferred_time: time,
-          additional_notes: notes || 'None',
-          message: `NEW BESPOKE CONSULTATION REQUEST\n\nClient Name: ${name}\nPhone/WhatsApp: ${phone}\nEmail: ${email || 'N/A'}\nGarment Silhouette: ${service}\nOccasion: ${occasion}\nVenue: ${location}\nPreferred Date: ${date}\nTime Slot: ${time}\nNotes: ${notes || 'None'}\n\nSubmitted via libastailor.in`
-        })
-      });
-
-      if (web3Response.ok) {
-        web3Dispatched = true;
-      } else {
-        const errTxt = await web3Response.text();
-        console.warn('Web3Forms server response status:', web3Response.status, errTxt.slice(0, 150));
-      }
-    } catch (web3Err) {
-      console.warn('Web3Forms dispatch warning:', web3Err.message);
-    }
-
-    // 3. FormSubmit Failover Dispatch (Direct email delivery to atelier)
+    // 2. Dispatch via FormSubmit (Direct email delivery to atelier inbox: libastailor0@gmail.com)
     let formSubmitDispatched = false;
     try {
       const recipient = process.env.EMAIL_TO || 'libastailor0@gmail.com';
@@ -196,7 +158,6 @@ export default async function handler(req, res) {
       success: true,
       message: 'Your consultation request has been successfully registered with LIBAS TAILOR.',
       leadId: leadRecord.id,
-      web3Dispatched,
       formSubmitDispatched
     });
 

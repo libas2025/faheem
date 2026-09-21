@@ -73,7 +73,13 @@ export default defineConfig(({ command, mode }) => {
 
   return {
     plugins,
+    esbuild: {
+      legalComments: 'none',
+    },
     build: {
+      target: 'es2020',
+      minify: 'esbuild',
+      cssMinify: true,
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'index.html'),

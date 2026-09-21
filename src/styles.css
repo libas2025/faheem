@@ -1628,8 +1628,18 @@ footer img,
     fill: #25D366;
   }
 
+  /* Instagram: Atelier Rose / Royal */
+  .instagram-icon-wrap, .instagram-icon {
+    color: #E1306C;
+    fill: #E1306C;
+  }
+
+  .mobile-contact-item {
+    padding: 0.25rem 0.2rem;
+  }
+
   .mobile-contact-label {
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 500;
     color: #374151;
     letter-spacing: 0.01em;
@@ -1888,7 +1898,38 @@ footer img,
   transform: translateY(-1px);
 }
 
+.footer-social-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(250, 247, 240, 0.95);
+  color: var(--burgundy-royal) !important;
+  border: 1px solid var(--gold-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.footer-social-icon-btn:hover {
+  background-color: var(--burgundy-royal);
+  color: #FFFFFF !important;
+  border-color: var(--burgundy-royal);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(85, 16, 15, 0.25);
+}
+
+.footer-social-icon-btn svg {
+  width: 17px;
+  height: 17px;
+  display: block;
+}
+
 /* 4-Column Editorial Grid */
+
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -2163,4 +2204,83 @@ body:has(#booking-modal:not(.hidden)) .mobile-contact-bar {
   pointer-events: none !important;
   visibility: hidden !important;
 }
+
+/* ==========================================================================
+   LIBAS TAILOR — SCOPED MEASUREMENT GUIDE COMPONENT
+   ========================================================================== */
+.libas-measurement-guide-section {
+  position: relative;
+  background-color: var(--ivory-warm, #FAF7F0);
+  border-bottom: 1px solid rgba(198, 161, 91, 0.3);
+}
+
+.libas-measurement-guide-wrapper {
+  background: #ffffff;
+  border: 1px solid var(--gold-antique, #C6A15B);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.libas-measurement-guide-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  background-color: var(--ivory-warm, #FAF7F0);
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-antique, #C6A15B) rgba(198, 161, 91, 0.15);
+}
+
+.libas-measurement-guide-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.libas-measurement-guide-scroll::-webkit-scrollbar-track {
+  background: rgba(198, 161, 91, 0.12);
+}
+
+.libas-measurement-guide-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--gold-antique, #C6A15B);
+  border-radius: 3px;
+}
+
+.libas-measurement-guide-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  min-width: 960px; /* Preserve crisp metrology labels on mobile & tablets */
+}
+
+@media (min-width: 1024px) {
+  .libas-measurement-guide-img {
+    min-width: 100%;
+  }
+}
+
+.libas-measurement-guide-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  background-color: #FAF7F0;
+  border-top: 1px solid rgba(198, 161, 91, 0.25);
+}
+
+@media (min-width: 640px) {
+  .libas-measurement-guide-actions {
+    flex-direction: row;
+  }
+}
+
+.libas-measurement-guide-hint {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(36, 33, 30, 0.75);
+  display: inline-flex;
+  align-items: center;
+}
+
 
