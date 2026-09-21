@@ -606,9 +606,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 8. Gallery Category Filter Handler (on /gallery.html)
+  // 8. Dynamic Supabase Published Gallery Loader & Category Filter Handler (on /gallery.html)
   const filterBtns = document.querySelectorAll('.gallery-filter-btn');
-  const galleryItems = document.querySelectorAll('.gallery-item');
 
   if (filterBtns.length > 0) {
     filterBtns.forEach(btn => {
@@ -616,8 +615,9 @@ document.addEventListener('DOMContentLoaded', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const filterCategory = btn.getAttribute('data-filter') || 'all';
+        const allCurrentGalleryItems = document.querySelectorAll('.gallery-item');
 
-        galleryItems.forEach(item => {
+        allCurrentGalleryItems.forEach(item => {
           const itemCat = (item.getAttribute('data-category') || '').toLowerCase().trim();
           const catList = itemCat.split(/\s+/);
           if (filterCategory === 'all' || catList.includes(filterCategory.toLowerCase())) {
@@ -631,6 +631,42 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Load published gallery photos dynamically from Supabase
+  async function loadDynamicPublishedGallery() {
+    const galleryGrid = document.getElementById('gallery-grid');
+    if (!galleryGrid) return;
+
+    try {
+      const { fetchPublishedPhotos } = await import('./lib/supabase.js');
+      const dynamicPhotos = await fetchPublishedPhotos();
+
+      if (!dynamicPhotos || dynamicPhotos.length === 0) return;
+
+      const fragment = document.createDocumentFragment();
+      dynamicPhotos.forEach(photo => {
+        if (!photo.public_url) return;
+        const itemEl = document.createElement('div');
+        itemEl.className = 'gallery-item aspect-[3/4] dynamic-supabase-item';
+        itemEl.setAttribute('data-category', 'all craft');
+        itemEl.setAttribute('data-src', photo.public_url);
+
+        itemEl.innerHTML = `
+          <img src="${photo.public_url}" alt="LIBAS TAILOR Atelier Bespoke Archive" width="600" height="800" loading="lazy" decoding="async">
+          <div class="gallery-zoom-badge" aria-hidden="true">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+          </div>
+          <span class="gallery-label-tag">NEW &bull; ATELIER ARCHIVE</span>
+        `;
+        fragment.appendChild(itemEl);
+      });
+
+      galleryGrid.insertBefore(fragment, galleryGrid.firstChild);
+    } catch {
+      // Graceful fallback: existing static items remain displayed without interruption
+    }
+  }
+  loadDynamicPublishedGallery();
 
   // 9. Official Instagram Reels Journal Embed Processing
   const journalSection = document.getElementById('journal');

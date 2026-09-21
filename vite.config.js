@@ -93,6 +93,8 @@ export default defineConfig(({ command, mode }) => {
           measurementPolicy: resolve(__dirname, 'measurement-policy.html'),
           refundCancellation: resolve(__dirname, 'refund-cancellation.html'),
           shipping: resolve(__dirname, 'shipping.html'),
+          admin: resolve(__dirname, 'admin/index.html'),
+          adminLogin: resolve(__dirname, 'admin/login.html'),
         },
       },
     },
