@@ -152,10 +152,18 @@ function getIntelligentFallback(queryText) {
     };
   }
 
-  // 8. SHERWANI (ALL TIERS) & WEDDINGS
-  if (q.includes('sherwani') || q.includes('wedding') || q.includes('groom') || q.includes('dulha') || q.includes('amu') || q.includes('shadi') || q.includes('ceremonial')) {
+  // 8. AMU TRADITIONAL SILHOUETTE (CONFIDENTIAL RATES - VISIT / WHATSAPP ONLY)
+  if (q.includes('amu')) {
     return {
-      message: `**The Royal Sherwani Atelier Rates** (Hand-Crafted Stitching Labor):\n\n• **AMU Traditional Sherwani (Half Astar)**: ₹2,200\n  *Classic Aligarh Muslim University cut with high-stand collar & half lining.*\n• **AMU Traditional Sherwani (Full Astar)**: ₹2,500\n  *Authentic AMU academic silhouette with full interior drape.*\n• **Bespoke Royal Sherwani (Half Astar)**: ₹3,500\n  *Structured royal cut for receptions, festivals, and celebratory occasions.*\n• **Bespoke Royal Sherwani (Full Astar)**: ₹4,000\n  *Complete luxury interlining with imperial shoulder framing.*\n• **Imperial Wedding / Groom Sherwani**: ₹4,500\n  *Our pinnacle ceremonial masterpiece tailored specifically for grooms.*\n\n*Fabrics are provided by client or curated during consultation. 70% advance required upon booking.*`,
+      message: `**AMU Traditional Sherwanis & Academic Attire**:\n\nFor traditional Aligarh Muslim University silhouettes, academic convocations, and faculty cuts, master craftsman **Mr. Faheem** offers personalized consultation and fittings directly at our Shamshad Market atelier.\n\nTo discuss your requirements or schedule a fitting, please visit our atelier opposite Sulaiman Hall, AMU, or connect directly on WhatsApp at **+91 90276 72285**.`,
+      suggestedActions: ["Atelier Address", "WhatsApp Mr. Faheem", "Book Consultation"]
+    };
+  }
+
+  // 8B. SHERWANI (ROYAL & WEDDING ONLY - AMU EXCLUDED)
+  if (q.includes('sherwani') || q.includes('wedding') || q.includes('groom') || q.includes('dulha') || q.includes('shadi') || q.includes('ceremonial')) {
+    return {
+      message: `**The Royal Sherwani Atelier Rates** (Hand-Crafted Stitching Labor):\n\n• **Bespoke Royal Sherwani (Half Astar)**: ₹3,500\n  *Structured royal cut for receptions, festivals, and celebratory occasions.*\n• **Bespoke Royal Sherwani (Full Astar)**: ₹4,000\n  *Complete luxury interlining with imperial shoulder framing.*\n• **Imperial Wedding / Groom Sherwani**: ₹4,500\n  *Our pinnacle ceremonial masterpiece tailored specifically for grooms.*\n\n*Fabrics are provided by client or curated during consultation. 70% advance required upon booking.*`,
       suggestedActions: ["Book Wedding Consultation", "Atelier Address", "18-Point Measurements", "WhatsApp Concierge"]
     };
   }
@@ -195,7 +203,7 @@ function getIntelligentFallback(queryText) {
   // 13. PRICING GENERAL
   if (q.includes('price') || q.includes('rate') || q.includes('kitne') || q.includes('cost') || q.includes('charges') || q.includes('daam')) {
     return {
-      message: `**Official Stitching Labor Rates (Mr. Faheem)**:\n\n• **AMU Sherwani**: ₹2,200 (Half Astar) | ₹2,500 (Full Astar)\n• **Royal Sherwani**: ₹3,500 (Half Astar) | ₹4,000 (Full Astar)\n• **Wedding Sherwani**: ₹4,500\n• **Bespoke 2-Piece Suit**: ₹4,800\n• **Bespoke 3-Piece Suit**: ₹5,500\n• **Single Coat / Blazer**: ₹3,800\n• **Sadri / Waistcoat**: ₹2,000\n• **Pathani Suit**: ₹1,000\n• **Kurta Pajama**: ₹800\n• **Pant & Shirt**: ₹1,200\n\n*70% advance payment required upon booking.*`,
+      message: `**Official Stitching Labor Rates (Mr. Faheem)**:\n\n• **Royal Sherwani**: ₹3,500 (Half Astar) | ₹4,000 (Full Astar)\n• **Wedding Sherwani**: ₹4,500\n• **Bespoke 2-Piece Suit**: ₹4,800\n• **Bespoke 3-Piece Suit**: ₹5,500\n• **Single Coat / Blazer**: ₹3,800\n• **Sadri / Waistcoat**: ₹2,000\n• **Pathani Suit**: ₹1,000\n• **Kurta Pajama**: ₹800\n• **Pant & Shirt**: ₹1,200\n\n*70% advance payment required upon booking.*`,
       suggestedActions: ["Sherwani Prices", "Bespoke Suits", "Book Consultation", "WhatsApp Concierge"]
     };
   }
